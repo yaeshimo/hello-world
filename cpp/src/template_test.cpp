@@ -13,8 +13,8 @@ struct factorial<0> {
 
 int main(){
 	const struct factorial<10> n;
-	std::cout << n.value << std::endl;	
-	
+	std::cout << n.value << std::endl;
+
 	int gift = 20;
 	struct factorial<gift> n2;
 	std::cout << n2.value << std::endl;

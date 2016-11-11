@@ -17,3 +17,20 @@ print("*", hoge * fuga)
 print("/", hoge / fuga)
 print("%", hoge % fuga)
 print "\n"
+
+print("value types" ..
+[[
+nil
+boolean
+number
+string
+function
+userdata
+thread
+table
+]])
+
+print(type(hoge))
+
+io.write("hello io.write!")
+

@@ -72,14 +72,14 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 |正規表現vim|説明perl系|
 |:---------:|:---------|
-|\(hoge\)|(hoge)|
-|hoge\&#x7c;piyo|hoge&#x7c;piyo|
-|hogeQ\?|hogeQ?|
-|go\+doc|go+doc|
-|go\{2,4}gle|go{2,4}gle|
+| \(hoge\) | (hoge) |
+| hoge\&#x7c;piyo | hoge&#x7c;piyo |
+| hogeQ\? | hogeQ? |
+| go\+doc | go+doc |
+| go\{2,4}gle | go{2,4}gle |
 
 |vim文字クラス（POSIX文字クラス）|説明perl系|
-|:-:|:-|
+|:------------------------------:|:---------|
 |[::]|\|
 |[:digit:]|十進数|
 |[:xdigit:]|十六進数|

@@ -208,8 +208,7 @@ print 'hoge'
 ![link hackadoll3](./resource/hackadoll3_gif_2.gif "hackadoll3")  
 ![](./resource/hackadoll3_jpg_1.jpg "hackadoll3")  
 ~~~
-##### 表組み表示例  
-リンクが見つからない場合
+##### 表組み表示例  リンクが見つからない場合
 
 [link hackadoll3](./resource/hackadoll3_png_1.png "hackadoll3")  
 

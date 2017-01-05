@@ -100,12 +100,11 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 ---
 ## linuxcommand ##
-
-1.file
-2.system
-3.programing
-4.basiccommands
-5.shellscript
+1. file
+2. system
+3. programing
+4. basiccommands
+5. shellscript
 
 # TODO:
 使用例とよく使うオプションの追記

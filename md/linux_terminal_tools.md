@@ -281,3 +281,7 @@ fileの情報を調べる
 ### 実行中プロセスのスナップショット(system)
 ` ps `
 ` top `
+
+---
+### terminal line setting
+` stty `

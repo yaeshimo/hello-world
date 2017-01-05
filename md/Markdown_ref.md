@@ -68,7 +68,6 @@ markdownに書いた番号は表示と一致しない
 3つの連続であるならスペースを含めておｋ
 ~~~md
 ---
-***
 _ _ _
 ~~~
 
@@ -192,7 +191,7 @@ print 'hoge'
 ##### 表組み表示例
 
 |hedder1|hedder2|hedder3|  
-|:--|--:|:--:|  
+|:------|------:|:-----:|  
 |align left|align right|align center|  
 |a|b|c|
 
@@ -210,6 +209,7 @@ print 'hoge'
 ![](./resource/hackadoll3_jpg_1.jpg "hackadoll3")  
 ~~~
 ##### 表組み表示例  
+リンクが見つからない場合
 
 [link hackadoll3](./resource/hackadoll3_png_1.png "hackadoll3")  
 

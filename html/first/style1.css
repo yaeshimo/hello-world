@@ -1,0 +1,10 @@
+p { color: blue; /* text-decoration: underline; */ }
+strong { color : red; text-decoration: underline; }
+strong:hover { color : blue; }
+// strong { color : green; }
+// strong { color : yellow; }
+// strong { color : black; }
+
+.carrot { color: red; }
+.spinach { color: green; }
+#first { font-style: italic }

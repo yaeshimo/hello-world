@@ -72,7 +72,7 @@ main(int argc, char* argv[]) {
 
   // modify index to 0 that means all remove: 0
   lua_settop(L, 0 );
-  printf("stackSize=%d\n",  0 );
+  printf("stackSize=%d\n", lua_gettop(L) );
 
   // use lua from C
   // accept use luas function on C

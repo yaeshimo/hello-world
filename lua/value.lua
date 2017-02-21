@@ -8,7 +8,7 @@ print(fuga==hoge)
 
 hoge, fuga = 20, 0.202 --muxing
 print(fuga, hoge)
-print(string.format("fuga=%d, hoge=%d", fuga, hoge))
+print(string.format("fuga=%f, hoge=%d", fuga, hoge))
 
 print "\n"
 print("+", hoge + fuga)

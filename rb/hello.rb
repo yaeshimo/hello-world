@@ -1,6 +1,5 @@
 #!/bin/ruby
 
-#
 # FROM: www.ruby-lang.org
 # quickstart
 

@@ -1,5 +1,7 @@
 #!/bin/ruby
 if __FILE__ != $0; exit 1; end
+# set hlsearch
+# /puts
 
 #class MyClass
 #  attr_accessor :instance_var
@@ -25,23 +27,20 @@ end
 puts Access.new.b_another_method
 puts Access.new.c_method
 
-puts "--- Car ---"
+puts "--- class Car ---"
 class Car
   def inspect
     "Cheap car"
   end
 end
-puts "porsche:>>"
 porsche = Car.new
 puts porsche.inspect
 def porsche.inspect
   "Expensive car"
 end
 
-puts "other_car:>>"
 other_car = Car.new
 puts other_car.inspect
 
-puts "porsche:>>"
 puts porsche.inspect
 

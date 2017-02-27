@@ -120,7 +120,7 @@ class MegaGreeter
 end
 
 
-# bash like $0
+# like bash echo $0
 puts __FILE__
 puts $0
 if __FILE__ == $0

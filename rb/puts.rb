@@ -10,3 +10,11 @@ puts "hi: #{puts}#{a}"
 puts "--- def b ---"
 def b; 1+2; end
 puts "hi: #{puts b()}#{a}"
+
+puts "--- backticks ---"
+puts `ls`
+puts
+l = `ls`
+puts l
+puts
+puts "hi: #{`ls`}"

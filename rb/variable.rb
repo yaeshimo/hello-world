@@ -24,6 +24,12 @@ puts Constant()
 # that confused
 # recommend method definition is to lowercase
 
+# can do change const value
+# but do not recommend
+# ruby is always warning to that
+#Constant = 25
+#puts Constant
+
 puts "--- ___macro?___ ---"
 # __FILE__ $0
 puts __FILE__
@@ -62,3 +68,20 @@ puts "--- var2 ---"
 var2 = Variables.new("var2:hello", " :class world2")
 var2.say
 var1.say # var2.@@world == var1.@@world
+
+# ruby >= 2.0
+puts "--- keyword parameter ---"
+def who(name: "lily", from: "arch", age: 14)
+  puts "name=#{name}, from=#{from}, age#{age}"
+end
+who
+who(name: "dory")
+who(from: "mate", age: 11, name: "dory")
+
+puts "--- true false ---"
+# ! [ nil | false ] == true
+if 0
+  puts "0 is true"
+else
+  puts "0 is false"
+end

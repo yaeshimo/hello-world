@@ -1,4 +1,7 @@
 ;nasm -f elf64 arch.asm
+; or
+;nasm -f elf64 arch.asm -l arch.list
+
 ;ld -o arch arch.o
 ;./arch
 

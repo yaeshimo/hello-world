@@ -1,0 +1,9 @@
+# temporary ignored
+*.o
+*.ko
+*.mod
+*.cmd
+*.symvers
+*.tmp_versions
+*.order
+*.mod.c

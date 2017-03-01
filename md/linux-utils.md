@@ -98,6 +98,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 |[:escape:]|Esp|
 |[:backspace:]|BS|
 
+
 ---
 ## linuxcommand ##
 1. file
@@ -106,9 +107,10 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 4. basiccommands
 5. shellscript
 
-# TODO:
+TODO:  
 使用例とよく使うオプションの追記
 見出しに上の分類を追記しながら書き直す
+
 
 ---
 ### ファイルやフォルダを検索(file)
@@ -120,15 +122,47 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 ファイルを検索する
 読み取り権限がない場所は探せない
 
+
 ---
 ### コマンドの履歴を表示　![ヒストリー番号]　で実行(basic)
 ` history `
+
 
 ---
 ### locateに使うファイル・データベースを作成(system,file)
 ` updatedb `
 sudoが必要
 
+
+---
+### permission
+`su`
+
+`sudo`
+
+`visudo`
+
+`chmod [ugo][+-][rwx]`
+
+`chown user:group /dif/or/file/`
+
+`passwd user`
+
+---
+### user
+`groups`
+
+`adduser -m -G addgroup -s /default/shell name`
+
+`groupadd groupname`
+
+`groupdel groupname`
+
+`chgrp group /dir/or/file`
+
+`gpasswd --add user group`
+
+`gpasswd -delete user group`
 
 ---
 ### リダイレクト(script)
@@ -147,49 +181,40 @@ sudoが必要
 ` | `
 左のコマンドの出力結果を右のコマンドに引き渡す（パイプ）
 
+
 ---
 ### ターミナルのショートカット(script)
-` ctrl-a `
-行の頭へ
+`ctrl-a` 行の頭へ
 
-` ctrl-e `
-行の末へ
+`ctrl-e` 行の末へ
 
-` ctrl-f `
-カーソルを1つ進める
+`ctrl-f` カーソルを1つ進める
 
-` ctrl-b `
-カーソルを1つ戻す
+`ctrl-b` カーソルを1つ戻す
 
-` ctrl-u `
-カーソルから行頭に向けてキルバッファに入れる
+`ctrl-u` カーソルから行頭に向けてキルバッファに入れる
 
-` ctrl-y `
-キルバッファからバッファの貼り付け
+`ctrl-y` キルバッファからバッファの貼り付け
 
-` ctrl-l `
-画面の再表示
+`ctrl-l` 画面の再表示
 
-` ctrl-p `
-バッシュ履歴上へ
+`ctrl-p` バッシュ履歴上へ
 
-` ctrl-n `
-バッシュ履歴下へ
+`ctrl-n` バッシュ履歴下へ
 
-` ctrl-r `
-バッシュ履歴検索
+`ctrl-r` バッシュ履歴検索
 
-` ctrl-alt-backspace `
-エックスの強制終了
+`ctrl-alt-backspace` xorgの強制終了
 
-` [command]$ `
-シェルコマンドの終了を待たずにバックグランドジョブになる
+`[command]$` シェルコマンドの終了を待たずにバックグランドジョブになる
+
 
 ---
 ### 内容の検索(file,system,basic,script)
 ` grep `
 渡された文字列をフィルタして出力する
 正規表現が使える
+
 
 ---
 ### フォルダ表示(file)
@@ -202,67 +227,98 @@ lsに対するailias
 ` dir `
 ファイルの表示
 
+`df -h`
+show disk cap
+
+`du -h`
+show dir size
+
+
 ---
 ### コマンドのマニュアル(script)
 ` man `
 コマンドのマニュアル
 
+
 ---
 ### ネットワーク(system)
-` ipconfig `
+`ps`
 
-` ifconfig `
+`ipconfig`
 
-` ping `
+`ifconfig`
 
-` netstat `
+`ping`
+
+`netstat`
+
+`iptables`
 
 
 ---
 ### エディター(basic)
-` vim `
+`vim`
 
-` vi `
+`vi`
 
-` nano `
+`nano`
 
-` emacs `
+`emacs`
+
 
 ---
 ### ファイルの内容を表示(file)
-` cat `
+`cat`
 binaryを読むと表示が崩れる
 $resetでterminalを再起動すると回復するかも
 
-` more `
+`more`
 文字列を一画面ずつ表示
 
-` less `
+`less`
 文字列をスクロールして確認できる
+
+`pwd`
+show current dir
 
 
 ---
 ### 標準入出力、読み込んだ内容を標準出力とファイルに書き込む(script,file)
-` tee `
+`tee /dst/file`
 
 
 ---
 ### hoge.txtが存在しなければ新規作成される(file)
-` touch `
+`touch /path/to/file`
 ファイル、ディレクトリのタイムスタンプ操作
-(例:` touchhoge.txt `)←タイムスタンプ更新...
-hoge.txtが存在しなければ新たに作成される
+fileが存在しなければ新たに作成される
 
 
 ---
 ### ファイルの調査(file)
-` file `
+`file /path/to/file`
 fileの情報を調べる
 
 
 ---
 ### パーティション操作(system)
-` fdisk `
+`fdisk -l`
+show disk info
+
+` fdisk /path/to/device `
+interactive  
+- m(menu? show help)
+- n(new)
+- p(primary partition)
+- e(extended partition)
+- specify size
+  - +1000M
+  - +1G
+- a(add flag)
+- t(partition type)
+- d(delete)
+- w(write)
+- q(quit)
 
 
 ---
@@ -270,18 +326,41 @@ fileの情報を調べる
 ` mount `
 (例：mount/dev/hda2/mnt/d)←ドライブをファイル「d」にマウント
 
+`umount`
+
 
 ---
 ### 設定されている環境変数を調べる(system,script)
 ` printenv `
+
 ` env `
 
 
 ---
 ### 実行中プロセスのスナップショット(system)
-` ps `
-` top `
+`ps`
+
+`top`
+
+`pgrep`
+
+`pkill`
+
+
+---
+### link
+`ln`
+
+`unlink`
+
+`readlink`
+
 
 ---
 ### terminal line setting
 ` stty `
+
+
+---
+### setting
+`loadkeys jp106`

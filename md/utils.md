@@ -161,9 +161,6 @@ TODO: 分類の仕方考える
 `ls`
 ファイルの一覧表示
 
-`ll` `la`
-lsに対するailias
-
 `dir`
 ファイルの表示
 
@@ -207,6 +204,9 @@ fileの情報を調べる
 `touch /path/to/file`
 ファイル、ディレクトリのタイムスタンプ操作
 fileが存在しなければ新たに作成される
+
+### etc
+`dd count=N bs=N if=/path of=/path`
 
 
 ---
@@ -309,6 +309,17 @@ terminal line settings
 
 `iptables`
 
+### ssh
+`ssh`
+
+`ssh-keygen`
+
+`ssh-agent`
+
+`ssh-add`
+
+`scp`
+
 
 ---
 ## 3.tool
@@ -329,3 +340,6 @@ terminal line settings
 
 `vboxheadless`
 - `-startvm`
+
+### etc
+`feh`

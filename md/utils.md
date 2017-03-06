@@ -244,7 +244,7 @@ TODO: add
 ### localectl
 `localectl`
 - `set-keymap jp106`
-- `set-locale [LANG:LANGUAGE:...] locale`
+- `set-locale [LANG:LANGUAGE:...] [locale]`
 - `set-x11-keymap jp`
 
 ### setting
@@ -332,8 +332,8 @@ q(quit)
 
 ### ssh
 `ssh`
-- `ssh -p port -i /path/to/key user@host`
-- `ssh alias`
+- `ssh -p [port] -i /path/to/key user@host`
+- `ssh [alias]` pre set .ssh/config
 
 `ssh-keygen`
 - `ssh-keygen -t rsa -b 4096 -C "comment"`
@@ -348,7 +348,7 @@ q(quit)
 
 `scp`
 - `scp /path/to/dst user@host:`
-- `-P port`
+- `-P [port]`
 
 
 ---
@@ -398,8 +398,7 @@ q(quit)
 
 `xset`
 - `xset s [off:on}`
-- `xset [+-]dpms`
- - dpms is Display Power Management Signaling
+- `xset [+-]dpms` dpms is Display Power Management Signaling
 
 ### etc
 TODO: classify
@@ -412,4 +411,4 @@ TODO: classify
 - `sed`
  - `sed -e 's/word/dst/g'`
 - `mkinitcpio`
- - `-p dst`
+ - `-p [dst pre set]`

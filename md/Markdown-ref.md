@@ -1,8 +1,8 @@
 
 # Markdown 書式のメモ
 markdownの書き方をmarkdownを使いながらメモ  
-markdownは実装が確定的ではないので注意  
-理解に必要かなと感じたところは実例を表示  
+markdownは実装が確定的ではない  
+理解に必要かなと感じたところは実例を  
 
 GFM = github markdown  
 escape = \
@@ -90,6 +90,8 @@ _ _ _
 url直でもリンクになるっぽい?  
 scheme含めた絶対パスでリンクが認識されるっぽい  
 https://localhost
+**手元のmd previewではリンク**
+**githubでは単にテキスト**
 
 fileはだめっぽい  
 file:///home/

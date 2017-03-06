@@ -9,14 +9,14 @@ MODULE_DESCRIPTION("hello kernel module");
 static int __init hello_init(void)
 {
   printk(KERN_INFO "hello: hello kernel!!\n");
-  printk(KERN_ALERT "hello: test ALERT\n");
+  printk(KERN_ALERT "hello: test ALERT init\n");
   return 0; // if !0 can't load the module
 }
 
 static void __exit hello_seeyou(void)
 {
   printk(KERN_INFO "hello: See you next time!!\n");
-  printk(KERN_ALERT "hello: ALERT hello exit!\n");
+  printk(KERN_ALERT "hello: test ALERT exit!\n");
 }
 
 module_init(hello_init);

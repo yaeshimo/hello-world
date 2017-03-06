@@ -86,6 +86,14 @@ _ _ _
 [](https://localhost:80)
 [test](https://localhost:80)
 
+##### shcemeを含めた絶対パス
+url直でもリンクになるっぽい?  
+scheme含めた絶対パスでリンクが認識されるっぽい  
+https://localhost
+
+fileはだめっぽい  
+file:///home/
+
 ---
 ### /\* URLを段落外へ \*/
 リンクの参照を指定できる  
@@ -200,7 +208,7 @@ print 'hoge'
 画像のリンクは通常のURLと同様  
 `[linkname](URL)`で指定する  
 画像の表示なのでlinknameは省略しても問題ないっぽい  
-画像をリンクから受けて直接表示したい場合は`!`を使う
+画像をリンクから受けて直接表示したい場合は`!`を使う  
 ~~~md
 [link hackadoll3](./resource/hackadoll3_png_1.png "hackadoll3")  
 ![link hackadoll3](./resource/hackadoll3_png_1.png "hackadoll3")  
@@ -209,16 +217,13 @@ print 'hoge'
 ![](./resource/hackadoll3_jpg_1.jpg "hackadoll3")  
 ~~~
 ##### 表組み表示例  リンクが見つからない場合
-
 [link hackadoll3](./resource/hackadoll3_png_1.png "hackadoll3")  
-
+![](./resource/hackadoll3_jpg_1.jpg "hackadoll3")  
 ![link hackadoll3](./resource/hackadoll3_png_1.png "hackadoll3")  
-
 ![link hackadoll3](./resource/hackadoll3_gif_1.gif "hackadoll3")  
-
 ![link hackadoll3](./resource/hackadoll3_gif_2.gif "hackadoll3")  
 
-![](./resource/hackadoll3_jpg_1.jpg "hackadoll3")  
+
 
 ---
 ### /\* 改行 \*/  

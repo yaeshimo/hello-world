@@ -1,5 +1,5 @@
 # utils
-toolを自分用にメモ  
+toolメモ  
 基本的に調べて使ったコマンドのNOTE  
 必要に応じて使ってないflagなんかはmanとarchwikiとnet  
 

@@ -189,14 +189,13 @@ fileが存在しなければ新たに作成される
 `tail`
 - `command | tail`
 
-TODO: classify
+### etc
+TODO: classify  
 `mkdir`
 `rmdir`
 `rm`
 `mv`
 `cp`
-
-### etc
 `dd`
 - `dd count=N bs=N if=/path of=/path`
 
@@ -226,53 +225,64 @@ TODO: classify
 `journalctl`
 - `-f` follow
 - `--user-unit=dst.[service:...]`
+- `-p [priority:number or label]`
+
+### process
+- `ps`
+- `pstree`
+- `top`
+- `pgrep`
+- `pkill`
+- `kill`
+ - `kill [pid]`
+- `killall`
+ - `killall [proc name]`
+
+### systemd-nspawn
+TODO: add
+
+### localectl
+`localectl`
+- `set-keymap jp106`
+- `set-locale [LANG:LANGUAGE:...] locale`
+- `set-x11-keymap jp`
+
+### setting
+`loadkeys jp106`
+for tty terminal
+
+`stty`
+terminal line settings
 
 ### permission
-`su -`
-to root
-
-`sudo`
-
-`visudo`
-
-`chmod`
-- `chmod [ugo][+-][rwx]`
-
-`chown`
-- `chown user:group /dif/or/file/`
-
-`passwd`
-- `passwd user`
-- `passwd -l user`
-- `passwd -u user`
+- `su -` to root
+- `sudo`
+- `visudo`
+- `chmod`
+ - `chmod [ugo][+-][rwx]`
+- `chown`
+ - `chown user:group /dif/or/file/`
+- `passwd`
+ - `passwd [username]`
+ - `-l [user name]`
+ - `-u [user name]`
 
 ### user
-`groups`
-
-`adduser`
-- `adduser -m -G addgroup -s /default/shell name`
-
-`groupadd`
-- `groupadd groupname`
-
-`groupdel`
-- `groupdel groupname`
-
-`chgrp`
-- `chgrp group /dir/or/file`
-
-`gpasswd`
-- `gpasswd --add user group`
-
-`gpasswd`
-- `gpasswd -delete user group`
+- `groups`
+- `adduser`
+ - `-m -G addgroup -s /default/shell name`
+- `groupadd [name]`
+- `groupdel [name]`
+- `chgrp`
+ - `[group] /dir/or/file`
+- `gpasswd`
+ - `--add [user] [group]`
+ - `--delete [user] [group]`
 
 ### パーティション操作
-`fdisk -l`
-show disk info
+`fdisk -l` show disk info
 
-`fdisk /path/to/device`
-to interactive
+`fdisk /path/to/device` to interactive
 ```sh:interactive
 m(menu? show help)
 n(new)
@@ -295,26 +305,9 @@ q(quit)
 `umount`
 
 ### 設定されている環境変数を調べる
-`printenv`
+- `printenv`
+- `env`
 
-`env`
-
-### プロセス
-`ps`
-
-`pstree`
-
-`top`
-
-`pgrep`
-
-`pkill`
-
-`kill`
-- `PID`
-
-`killall`
-- `psname`
 
 ### link
 `ln`
@@ -329,34 +322,13 @@ q(quit)
 `which`
 - `which "command name"`
 
-### setting
-`loadkeys jp106`
-for tty terminal
-
-`stty`
-terminal line settings
-
-### localectl
-`localectl`
-- `set-keymap jp106`
-- `set-locale [LANG:LANGUAGE:...] locale`
-- `set-x11-keymap jp`
-
-
 ### ネットワーク
-`ps`
-
-`ss`
-
-`ip`
-
-`ping`
-
-`tcpdump`
-
-`iptables`
-
-`curl`
+- `ss`
+- `ip`
+- `ping`
+- `tcpdump`
+- `iptables`
+- `curl`
 
 ### ssh
 `ssh`
@@ -418,9 +390,6 @@ terminal line settings
  - `push user/image:tag`
 - `pull`
  - `pull user/image:tag`
-
-### systemd-nspawn
-TODO: add
 
 ### xorg
 `xinit`

@@ -442,3 +442,5 @@ TODO: classify
 - `xclip`
 - `sed`
  - `sed -e 's/word/dst/g'`
+- `mkinitcpio`
+ - `-p dst`

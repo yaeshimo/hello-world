@@ -268,6 +268,7 @@ terminal line settings
  - `-u [user name]`
 
 ### user
+- `id`
 - `groups`
 - `adduser`
  - `-m -G addgroup -s /default/shell name`

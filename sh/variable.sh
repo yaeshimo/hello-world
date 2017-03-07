@@ -58,4 +58,72 @@ say
 unset -f say
 #say # error
 
+doller() {
+  cat <<END
+  return var $?
+  recently background pid $!
+  flags $-
+  self pid $$
+  argc $#
+  argv $* : $@
+  line $LINENO
+END
+  # cat <<END..END is one line
+  # $LINENO is show it
+}
+sleep 1 & # for $1
+doller hello lily
+
+
+set +u
+# exchange
+echo "--- = ---"
+unset exchange
+echo ${exchange=hello} # if unused then, modify and return it
+echo $exchange
+exchange="" # "" is NULL
+echo ${exchange=world} # not modify
+
+echo "--- := ---"
+unset exchange
+exchange=""
+echo ${exchange:=world} # accept modify on NULL
+echo $exchange
+echo
+
+echo "--- - ---"
+unset exchange
+echo ${exchange-lily} # if still non use then, return lily
+echo empty$exchange # empty
+exchange=lily-on
+echo ${exchange-lily} # if used then, return contents
+exchange=""
+echo NULL${exchange-lily} # return NULL
+echo
+
+echo "--- :- ---"
+unset exchange
+echo ${exchange:-lily-hello} # same -
+exchange=""
+echo ${exchange:-lily-hello} # accept change on NULL
+echo
+
+echo "--- + ---"
+unset exchange
+exchange="hello"
+echo ${exchange+lily-world} # if used then, return lily-nyan
+unset exchange
+echo NULL${exchange+lily-world} # if unused then, return NULL
+exchange=""
+echo ${exchange+lily-world} # with NULL, return lily-world
+echo
+
+echo "--- :+ ---"
+unset exchange
+exchange="hello"
+echo ${exchange:+lily-nyan} # used: return lily-hello
+exchange=""
+echo ${exchange:+lily-nyan} # don't catch NULL, return NULL
+set -u
+
 # EOF

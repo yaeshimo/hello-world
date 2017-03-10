@@ -172,6 +172,26 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
  - `cat [pipe name]`
  - `echo "hi" > [pipe name]`
 
+- `gzip`
+ - `gzip [file]`
+ - `gzip -r [/path/to/dir/]`
+ - `gzip -l [file.gz]` file info
+ - `gzip -d [file.gz]` decompress: same gunzip
+ - `gzip -dc [file.gz]` c: write on stdout
+ - `gzip -[number of ratio] [file]` ratio=1..9 or best or fast
+
+- `gunzip`
+
+- `tar`
+ - `x` extract
+ - `c` create
+ - `a` create archive auto compress
+ - `z` create archive gzip [.gz]
+ - `f` specify file or archive
+ - `v` verbose
+ - `tar xvf [archive.tar]`
+ - `tar cvaf [outname.tar.gz] [target]`
+
 ### etc
 TODO: classify  
 `mkdir`
@@ -313,6 +333,7 @@ q(quit)
 - `tcpdump`
 - `iptables`
 - `curl`
+ - `curl -o /out/file URL`
 
 ### ssh
 `ssh`

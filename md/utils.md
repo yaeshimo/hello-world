@@ -127,67 +127,50 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 ---
 ## 1.file
 ### リダイレクト
-`>` 出力のリダイレクト（上書き）
+- `>` 出力のリダイレクト 上書き
+- `>>` 出力のリダイレクト 追記
+- `<` 入力のリダイレクト
+- `<<` 終了文が現れるまで標準入力へ送る(<<[終了文の指定]) ヒアドキュメント
+- `<(command)` プロセス置換 コマンドの出力結果をファイルとして扱う
+- `|` 左のコマンドの出力結果を右のコマンドに引き渡す パイプ
+- `&1` ファイルディスクリプタ1番 標準入力
+- `&2` ファイルディスクリプタ2番 標準エラ-出力
+- `1>` 標準出力 ファイルディスクリプタ1番のリダイレクト
+- `2>` 標準エラ-出力 ファイルディスクリプタ2番のリダイレクト
 
-`>>` 出力のリダイレクト（追記）
+### 検索や表示、作成
+- `ls`
+- `dir`
+- `pwd` show current dir
+- `file`
 
-`<` 入力のリダイレクト
+- `df` show disk cap
+ - `df -h`
+- `du` show dir size
+ - `du -h`
 
-`<<` 終了文字が現れるまで標準入力へ送る(終端文字の指定)  
-ヒアドキュメント
+- `cat` binaryを読むと表示が崩れる
+ - `reset`でterminalを再起動すると回復するかも
+- `more`
+- `less`
 
-`<(command)` プロセス置換 コマンドの出力結果をファイルとして扱う
+- `locate` インデックスの作成は`sudo updatedb`
+- `find`
 
-`|` 左のコマンドの出力結果を右のコマンドに引き渡す（パイプ）
+- `grep`
+- `tee` 渡された内容を標準出力とファイルに書き込む
+ - `<commmands> | tee /dst/file`
+- `touch` タイムスタンプ操作、fileが存在しなければ新たに作成される
 
-`&1` ファイルディスクリプタ1番 標準入力
+- `head`
+ - `command | head`
+- `tail`
+ - `command | tail`
 
-`&2` ファイルディスクリプタ2番 標準エラ-出力
-
-`1>` 標準出力、ファイルディスクリプタ1番のリダイレクト
-
-`2>` 標準エラ-出力、ファイルディスクリプタ2番のリダイレクト
-
-### 検索や表示
-`ls`
-
-`dir`
-
-`df` show disk cap
-- `df -h`
-
-`du` show dir size
-- `du -h`
-
-`cat` binaryを読むと表示が崩れる
-- `reset`でterminalを再起動すると回復するかも
-
-`more`
-
-`less`
-
-`locate` インデックスの作成は`sudo updatedb`
-
-`find`
-
-`grep`
-
-`pwd` show current dir
-
-`file`
-
-`tee` 渡された内容を標準出力とファイルに書き込む
-- `<commmands> | tee /dst/file`
-
-`touch`
-ファイル、ディレクトリのタイムスタンプ操作
-fileが存在しなければ新たに作成される
-
-`head`
-- `command | head`
-
-`tail`
-- `command | tail`
+- `mkfifo` make named pipe (fifo: First In First Out)
+ - `mkfifo [pipe name]`
+ - `cat [pipe name]`
+ - `echo "hi" > [pipe name]`
 
 ### etc
 TODO: classify  
@@ -398,8 +381,9 @@ q(quit)
 `xrandr`
 
 `xset`
-- `xset s [off:on}`
+- `xset s [off:on}` screen saver
 - `xset [+-]dpms` dpms is Display Power Management Signaling
+- `xset q` query current info
 
 ### etc
 TODO: classify

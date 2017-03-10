@@ -230,6 +230,9 @@ TODO: classify
 - `--user-unit=dst.[service:...]`
 - `-p [priority:number or label]`
 
+- `logger` output to syslog
+ - `logger 'hello'` pre `journalctl -f`
+
 ### process
 - `ps`
 - `pstree`

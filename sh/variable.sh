@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# --- set options ---
+
 # output contents of process
 #set -x
 #set -o xtrace
@@ -35,11 +37,20 @@ fi
 #set -P
 #set -o physical
 
+# shell brace
+set -B
+#set -o braceexpand
+echo lily{,-saber{,-brace}}
+
+# show set options
+echo "$-"
+
+# --- variable ---
 var="hi"
 echo $var
 
 readonly var="hello"
-echo $var
+
 #var="wrold" # error
 #unset var # error
 

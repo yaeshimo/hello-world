@@ -1,5 +1,6 @@
 #!/bin/sh
-set -eu
+set -euB
+# set -B = enable braceexpand
 
 echo "----- brace -----"
 echo {h,l,l,o}

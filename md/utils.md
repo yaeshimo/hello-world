@@ -211,6 +211,8 @@ TODO: classify
  - `-r`
 - `insmod`
 - `rmmod`
+- `wait`
+ - `sleep 5 && echo "wait for me"; wait $!`
 
 ### systemd
 `systemctl`

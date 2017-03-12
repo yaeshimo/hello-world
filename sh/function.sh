@@ -2,6 +2,7 @@
 
 set -eu
 
+echo "--- say ---"
 say() {
   echo "hi!"
 }
@@ -13,9 +14,12 @@ function say() {
 say
 type say
 
+echo "--- param ---"
 param() {
   cat <<END
 param
+  PID   $$
+  set   $-
   path  $0
   argc  $#
   argv  $@
@@ -24,5 +28,20 @@ param
   arg2  $2
   arg2  $3
 END
+  echo
+  echo '"$*"' # "$1 $2 $2"
+  for i in "$*"; do
+    echo $i
+  done
+  echo '"$@"' # "$1" "$2" "$3"
+  for i in "$@"; do
+    echo $i
+  done
+  echo
 }
 param hi hello world
+
+echo $0
+echo "word count=${#0}" # word count
+
+# EOF

@@ -86,6 +86,15 @@ sleep 1 & # for $1
 doller hello lily
 
 
+# array use ()
+echo "--- array ---"
+arr=(hi lily saber)
+echo $arr
+echo ${arr[1]}
+echo ${#arr} # length of index?
+#echo ${arr[3]} # error unbound variable
+echo
+
 set +u
 # exchange
 echo "--- = ---"

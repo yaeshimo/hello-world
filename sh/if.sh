@@ -7,8 +7,8 @@ test 1 -eq 1 && echo "true eq"
 test 1 -ne 0 && echo "true ne"
 test 0 -lt 1 && echo "true lt"
 test 1 -gt 0 && echo "true gt"
-# l(less then)t <
-# g(greater then)t >
+  # l(less then)t <
+  # g(greater then)t >
 test 0 -le 0 && echo "true le"
 test 0 -ge 0 && echo "true ge"
 
@@ -42,7 +42,7 @@ echo -e "\n----- syntax sugar [ [[ -----"
 which "["
 [ -z "" ] && echo "simple"
 # builtin on bash
-#which "[["
+# EXAMPLE: which "[["
 
 
 echo -e "\n----- if -----"

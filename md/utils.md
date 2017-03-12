@@ -62,7 +62,7 @@ TODO: reconsider classify
 **正規表現vimの場合**
 vimの正規表現はメタ文字をエスケープして指定するっぽい
 
-|正規表現vim|説明perl系|
+|正規表現vim|説明|
 |:---------:|:---------|
 | \(hoge\) | (hoge) |
 | hoge\&#x7c;piyo | hoge&#x7c;piyo |
@@ -70,24 +70,23 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 | go\+doc | go+doc |
 | go\{2,4}gle | go{2,4}gle |
 
-|vim文字クラス（POSIX文字クラス）|説明perl系|
+|vim文字クラス（POSIX文字クラス）|説明|
 |:------------------------------:|:---------|
-|[::]|\|
 |[:digit:]|十進数|
 |[:xdigit:]|十六進数|
 |[:alpha:]|アルファベット|
 |[:alnum:]|\w(アンダースコアも含めるかは未調査)|
-|[:space:]|[]|
-|[:blank:]|[\t]|
+|[:space:]|SPACE TAB FF(改ペ-ジ)|
+|[:blank:]|SPACE TAB|
 |[:graph:]|スペースを除いた印刷可能な文字|
 |[:print:]|スペースを含めた印刷可能な文字|
 |[:upper:]|アルファベット大文字|
 |[:lower:]|アルファベット少文字|
 |[:punct:]|句読点文字|
 |[:cntrl:]|制御文字|
-|[:return:]|CR...\n|
-|[:tab:]|Tab...\t|
-|[:escape:]|Esp|
+|[:return:]|CR|
+|[:tab:]|TAB|
+|[:escape:]|ESP|
 |[:backspace:]|BS|
 
 
@@ -108,13 +107,13 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 `[command] &` シェルコマンドの終了を待たずにバックグランドジョブになる
 - `echo "hi" & & echo "foo"`
- - error
+  - error
 - `unset var ; echo "hi" & $var & echo "foo"`
- - non error
+  - non error
 
 `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
 
-`man [:digit:] [dst]`
+`man [:digit:] [dst command]`
 
 `reset` reboot terminal
 
@@ -145,12 +144,12 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `file`
 
 - `df` show disk cap
- - `df -h`
+  - `df -h`
 - `du` show dir size
- - `du -h`
+  - `du -h`
 
 - `cat` binaryを読むと表示が崩れる
- - `reset`でterminalを再起動すると回復するかも
+  - `reset`でterminalを再起動すると回復するかも
 - `more`
 - `less`
 
@@ -159,38 +158,38 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 - `grep`
 - `tee` 渡された内容を標準出力とファイルに書き込む
- - `<commmands> | tee /dst/file`
+  - `<commmands> | tee /dst/file`
 - `touch` タイムスタンプ操作、fileが存在しなければ新たに作成される
 
 - `head`
- - `command | head`
+  - `command | head`
 - `tail`
- - `command | tail`
+  - `command | tail`
 
 - `mkfifo` make named pipe (fifo: First In First Out)
- - `mkfifo [pipe name]`
- - `cat [pipe name]`
- - `echo "hi" > [pipe name]`
+  - `mkfifo [pipe name]`
+  - `cat [pipe name]`
+  - `echo "hi" > [pipe name]`
 
 - `gzip`
- - `gzip [file]`
- - `gzip -r [/path/to/dir/]`
- - `gzip -l [file.gz]` file info
- - `gzip -d [file.gz]` decompress: same gunzip
- - `gzip -dc [file.gz]` c: write on stdout
- - `gzip -[number of ratio] [file]` ratio=1..9 or best or fast
+  - `gzip [file]`
+  - `gzip -r [/path/to/dir/]`
+  - `gzip -l [file.gz]` file info
+  - `gzip -d [file.gz]` decompress: same gunzip
+  - `gzip -dc [file.gz]` c: write on stdout
+  - `gzip -[number of ratio] [file]` ratio=1..9 or best or fast
 
 - `gunzip`
 
 - `tar`
- - `x` extract
- - `c` create
- - `a` create archive auto compress
- - `z` create archive gzip [.gz]
- - `f` specify file or archive
- - `v` verbose
- - `tar xvf [archive.tar]`
- - `tar cvaf [outname.tar.gz] [target]`
+  - `x` extract
+  - `c` create
+  - `a` create archive auto compress
+  - `z` create archive gzip [.gz]
+  - `f` specify file or archive
+  - `v` verbose
+  - `tar xvf [archive.tar]`
+  - `tar cvaf [outname.tar.gz] [target]`
 
 ### etc
 TODO: classify  
@@ -208,11 +207,11 @@ TODO: classify
 - `dmesg`
 - `lsmod`
 - `modprobe`
- - `-r`
+  - `-r`
 - `insmod`
 - `rmmod`
 - `wait`
- - `sleep 5 && echo "wait for me"; wait $!`
+  - `sleep 5 && echo "wait for me"; wait $!`
 
 ### systemd
 `systemctl`
@@ -233,7 +232,7 @@ TODO: classify
 - `-p [priority:number or label]`
 
 - `logger` output to syslog
- - `logger 'hello'` pre `journalctl -f`
+  - `logger 'hello'` pre `journalctl -f`
 
 ### process
 - `ps`
@@ -242,9 +241,9 @@ TODO: classify
 - `pgrep`
 - `pkill`
 - `kill`
- - `kill [pid]`
+  - `kill [pid]`
 - `killall`
- - `killall [proc name]`
+  - `killall [proc name]`
 
 ### systemd-nspawn
 TODO: add
@@ -267,26 +266,26 @@ terminal line settings
 - `sudo`
 - `visudo`
 - `chmod`
- - `chmod [ugo][+-][rwx]`
+  - `chmod [ugo][+-][rwx]`
 - `chown`
- - `chown user:group /dif/or/file/`
+  - `chown user:group /dif/or/file/`
 - `passwd`
- - `passwd [username]`
- - `-l [user name]`
- - `-u [user name]`
+  - `passwd [username]`
+  - `-l [user name]`
+  - `-u [user name]`
 
 ### user
 - `id`
 - `groups`
 - `adduser`
- - `-m -G addgroup -s /default/shell name`
+  - `-m -G addgroup -s /default/shell name`
 - `groupadd [name]`
 - `groupdel [name]`
 - `chgrp`
- - `[group] /dir/or/file`
+  - `[group] /dir/or/file`
 - `gpasswd`
- - `--add [user] [group]`
- - `--delete [user] [group]`
+  - `--add [user] [group]`
+  - `--delete [user] [group]`
 
 ### パーティション操作
 `fdisk -l` show disk info
@@ -338,7 +337,7 @@ q(quit)
 - `tcpdump`
 - `iptables`
 - `curl`
- - `curl -o /out/file URL`
+  - `curl -o /out/file URL`
 
 ### ssh
 `ssh`
@@ -385,21 +384,21 @@ q(quit)
 `docker`
 - `info
 - `run`
- - `run (image) arg`
+  - `run (image) arg`
 - `images`
 - `build`
- - `build -t (image tag) /path/to/dockerfile/dir/`
+  - `build -t (image tag) /path/to/dockerfile/dir/`
 - `tag`
- - `tag (ID) rep/image-name:label`
+  - `tag (ID) rep/image-name:label`
 - `rmi`
- - `rmi rep/image:tag`
- - `rmi $(docker images | awk '/^<none>/ { print $3 }')
+  - `rmi rep/image:tag`
+  - `rmi $(docker images | awk '/^<none>/ { print $3 }')
 - `login`
- - `login --username=user --email=at@mail`
+  - `login --username=user --email=at@mail`
 - `push`
- - `push user/image:tag`
+  - `push user/image:tag`
 - `pull`
- - `pull user/image:tag`
+  - `pull user/image:tag`
 
 ### xorg
 `xinit`
@@ -416,10 +415,18 @@ TODO: classify
 - `git`
 - `feh`
 - `seq`
- - `[from] [dst]`
+  - `[from] [dst]`
 - `shuf`
 - `xclip`
 - `sed`
- - `sed -e 's/word/dst/g'`
+  - `-e` specify script
+    - `sed -e 's/word/dst/g'` separator s/ s: s; ...etc
+    - `sed -e '1,20s/word/dst/g'` specify lines to replace
+    - `sed -i -e 's:word:dst:g' /path/file /path/file2` -i only GNU sed: replace target files
+    - `sed -e '1d'` delete first line
+    - `sed -e '1p'` puts first line to next
+  - `-n` suppress display of origin
+    - `sed -n '1,4p'` display first line to four
+  - `-f` specify script-file
 - `mkinitcpio`
- - `-p [dst pre set]`
+  - `-p [dst pre set]`

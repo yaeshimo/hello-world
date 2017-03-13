@@ -30,7 +30,7 @@ if neaded
 - `make clean`
 
 
-## links
+## references
 - https://wiki.archlinux.org/index.php/Kernel_modules
 - https://github.com/jvns/kernel-module-fun
 - http://qiita.com/satoru_takeuchi/items/83c8e2f38176d2724f48

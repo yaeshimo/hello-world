@@ -111,6 +111,8 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `unset var ; echo "hi" & $var & echo "foo"`
   - non error
 
+`[(command)]` subshell
+
 `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
 
 `man [:digit:] [dst command]`
@@ -165,6 +167,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `command | head`
 - `tail`
   - `command | tail`
+  - `tail -n +2 file.txt`
 
 - `mkfifo` make named pipe (fifo: First In First Out)
   - `mkfifo [pipe name]`
@@ -335,6 +338,7 @@ q(quit)
 - `ip`
 - `ping`
 - `tcpdump`
+  - `tcpdump port [number]`
 - `iptables`
 - `curl`
   - `curl -o /out/file URL`

@@ -1,0 +1,6 @@
+*.js
+*.js.*
+*.sum
+
+!/dart2js/
+!/dartdevc/

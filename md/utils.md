@@ -380,6 +380,9 @@ q(quit)
 - `startvm "vm name" --type headless "vm name"`
 - `list runningvms`
 - `controlvm "vm name" poweroff`
+- `controlvm "vm name" natpf[profile number] "rulename,tcp|udp,hostaddr,hostport,,gustport"`
+- `controlvm "vm name" natpf[profile number]  delete rulename`
+- `showvminfo "vm name"`
 
 `vboxheadless`
 - `-startvm`

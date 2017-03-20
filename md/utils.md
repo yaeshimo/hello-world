@@ -421,6 +421,24 @@ q(quit)
 
 ### etc
 TODO: classify
+- `grub`
+  - to MBR
+    - `grub-install --target=i386-pc <target device /dev/sd?>`
+    - `grub-mkconfig -o /boot/grub/grub.cfg`
+  - MBR & to partition
+    - `chattr -i /boot/grub/i386-pc/core.img` immutable flag
+    - `grub-install --target=i386-pc --debug --force <target partition /dev/sd??>`
+    - `chattr +i /boot/grub/i386-pc/core.img`
+    - `arch-chroot /mnt && pacman -S linux && grub-mkconfig -o /boot/grub/grub.cfg`
+    - `dd count=1 bs=512 if=/dev/sd?? of=/path/to/boot.img`
+    - `bcdedit` is windows cmd, if use NT loader
+      - `/create /d "diplay name" /application BOOTSECTOR`
+      - `/set {store id need brace} device partition=C:` partition is from boot.img
+      - `/set {store id} path \path\to\boot.img` boot.img is need readable on the windows
+      - `/displayorder {store id} /addlast`
+      - `/timeout 10` if needed
+      - and then remember of fix UTC on the windows after settings
+      - if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`
 - `git`
 - `feh`
 - `seq`

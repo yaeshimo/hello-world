@@ -421,6 +421,8 @@ q(quit)
 
 ### etc
 TODO: classify
+- `date`
+  - `date "+%Y-%m-%d"`
 - `grub`
   - to MBR
     - `grub-install --target=i386-pc <target device /dev/sd?>`

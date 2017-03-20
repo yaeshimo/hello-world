@@ -91,7 +91,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 
 ---
-# ターミナルのショートカット
+# terminal
 - `ctrl-a` 行の頭へ
 - `ctrl-e` 行の末へ
 - `ctrl-f` カーソルを1つ進める
@@ -105,19 +105,13 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `ctrl-r` バッシュ履歴検索 like it
 - `ctrl-alt-backspace` xorgの強制終了
 
-`[command] &` シェルコマンドの終了を待たずにバックグランドジョブになる
-- `echo "hi" & & echo "foo"`
-  - error
-- `unset var ; echo "hi" & $var & echo "foo"`
-  - non error
-
-`[(command)]` subshell
-
-`history` コマンドの履歴を表示　![ヒストリー番号]　で実行
-
-`man [:digit:] [dst command]`
-
-`reset` reboot terminal
+- `[command] &` シェルコマンドの終了を待たずにバックグランドジョブになる
+  - `echo "hi" & & echo "foo"` error
+  - `unset var ; echo "hi" & $var & echo "foo"` non error
+- `[(command)]` subshell
+- `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
+- `man [:digit:] [dst command]`
+- `reset` reboot terminal
 
 ---
 # commands
@@ -159,6 +153,8 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `find`
 
 - `grep`
+  - `grep -A 2 -n -e "pattern"` show pattern after 2 lines
+  - `grep -C 2 -n -e "pattern"` show pattern 2 lines before and after
 - `tee` 渡された内容を標準出力とファイルに書き込む
   - `<commmands> | tee /dst/file`
 - `touch` タイムスタンプ操作、fileが存在しなければ新たに作成される
@@ -196,13 +192,13 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 ### etc
 TODO: classify  
-`mkdir`
-`rmdir`
-`rm`
-`mv`
-`cp`
-`dd`
-- `dd count=N bs=N if=/path of=/path`
+- `mkdir`
+- `rmdir`
+- `rm`
+- `mv`
+- `cp`
+- `dd`
+  - `dd count=N bs=N if=/path of=/path`
 
 
 ---
@@ -217,16 +213,16 @@ TODO: classify
   - `sleep 5 && echo "wait for me"; wait $!`
 
 ### systemd
-`systemctl`
-- `--help`
-- `--user`
-- `status`
-- `[start:stop:enable:disable]`
-- `is-[active:enabled:...etc]`
-- `[reboot:poweroff]`
-- `daemon-reload`
-- `list-unit-files`
-- `list-timers`
+- `systemctl`
+  - `--help`
+  - `--user`
+  - `status`
+  - `[start:stop:enable:disable]`
+  - `is-[active:enabled:...etc]`
+  - `[reboot:poweroff]`
+  - `daemon-reload`
+  - `list-unit-files`
+  - `list-timers`
 
 ### journal
 `journalctl`
@@ -252,17 +248,14 @@ TODO: classify
 TODO: add
 
 ### localectl
-`localectl`
-- `set-keymap jp106`
-- `set-locale [LANG:LANGUAGE:...] [locale]`
-- `set-x11-keymap jp`
+- `localectl`
+  - `set-keymap jp106`
+  - `set-locale [LANG:LANGUAGE:...] [locale]`
+  - `set-x11-keymap jp`
 
 ### setting
-`loadkeys jp106`
-for tty terminal
-
-`stty`
-terminal line settings
+- `loadkeys jp106` for tty terminal
+- `stty` terminal line settings
 
 ### permission
 - `su -` to root
@@ -291,9 +284,9 @@ terminal line settings
   - `--delete [user] [group]`
 
 ### パーティション操作
-`fdisk -l` show disk info
+- `fdisk -l` show disk info
 
-`fdisk /path/to/device` to interactive
+- `fdisk /path/to/device` to interactive
 ```sh:interactive
 m(menu? show help)
 n(new)
@@ -310,10 +303,9 @@ q(quit)
 ```
 
 ### マウント
-`mount`
-(例：mount/dev/hda2/mnt/d)←ドライブをファイル「d」にマウント
-
-`umount`
+- `mount`
+  - `mount /dev/sdaN /mnt`
+- `umount`
 
 ### 設定されている環境変数を調べる
 - `printenv`
@@ -321,17 +313,14 @@ q(quit)
 
 
 ### link
-`ln`
-- `ln -s /path/substance /path/linkname`
-
-`unlink`
-
-`readlink`
-- `readlink /path/link`
-- `readlink -f /path/file/or/link`
-
-`which`
-- `which "command name"`
+- `ln`
+  - `ln -s /path/substance /path/linkname`
+- `unlink`
+- `readlink`
+  - `readlink /path/link`
+  - `readlink -f /path/file/or/link`
+- `which`
+  - `which "command name"`
 
 ### ネットワーク
 - `ss`
@@ -344,30 +333,30 @@ q(quit)
   - `curl -o /out/file URL`
 
 ### ssh
-`ssh`
-- `ssh -p [port] -i /path/to/key user@host`
-- `ssh [alias]` pre set .ssh/config
+- `ssh`
+  - `ssh -p [port] -i /path/to/key user@host`
+  - `ssh [alias]` pre set .ssh/config
 
-`ssh-keygen`
-- `ssh-keygen -t rsa -b 4096 -C "comment"`
-- `ssh-keygen -t ecdsa -b 521 -f ~/.ssh/keyname -C "comment"`
+- `ssh-keygen`
+  - `ssh-keygen -t rsa -b 4096 -C "comment"`
+  - `ssh-keygen -t ecdsa -b 521 -f ~/.ssh/keyname -C "comment"`
 
-`ssh-agent`
-- `eval "$(ssh-agent)"`
+- `ssh-agent`
+  - `eval "$(ssh-agent)"`
 
-`ssh-add`
-- `ssh-add -l`
-- `ssh-add /path/to/privatekey`
+- `ssh-add`
+  - `ssh-add -l`
+  - `ssh-add /path/to/privatekey`
 
-`scp`
-- `scp /path/to/dst user@host:`
-- `-P [port]`
+- `scp`
+  - `scp /path/to/dst user@host:`
+  - `-P [port]`
 
 
 ---
 ## 3.tool
 ### env
-`awk`
+- `awk`
 
 ### editor
 - `nano`
@@ -376,48 +365,46 @@ q(quit)
 - `emacs`
 
 ### vm
-`vboxmanage`
-- `startvm "vm name" --type headless "vm name"`
-- `list runningvms`
-- `controlvm "vm name" poweroff`
-- `controlvm "vm name" natpf[profile number] "rulename,protocol,hostIP,hostport,gustIP,gustport"`
-  - `controlvm "SSH-EXAMPLE" natpf1 "ssh,tcp,127.0.0.1,PORT,,22"`
-- `controlvm "vm name" natpf[profile number]  delete rulename`
-- `showvminfo "vm name"`
-- `modifyvm [same controlvm]` for stopped vms
+- `vboxmanage`
+  - `startvm "vm name" --type headless "vm name"`
+  - `list runningvms`
+  - `controlvm "vm name" poweroff`
+  - `controlvm "vm name" natpf[profile number] "rulename,protocol,hostIP,hostport,gustIP,gustport"`
+    - `controlvm "SSH-EXAMPLE" natpf1 "ssh,tcp,127.0.0.1,PORT,,22"`
+  - `controlvm "vm name" natpf[profile number]  delete rulename`
+  - `showvminfo "vm name"`
+  - `modifyvm [same controlvm]` for stopped vms
 
-`vboxheadless`
-- `-startvm`
+- `vboxheadless`
+  - `-startvm`
 
 ### docker
-`docker`
-- `info
-- `run`
-  - `run (image) arg`
-- `images`
-- `build`
-  - `build -t (image tag) /path/to/dockerfile/dir/`
-- `tag`
-  - `tag (ID) rep/image-name:label`
-- `rmi`
-  - `rmi rep/image:tag`
-  - `rmi $(docker images | awk '/^<none>/ { print $3 }')
-- `login`
-  - `login --username=user --email=at@mail`
-- `push`
-  - `push user/image:tag`
-- `pull`
-  - `pull user/image:tag`
+- `docker`
+  - `info
+  - `run`
+    - `run (image) arg`
+  - `images`
+  - `build`
+    - `build -t (image tag) /path/to/dockerfile/dir/`
+  - `tag`
+    - `tag (ID) rep/image-name:label`
+  - `rmi`
+    - `rmi rep/image:tag`
+    - `rmi $(docker images | awk '/^<none>/ { print $3 }')
+  - `login`
+    - `login --username=user --email=at@mail`
+  - `push`
+    - `push user/image:tag`
+  - `pull`
+    - `pull user/image:tag`
 
 ### xorg
-`xinit`
-
-`xrandr`
-
-`xset`
-- `xset s [off:on}` screen saver
-- `xset [+-]dpms` dpms is Display Power Management Signaling
-- `xset q` query current info
+- `xinit`
+- `xrandr`
+- `xset`
+  - `xset s [off:on}` screen saver
+  - `xset [+-]dpms` dpms is Display Power Management Signaling
+  - `xset q` query current info
 
 ### etc
 TODO: classify

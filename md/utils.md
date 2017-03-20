@@ -421,11 +421,11 @@ TODO: classify
     - `arch-chroot /mnt && pacman -S linux && grub-mkconfig -o /boot/grub/grub.cfg`
     - `dd count=1 bs=512 if=/dev/sd?? of=/path/to/boot.img`
     - `bcdedit` is windows cmd, if use NT loader
-      - `/create /d "diplay name" /application BOOTSECTOR`
-      - `/set {store id need brace} device partition=C:` partition is from boot.img
-      - `/set {store id} path \path\to\boot.img` boot.img is need readable on the windows
-      - `/displayorder {store id} /addlast`
-      - `/timeout 10` if needed
+      - `bcdedit /create /d "diplay name" /application BOOTSECTOR`
+      - `bcdedit /set {store id need brace} device partition=C:` partition is from boot.img
+      - `bcdedit /set {store id} path \path\to\boot.img` boot.img is need readable on the windows
+      - `bcdedit /displayorder {store id} /addlast`
+      - `bcdedit /timeout 10` if needed
       - and then remember of fix UTC on the windows after settings
       - if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`
 - `git`

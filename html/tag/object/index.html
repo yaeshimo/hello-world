@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title>html tags</title>
+  <style>
+    div{
+      background:lightgreen;
+      margin:1em;
+      box-shadow:0 0 1em teal;
+    }
+  </style>
 </head>
 <body>
   hello object
-  <div><object data="./inline.html" type="html"></object></div>
-  <div><object data="./notfound.html" type="html">not found "vanish_test.html"</object></div>
-  <div><object data="../../first/doc1.html" type="html">not found "doc1.html"</object></div>
-  <div><object data="./text.txt" type="text">not found "text.txt"</object></div>
+  <div><object data="./inline.html" type="text/html"></object></div>
+  <div><object data="./notfound.html" type="text/html">not found "vanish_test.html"</object></div>
+  <div><object data="../../first/doc1.html" type="text/html">not found "doc1.html"</object></div>
+  <div><object data="./text.txt"></object></div>
   refresh test!
-  <div><object data="./refresh.html" type="html">not found "refresh.html"</object></div>
+  <div><object data="./refresh.html" type="text/html">not found "refresh.html"</object></div>
 </body>
 </html>

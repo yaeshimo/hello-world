@@ -380,9 +380,11 @@ q(quit)
 - `startvm "vm name" --type headless "vm name"`
 - `list runningvms`
 - `controlvm "vm name" poweroff`
-- `controlvm "vm name" natpf[profile number] "rulename,tcp|udp,hostaddr,hostport,,gustport"`
+- `controlvm "vm name" natpf[profile number] "rulename,protocol,hostIP,hostport,gustIP,gustport"`
+  - `controlvm "SSH-EXAMPLE" natpf1 "ssh,tcp,127.0.0.1,PORT,,22"`
 - `controlvm "vm name" natpf[profile number]  delete rulename`
 - `showvminfo "vm name"`
+- `modifyvm [same controlvm]` for stopped vms
 
 `vboxheadless`
 - `-startvm`

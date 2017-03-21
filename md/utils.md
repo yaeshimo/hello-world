@@ -225,10 +225,10 @@ TODO: classify
   - `list-timers`
 
 ### journal
-`journalctl`
-- `-f` follow
-- `--user-unit=dst.[service:...]`
-- `-p [priority:number or label]`
+- `journalctl`
+  - `-f` follow
+  - `--user-unit=dst.[service:...]`
+  - `-p [priority:number or label]`
 
 - `logger` output to syslog
   - `logger 'hello'` pre `journalctl -f`
@@ -245,7 +245,11 @@ TODO: classify
   - `killall [proc name]`
 
 ### systemd-nspawn
-TODO: add
+- `systemd-nspawn` requre root
+  - `sudo mkdir /path/to/container` remember need to root
+  - `pacstrap -c -d .../container base --ignore linux`
+  - `systemd-nspawn -b -D .../container`
+- `machinectl`
 
 ### localectl
 - `localectl`
@@ -429,6 +433,7 @@ TODO: classify
       - and then remember of fix UTC on the windows after settings
       - if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`
 - `git`
+  - `git log -p /path/to/target`
 - `feh`
 - `seq`
   - `[from] [dst]`

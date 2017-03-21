@@ -434,6 +434,8 @@ TODO: classify
       - if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`
 - `git`
   - `git log -p /path/to/target`
+- `tig`
+  - `tig status`
 - `feh`
 - `seq`
   - `[from] [dst]`

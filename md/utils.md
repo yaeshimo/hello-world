@@ -246,9 +246,11 @@ TODO: classify
 
 ### systemd-nspawn
 - `systemd-nspawn` requre root
-  - `sudo mkdir /path/to/container` remember need to root
-  - `pacstrap -c -d .../container base --ignore linux`
-  - `systemd-nspawn -b -D .../container`
+  - make container
+    - `sudo mkdir /path/to/container` remember need to root
+    - `pacstrap -c -d .../container base --ignore linux`
+  - `systemd-nspawn -b -D .../container` -b boot -D directory
+  - `systemd-nspawn -b -n -D .../container` -n create vritual Ethernet link
 - `machinectl`
 
 ### localectl

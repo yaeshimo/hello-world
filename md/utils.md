@@ -335,6 +335,17 @@ q(quit)
 - `tcpdump`
   - `tcpdump port [number]`
 - `iptables`
+  - `iptables -nvL --line-numbers`
+  - `iptables -N CHAINNAME` -n new
+  - `iptables -P [FORWARD:OUTPUT:INPUT] [DROP:ACCEPT]` -p policy
+  - `iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT`
+    - `-m` match
+    - state `NEW, ESTABLISHED, RELATED, INVALID`
+  - `iptables -A TCP -p tcp --dport 22 -j ACCEPT` -A append
+  - `iptables -A TCP -p tcp --dport 80 -j ACCEPT`
+  - `iptables -A TCP -p tcp --dport 443 -j ACCEPT`
+  - `iptables -A UDP -p udp --dport 53 -j ACCEPT` DNS server
+- `iptables-save`
 - `curl`
   - `curl -o /out/file URL`
 

@@ -167,8 +167,8 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 - `mkfifo` make named pipe (fifo: First In First Out)
   - `mkfifo [pipe name]`
-  - `cat [pipe name]`
-  - `echo "hi" > [pipe name]`
+    - `cat [pipe name]`
+    - `echo "hi" > [pipe name]`
 
 - `gzip`
   - `gzip [file]`

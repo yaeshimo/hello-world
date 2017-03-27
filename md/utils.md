@@ -364,6 +364,7 @@ q(quit)
   - `iptables -A TCP -p tcp --dport 80 -j ACCEPT`
   - `iptables -A TCP -p tcp --dport 443 -j ACCEPT`
   - `iptables -A UDP -p udp --dport 53 -j ACCEPT` DNS server
+  - `iptables -t nat -A PREROUTING -p tcp -m tcp --dport [catch] -j REDIRECT --to-ports [throw]`
 - `iptables-save`
 - `curl`
   - `curl -o /out/file URL`
@@ -407,14 +408,14 @@ q(quit)
 
 ### vm
 - `vboxmanage`
-  - `startvm "vm name" --type headless "vm name"`
-  - `list runningvms`
-  - `controlvm "vm name" poweroff`
-  - `controlvm "vm name" natpf[profile number] "rulename,protocol,hostIP,hostport,gustIP,gustport"`
-    - `controlvm "SSH-EXAMPLE" natpf1 "ssh,tcp,127.0.0.1,PORT,,22"`
-  - `controlvm "vm name" natpf[profile number]  delete rulename`
-  - `showvminfo "vm name"`
-  - `modifyvm [same controlvm]` for stopped vms
+  - `vboxmanage startvm "vm name" --type headless "vm name"`
+  - `vboxmanage list runningvms`
+  - `vboxmanage controlvm "vm name" poweroff`
+  - `vboxmanage controlvm "vm name" natpf[profile number] "rulename,protocol,hostIP,hostport,gustIP,gustport"`
+    - `vboxmanage controlvm "SSH-EXAMPLE" natpf1 "ssh,tcp,127.0.0.1,PORT,,22"`
+  - `vboxmanage controlvm "vm name" natpf[profile number]  delete rulename`
+  - `vboxmanage showvminfo "vm name"`
+  - `vboxmanage modifyvm [same controlvm]` for stopped vms
 
 - `vboxheadless`
   - `-startvm`

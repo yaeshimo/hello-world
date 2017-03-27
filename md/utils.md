@@ -211,6 +211,13 @@ TODO: classify
 - `rmmod`
 - `wait`
   - `sleep 5 && echo "wait for me"; wait $!`
+- `mknod` req root
+  - `mknod -m 0666 /chroot/dev/null c 1 3`
+  - `mknod -m 0666 /chroot/dev/random c 1 8`
+  - `mknod -m 0444 /chroot/dev/urandom c 1 9`
+  - `mknod -m 0666 /chroot/dev/tty c 5 0`
+  - `mknod -m 0666 /chroot/dev/ptmx c 5 2`
+  - `mknod -m 0666 /chroot/dev/zero c 1 5`
 
 ### systemd
 - `systemctl`
@@ -275,19 +282,29 @@ TODO: classify
   - `passwd [username]`
   - `-l [user name]`
   - `-u [user name]`
+- `pwck`
+  - `pwck -s` sort /etc/passwd
 
 ### user
 - `id`
+- `users` show current user
+  - `cat /etc/passwd` show all users
+- `useradd`
+  - `useradd -m -G [specify add group] -s /default/shell [user name]`
+  - `useradd -M [specify home] -G [specify add group] -s /default/shell [user name]`
+- `usermod`
 - `groups`
-- `adduser`
-  - `-m -G addgroup -s /default/shell name`
+  - `groups [user]` show user groups
+  - `cat /etc/group` show system groups
 - `groupadd [name]`
 - `groupdel [name]`
 - `chgrp`
-  - `[group] /dir/or/file`
+  - `chgrp [group] /dir/or/file`
 - `gpasswd`
-  - `--add [user] [group]`
-  - `--delete [user] [group]`
+  - `gpasswd --add [user] [group]`
+  - `gpasswd --delete [user] [group]`
+- `groupmod`
+  - `groupmod -n [new name] [old name]`
 
 ### パーティション操作
 - `fdisk -l` show disk info

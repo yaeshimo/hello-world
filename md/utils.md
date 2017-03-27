@@ -375,10 +375,10 @@ q(quit)
 
 - `ssh-keygen`
   - `ssh-keygen -t rsa -b 4096 -C "comment"`
-  - `ssh-keygen -t ecdsa -b 521 -f ~/.ssh/keyname -C "comment"` not -b 512
-  - `ssh-keygen -t ed25519 -f ~/.ssh/keyname-id_ed25519 -C "comment"`
-  - `ssh-keygen -p -f ~/.ssh/keyname` modify passphrase
-  - `ssh-keygen -c` modify comment
+  - `ssh-keygen -t ecdsa -b 521 -f ~/.ssh/private -C "comment"` not -b 512
+  - `ssh-keygen -t ed25519 -f ~/.ssh/private-id_ed25519 -C "comment"`
+  - `ssh-keygen -p -f ~/.ssh/private` modify passphrase
+  - `ssh-keygen -c -f ~/.ssh/private` modify comment
 
 - `ssh-agent`
   - `eval "$(ssh-agent)"`

@@ -273,7 +273,6 @@ TODO: classify
 ### permission
 - `su -` to root
 - `sudo`
-- `visudo`
 - `chmod`
   - `chmod [ugo][+-][rwx]`
 - `chown`
@@ -284,6 +283,9 @@ TODO: classify
   - `-u [user name]`
 - `pwck`
   - `pwck -s` sort /etc/passwd
+- `visudo` edit /etc/sudoers
+- `vipw` edit /etc/passwd
+- `vigr` edit /etc/group
 
 ### user
 - `id`
@@ -292,7 +294,10 @@ TODO: classify
 - `useradd`
   - `useradd -m -G [specify add group] -s /default/shell [user name]`
   - `useradd -M [specify home] -G [specify add group] -s /default/shell [user name]`
-- `usermod`
+- `usermod` modify user
+  - `usermod -s /path/to/shell`
+- `userdel`
+  - `userdel -r [user name]`
 - `groups`
   - `groups [user]` show user groups
   - `cat /etc/group` show system groups
@@ -385,6 +390,9 @@ q(quit)
 - `scp`
   - `scp /path/to/dst user@host:`
   - `-P [port]`
+
+- `sftp`
+  -`sftp -oPort=[port] user@host:directory`
 
 
 ---

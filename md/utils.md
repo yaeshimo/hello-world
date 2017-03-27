@@ -5,8 +5,7 @@ toolメモ
 
 TODO: reconsider classify
 
----
-# 正規表現
+## 正規表現
 **実装によって異なる場合があることに注意**
 実装は異なっていても、基本的な考え方は同じなので
 基本を押さえればおｋ
@@ -90,8 +89,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 |[:backspace:]|BS|
 
 
----
-# terminal
+## terminal
 - `ctrl-a` 行の頭へ
 - `ctrl-e` 行の末へ
 - `ctrl-f` カーソルを1つ進める
@@ -113,13 +111,11 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `man [:digit:] [dst command]`
 - `reset` reboot terminal
 
----
-# commands
+## commands
 1. file
 2. system
 3. tool
 
----
 ## 1.file
 ### リダイレクト
 - `>` 出力のリダイレクト 上書き
@@ -191,7 +187,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `tar cvaf [outname.tar.gz] [target]`
 
 ### etc
-TODO: classify  
+TODO: classif
 - `mkdir`
 - `rmdir`
 - `rm`
@@ -201,7 +197,6 @@ TODO: classify
   - `dd count=N bs=N if=/path of=/path`
 
 
----
 ## 2.system
 - `dmesg`
 - `lsmod`
@@ -242,6 +237,7 @@ TODO: classify
 
 ### process
 - `ps`
+  - `ps auxf`
 - `pstree`
 - `top`
 - `pgrep`
@@ -253,7 +249,7 @@ TODO: classify
 
 ### systemd-nspawn
 - `systemd-nspawn` requre root
-  - make container
+  - **make container**
     - `sudo mkdir /path/to/container` remember need to root
     - `pacstrap -c -d .../container base --ignore linux`
   - `systemd-nspawn -b -D .../container` -b boot -D directory
@@ -262,9 +258,9 @@ TODO: classify
 
 ### localectl
 - `localectl`
-  - `set-keymap jp106`
-  - `set-locale [LANG:LANGUAGE:...] [locale]`
-  - `set-x11-keymap jp`
+  - `localectl set-keymap jp106`
+  - `localectl set-locale [LANG:LANGUAGE:...] [locale]`
+  - `localectl set-x11-keymap jp`
 
 ### setting
 - `loadkeys jp106` for tty terminal
@@ -279,8 +275,9 @@ TODO: classify
   - `chown user:group /dif/or/file/`
 - `passwd`
   - `passwd [username]`
-  - `-l [user name]`
-  - `-u [user name]`
+  - `passwd -l [user name]` lock password
+  - `passwd -u [user name]` unlock password
+  - `passwd -d [user name]` delete password
 - `pwck`
   - `pwck -s` sort /etc/passwd
 - `visudo` edit /etc/sudoers
@@ -362,7 +359,7 @@ q(quit)
   - `iptables -P [FORWARD:OUTPUT:INPUT] [DROP:ACCEPT]` -p policy
   - `iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT`
     - `-m` match
-    - state `NEW, ESTABLISHED, RELATED, INVALID`
+    - **--ctstate** `NEW, ESTABLISHED, RELATED, INVALID`
   - `iptables -A TCP -p tcp --dport 22 -j ACCEPT` -A append
   - `iptables -A TCP -p tcp --dport 80 -j ACCEPT`
   - `iptables -A TCP -p tcp --dport 443 -j ACCEPT`
@@ -374,7 +371,7 @@ q(quit)
 ### ssh
 - `ssh`
   - `ssh -p [port] -i /path/to/key user@host`
-  - `ssh [alias]` pre set .ssh/config
+  - `ssh [alias]` preset into .ssh/config
 
 - `ssh-keygen`
   - `ssh-keygen -t rsa -b 4096 -C "comment"`
@@ -395,7 +392,6 @@ q(quit)
   -`sftp -oPort=[port] user@host:directory`
 
 
----
 ## 3.tool
 ### env
 - `awk`
@@ -422,7 +418,7 @@ q(quit)
 
 ### docker
 - `docker`
-  - `info
+  - `info`
   - `run`
     - `run (image) arg`
   - `images`
@@ -432,7 +428,7 @@ q(quit)
     - `tag (ID) rep/image-name:label`
   - `rmi`
     - `rmi rep/image:tag`
-    - `rmi $(docker images | awk '/^<none>/ { print $3 }')
+    - `rmi $(docker images | awk '/^<none>/ { print $3 }')`
   - `login`
     - `login --username=user --email=at@mail`
   - `push`
@@ -453,23 +449,24 @@ TODO: classify
 - `date`
   - `date "+%Y-%m-%d"`
 - `grub`
-  - to MBR
-    - `grub-install --target=i386-pc <target device /dev/sd?>`
-    - `grub-mkconfig -o /boot/grub/grub.cfg`
-  - MBR & to partition
-    - `chattr -i /boot/grub/i386-pc/core.img` immutable flag
-    - `grub-install --target=i386-pc --debug --force <target partition /dev/sd??>`
-    - `chattr +i /boot/grub/i386-pc/core.img`
-    - `arch-chroot /mnt && pacman -S linux && grub-mkconfig -o /boot/grub/grub.cfg`
-    - `dd count=1 bs=512 if=/dev/sd?? of=/path/to/boot.img`
-    - `bcdedit` is windows cmd, if use NT loader
-      - `bcdedit /create /d "diplay name" /application BOOTSECTOR`
-      - `bcdedit /set {store id need brace} device partition=C:` partition is from boot.img
-      - `bcdedit /set {store id} path \path\to\boot.img` boot.img is need readable on the windows
-      - `bcdedit /displayorder {store id} /addlast`
-      - `bcdedit /timeout 10` if needed
-      - and then remember of fix UTC on the windows after settings
-      - if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`
+  - **to MBR**
+    1. `grub-install --target=i386-pc <target device /dev/sd?>`
+    2. `grub-mkconfig -o /boot/grub/grub.cfg`
+  - **MBR & to partition**
+    1. `chattr -i /boot/grub/i386-pc/core.img` if exists then modify immutable flag
+    2. `grub-install --target=i386-pc --debug --force <target partition /dev/sd??>`
+    3. `chattr +i /boot/grub/i386-pc/core.img`
+    4. `arch-chroot /mnt && pacman -S linux && grub-mkconfig -o /boot/grub/grub.cfg`
+    5. `dd count=1 bs=512 if=/dev/sd?? of=/path/to/boot.img`
+  - **if use NT loader, use windows cmd `bcdedit.exe`**
+    1. `bcdedit /create /d "diplay name" /application BOOTSECTOR`
+    2. `bcdedit /set {store id need brace} device partition=C:` partition is from boot.img
+    3. `bcdedit /set {store id} path \path\to\boot.img` boot.img is need readable on the windows
+    4. `bcdedit /displayorder {store id} /addlast`
+    5. `bcdedit /timeout 10` if needed
+    6. **if need delete store** `bcdedit /delete {store id}`
+  - **and then remember of fix UTC on the windows after settings**
+  - **if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`**
 - `git`
   - `git log -p /path/to/target`
 - `tig`
@@ -490,4 +487,4 @@ TODO: classify
     - `sed -n '1,4p'` display first line to four
   - `-f` specify script-file
 - `mkinitcpio`
-  - `-p [dst pre set]`
+  - `-p [dst preset]`

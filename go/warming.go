@@ -241,7 +241,6 @@ func q5() {
 }
 
 func main() {
-	// temporary invalid
 	split("q1")
 	q1()
 	split("q2")

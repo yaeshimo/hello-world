@@ -492,3 +492,5 @@ TODO: classify
   - `-f` specify script-file
 - `mkinitcpio`
   - `-p [dst preset]`
+- `gm` GraphicsMagick
+  - `man gm` too many options, see manpage

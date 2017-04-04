@@ -269,6 +269,8 @@ TODO: classif
 ### permission
 - `su -` to root
 - `sudo`
+  - `sudo --list` list allowed commands
+  - `sudo -K` remove timestamp
 - `chmod`
   - `chmod [ugo][+-][rwx]`
 - `chown`

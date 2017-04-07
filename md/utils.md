@@ -494,5 +494,6 @@ TODO: classify
   - `-f` specify script-file
 - `mkinitcpio`
   - `-p [dst preset]`
-- `gm` GraphicsMagick
+- `gm` GraphicsMagick forked from ImageMagick
   - `man gm` too many options, see manpage
+  - `gm convert $in -strip $out` remove profile, author, copyright, and license, be careful

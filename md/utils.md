@@ -225,6 +225,8 @@ TODO: classif
   - `daemon-reload`
   - `list-unit-files`
   - `list-timers`
+- `sysctl` for kernel parameter
+  - `sysctl -a` list kernel parameter
 
 ### journal
 - `journalctl`

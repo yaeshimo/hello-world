@@ -497,3 +497,6 @@ TODO: classify
 - `gm` GraphicsMagick forked from ImageMagick
   - `man gm` too many options, see manpage
   - `gm convert $in -strip $out` remove profile, author, copyright, and license, be careful
+- `ffmpeg` encoder
+  - `ffmpeg -h full` show full help
+- `ffprobe $in` show file info

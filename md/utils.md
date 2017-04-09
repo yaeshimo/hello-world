@@ -108,6 +108,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `unset var ; echo "hi" & $var & echo "foo"` non error
 - `[(command)]` subshell
 - `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
+  - `![number]`
 - `man [:digit:] [dst command]`
 - `reset` reboot terminal
 
@@ -454,6 +455,10 @@ q(quit)
 
 ### etc
 TODO: classify
+- `tracepath` trace network route
+  - `tracepath [ip]`
+- `script` save log
+  - `script /path/to/log` start saving
 - `date`
   - `date "+%Y-%m-%d"`
 - `grub`

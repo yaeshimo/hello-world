@@ -157,10 +157,13 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `touch` タイムスタンプ操作、fileが存在しなければ新たに作成される
 
 - `head`
+  - `head /path/to/file`
+  - `head -n 1 /path/to/file` -n lines
   - `command | head`
 - `tail`
-  - `command | tail`
+  - `tail -f /path/to/file` follow
   - `tail -n +2 file.txt`
+  - `command | tail`
 
 - `mkfifo` make named pipe (fifo: First In First Out)
   - `mkfifo [pipe name]`
@@ -252,12 +255,12 @@ TODO: classif
   - `killall [proc name]`
 
 ### systemd-nspawn
-- `systemd-nspawn` requre root
+- `systemd-nspawn` require root
   - **make container**
     - `sudo mkdir /path/to/container` remember need to root
     - `pacstrap -c -d .../container base --ignore linux`
   - `systemd-nspawn -b -D .../container` -b boot -D directory
-  - `systemd-nspawn -b -n -D .../container` -n create vritual Ethernet link
+  - `systemd-nspawn -b -n -D .../container` -n create virtual Ethernet link
 - `machinectl`
 
 ### localectl
@@ -490,7 +493,9 @@ TODO: classify
 - `feh`
 - `seq`
   - `[from] [dst]`
-- `shuf`
+- `shuf` shuffle
+  - `shuf /path/to/file`
+  - `shuf -n 1 /path/to/file` -n lines
 - `xclip`
 - `sed`
   - `-e` specify script

@@ -228,6 +228,7 @@ TODO: classif
   - `list-timers`
 - `sysctl` for kernel parameter
   - `sysctl -a` list kernel parameter
+- `systemd-cgtop` top of cgroups
 
 ### journal
 - `journalctl`
@@ -482,6 +483,8 @@ TODO: classify
   - **if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`**
 - `git`
   - `git log -p /path/to/target`
+  - `git config --list`
+  - `git clone --no-local /path/to/rep`
 - `tig`
   - `tig status`
 - `feh`
@@ -507,3 +510,7 @@ TODO: classify
 - `ffmpeg` encoder
   - `ffmpeg -h full` show full help
 - `ffprobe $in` show file info
+- `free`
+  - `free -m` show memory state
+- `mplayer`
+  - `mplayer -ao null -vo null` audio video

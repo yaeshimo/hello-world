@@ -3,6 +3,26 @@ use previm
 
 
 ---
+### line and subgraph
+```mermaid
+%% comment
+graph LR
+  a --> b
+  b -.-> c
+  c -. say .-> d
+  d ==> e
+  e == say ==> f
+  f -- say --- g
+  g ---| say |h;
+
+subgraph NewGroup
+  a --> b
+  i --> j
+end
+```
+
+---
+### gantt
 ```mermaid
 gantt
   title Gantt
@@ -16,7 +36,7 @@ gantt
 ```
 
 ---
-style
+### style
 ```mermaid
 graph TB
   id1
@@ -27,6 +47,7 @@ graph TB
   id6{d}
 ```
 
+#### TB, BT, RL, LR
 ```mermaid
 graph TB
   a --> b
@@ -54,6 +75,7 @@ graph LR
 ```
 
 ---
+### sequence
 ```mermaid
 sequenceDiagram
   participant Alice
@@ -69,7 +91,7 @@ sequenceDiagram
 ```
 
 ---
-hello mermaid!
+### hello mermaid!
 ```mermaid
 graph TD;
   A --> B;

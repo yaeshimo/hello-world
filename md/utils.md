@@ -488,6 +488,7 @@ TODO: classify
   - `git log -p /path/to/target`
   - `git config --list`
   - `git clone --no-local /path/to/rep`
+  - `git rebase -i HEAD~[number]` interactive rebase, HEAD~[n]:number of target commits from HEAD
 - `tig`
   - `tig status`
 - `feh`

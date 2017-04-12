@@ -1,6 +1,40 @@
 # hello mermaid
 use previm
 
+REF: knsv.github.io/mermaid
+
+---
+**sequenceDiagram2**
+```mermaid
+sequenceDiagram
+  participant a
+  participant b
+
+  a->b: connect
+
+  loop connection
+    a->>b: req
+    b->>a: res
+  end
+
+  opt opt req
+    a->>b: send
+  end
+
+  b->>a: state
+
+  alt state ok
+    loop connection
+      a->>b: req
+      b->>a: res
+    end
+  else state invalid
+    a->>a: keep wait
+    a->>b: try c4
+    Note right of a: then return get state
+  end
+```
+
 ---
 **subgraph**
 ```mermaid
@@ -10,15 +44,15 @@ subgraph sub
   subgraph slave
     slaveNode1
     slaveNode2
+    slaveNode1-->slaveNode2
   end
 end
 subgraph sub
   node2
 end
 
-slaveNode1 --> slaveNode2
-node2 --> node
-slaveNode1 --> node2
+node2-->node
+slaveNode1-->node2
 ```
 
 ---
@@ -26,17 +60,17 @@ slaveNode1 --> node2
 ```mermaid
 %% comment
 graph LR
-  a --> b
-  b -.-> c
-  c -. say .-> d
-  d ==> e
-  e == say ==> f
-  f -- say --- g
-  g ---| say |h;
+  a-->b
+  b-.->c
+  c-.say.->d
+  d==>e
+  e==say==>f
+  f--say---g
+  g---|say|h
 
 subgraph NewGroup
-  a --> b
-  i --> j
+  a-->b
+  i-->j
 end
 ```
 
@@ -70,31 +104,31 @@ graph TB
 **TB**
 ```mermaid
 graph TB
-  a --> b
+  a-->b
 ```
 
 **BT**
 ```mermaid
 graph BT
-  a --> b
+  a-->b
 ```
 
 **RL**
 ```mermaid
 graph RL
-  a --> b
+  a-->b
 ```
 
 **LR**
 ```mermaid
 graph LR
-  a --> b
-  a --> c
-  a --> e
+  a-->b
+  a-->c
+  a-->e
 
-  b --> c
-  c --> f
-  f --> a
+  b-->c
+  c-->f
+  f-->a
 ```
 
 ---
@@ -103,14 +137,14 @@ graph LR
 sequenceDiagram
   participant Alice
   participant Bob
-  Alice -> Jhon: goto Jhon
+  Alice->John: goto John
   loop Healthcheck
-    Jhon -> John: one more
+    John->John: one more
   end
-  Note right of Jhon: hi
-  John --> Alice: line of - - -
-  John -> Bob: to Bob
-  Bob --> Jhon: hit stop
+  Note right of John: hi
+  John-->Alice: line of - - -
+  John->Bob: to Bob
+  Bob-->John: hit stop
 ```
 
 ---
@@ -119,8 +153,8 @@ sequenceDiagram
 %% comment
 %% TD same TB(top to bottom)
 graph TD;
-  A --> B;
-  A --> C;
-  D --> D;
-  C --> E;
+  A-->B;
+  A-->C;
+  D-->D;
+  C-->E;
 ```

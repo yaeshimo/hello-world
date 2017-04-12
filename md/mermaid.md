@@ -1,9 +1,28 @@
 # hello mermaid
 use previm
 
+---
+**subgraph**
+```mermaid
+graph TD
+subgraph sub
+  node
+  subgraph slave
+    slaveNode1
+    slaveNode2
+  end
+end
+subgraph sub
+  node2
+end
+
+slaveNode1 --> slaveNode2
+node2 --> node
+slaveNode1 --> node2
+```
 
 ---
-### line and subgraph
+**line and subgraph**
 ```mermaid
 %% comment
 graph LR
@@ -22,7 +41,7 @@ end
 ```
 
 ---
-### gantt
+**gantt**
 ```mermaid
 gantt
   title Gantt
@@ -36,7 +55,7 @@ gantt
 ```
 
 ---
-### style
+**node**
 ```mermaid
 graph TB
   id1
@@ -47,22 +66,26 @@ graph TB
   id6{d}
 ```
 
-#### TB, BT, RL, LR
+---
+**TB**
 ```mermaid
 graph TB
   a --> b
 ```
 
+**BT**
 ```mermaid
 graph BT
   a --> b
 ```
 
+**RL**
 ```mermaid
 graph RL
   a --> b
 ```
 
+**LR**
 ```mermaid
 graph LR
   a --> b
@@ -75,7 +98,7 @@ graph LR
 ```
 
 ---
-### sequence
+**sequence**
 ```mermaid
 sequenceDiagram
   participant Alice
@@ -91,8 +114,10 @@ sequenceDiagram
 ```
 
 ---
-### hello mermaid!
+**hello mermaid!**
 ```mermaid
+%% comment
+%% TD same TB(top to bottom)
 graph TD;
   A --> B;
   A --> C;

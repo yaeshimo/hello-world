@@ -375,6 +375,8 @@ q(quit)
   - `iptables -A UDP -p udp --dport 53 -j ACCEPT` DNS server
   - `iptables -t nat -A PREROUTING -p tcp -m tcp --dport [catch] -j REDIRECT --to-ports [throw]`
 - `iptables-save`
+- `nft` nftables
+  - `nft list ruleset`
 - `curl`
   - `curl -o /out/file URL`
 
@@ -491,6 +493,7 @@ TODO: classify
   - `git rebase -i HEAD~[number]` interactive rebase, HEAD~[n]:number of target commits from HEAD
   - `git rebase --abort` abort current rebase
   - `git reflog` manage reflog information
+  - `git checkout [branch] [file]` override file from branch to worktree
 - `tig`
   - `tig status`
 - `feh`

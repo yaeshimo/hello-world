@@ -494,6 +494,7 @@ TODO: classify
   - `git rebase --abort` abort current rebase
   - `git reflog` manage reflog information
   - `git checkout [branch] [file]` override file from branch to worktree
+  - `git grep "pattern"` serch git repository use grep ignore .git
 - `tig`
   - `tig status`
 - `feh`

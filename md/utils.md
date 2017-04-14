@@ -148,7 +148,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 - `locate` インデックスの作成は`sudo updatedb`
 - `find`
-
+  - `find . -name "pattern"`
 - `grep`
   - `grep -A 2 -n -e "pattern"` show pattern after 2 lines
   - `grep -C 2 -n -e "pattern"` show pattern 2 lines before and after

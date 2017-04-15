@@ -268,6 +268,8 @@ TODO: classif
   - `localectl set-keymap jp106`
   - `localectl set-locale [LANG:LANGUAGE:...] [locale]`
   - `localectl set-x11-keymap jp`
+- `locale`
+  - `locale -a`
 
 ### setting
 - `loadkeys jp106` for tty terminal

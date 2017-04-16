@@ -498,13 +498,15 @@ TODO: classify
       - `s` - split hunk
       - `n` - do not stage
       - `q` - quite
-  - `git commit -m "msg" -- flist`
-  - `git log -p /path/to/target`
+  - `git diff HEAD[n] -- /path`
+  - `git diff --stat` simple view
+  - `git commit -m "msg" -- /path`
+  - `git log -p /path`
   - `git reflog` manage reflog information
-  - `git grep "pattern"` serch git repository use grep ignore .git
-  - `git clone --no-local /path/to/rep`
+  - `git grep "pattern"` search git repository use grep ignore .git
+  - `git clone --no-local /path/to/repo`
   - `git checkout [branch] [file]` override file from branch to worktree
-  - `git rebase -i HEAD~[number]` interactive rebase, HEAD~[n]:number of target commits from HEAD
+  - `git rebase -i HEAD~[n]` interactive rebase, [n]:number of target commits from HEAD
   - `git rebase --abort` abort current rebase
   - `git reset --soft HEAD~[n]`
   - `git reset --hard HEAD~[n]` be careful

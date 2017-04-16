@@ -498,8 +498,10 @@ TODO: classify
       - `s` - split hunk
       - `n` - do not stage
       - `q` - quite
+  - `git add -n` --dry-run
   - `git diff HEAD[n] -- /path`
   - `git diff --stat` simple view
+  - `git diff --name-only`
   - `git commit -m "msg" -- /path`
   - `git log -p /path`
   - `git reflog` manage reflog information

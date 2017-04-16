@@ -1,4 +1,3 @@
-
 # Markdown 書式のメモ
 markdownの書き方をmarkdownを使いながらメモ  
 markdownは実装が確定的ではない  

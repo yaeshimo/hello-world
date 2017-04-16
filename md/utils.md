@@ -490,15 +490,24 @@ TODO: classify
   - **and then remember of fix UTC on the windows after settings**
   - **if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`**
 - `git`
-  - `git log -p /path/to/target`
   - `git config --list`
+  - `git add -p /path`
+    - **interactive**
+      - `?` - show help
+      - `y` - stage hunk
+      - `s` - split hunk
+      - `n` - do not stage
+      - `q` - quite
+  - `git commit -m "msg" -- flist`
+  - `git log -p /path/to/target`
+  - `git reflog` manage reflog information
+  - `git grep "pattern"` serch git repository use grep ignore .git
   - `git clone --no-local /path/to/rep`
+  - `git checkout [branch] [file]` override file from branch to worktree
   - `git rebase -i HEAD~[number]` interactive rebase, HEAD~[n]:number of target commits from HEAD
   - `git rebase --abort` abort current rebase
-  - `git reflog` manage reflog information
-  - `git checkout [branch] [file]` override file from branch to worktree
-  - `git grep "pattern"` serch git repository use grep ignore .git
-  - `git commit -m "msg" -- flist`
+  - `git reset --soft HEAD~[n]`
+  - `git reset --hard HEAD~[n]` be careful
 - `tig`
   - `tig status`
 - `feh`

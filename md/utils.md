@@ -464,7 +464,8 @@ q(quit)
 ### etc
 TODO: classify
 - `tracepath` trace network route
-  - `tracepath [ip]`
+  - `tracepath [ip|domain]`
+  - `tracepath -b [ip|domain]`
 - `script` save log
   - `script /path/to/log` start saving
 - `date`

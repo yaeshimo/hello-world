@@ -498,6 +498,7 @@ TODO: classify
   - `git reflog` manage reflog information
   - `git checkout [branch] [file]` override file from branch to worktree
   - `git grep "pattern"` serch git repository use grep ignore .git
+  - `git commit -m "msg" -- flist`
 - `tig`
   - `tig status`
 - `feh`

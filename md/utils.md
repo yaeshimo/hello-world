@@ -106,6 +106,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `[command] &` シェルコマンドの終了を待たずにバックグランドジョブになる
   - `echo "hi" & & echo "foo"` error
   - `unset var ; echo "hi" & $var & echo "foo"` non error
+- `fg [job_id]` to foreground
 - `[(command)]` subshell
 - `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
   - `![number]`

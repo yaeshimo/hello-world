@@ -1,7 +1,7 @@
 # utils
 toolメモ  
 基本的に調べて使ったコマンドのNOTE  
-必要に応じて使ってないflagなんかはmanとarchwikiとnet  
+REF: man archwiki google duckduckgo  
 
 TODO: reconsider classify
 
@@ -98,9 +98,9 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `ctrl-w` wordをキルバッファに入れる
 - `ctrl-y` キルバッファからバッファの貼り付け
 - `ctrl-l` 画面の再表示
-- `ctrl-p` バッシュ履歴上へ
-- `ctrl-n` バッシュ履歴下へ
-- `ctrl-r` バッシュ履歴検索 like it
+- `ctrl-p` command履歴 上へ
+- `ctrl-n` command履歴 下へ
+- `ctrl-r` 履歴検索 like it
 - `ctrl-alt-backspace` xorgの強制終了
 
 - `[command] &` シェルコマンドの終了を待たずにバックグランドジョブになる
@@ -463,7 +463,7 @@ q(quit)
   - `xset [+-]dpms` dpms is Display Power Management Signaling
   - `xset q` query current info
 
-### etc
+### ADD
 TODO: classify
 - `tracepath` trace network route
   - `tracepath [ip|domain]`
@@ -505,6 +505,7 @@ TODO: classify
   - `git diff --stat` simple view
   - `git diff --name-only`
   - `git commit -m "msg" -- /path`
+  - `git commit --amend`
   - `git log -p /path`
   - `git reflog` manage reflog information
   - `git grep "pattern"` search git repository use grep ignore .git
@@ -545,3 +546,10 @@ TODO: classify
   - `free -m` show memory state
 - `mplayer`
   - `mplayer -ao null -vo null` audio video
+- `npm` package manager for nodejs
+  - `npm help`
+  - `npm config edit` edit/create .npmrc
+  - `npm -g install [pkg]` -g global use flag prefix=
+  - `npm -g install [pkg] --save-dev` save dev info in package.json
+  - `npm -g list` list installed packages
+  - `npm config list`

@@ -183,14 +183,16 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `gunzip`
 
 - `tar`
-  - `x` extract
-  - `c` create
-  - `a` create archive auto compress
-  - `z` create archive gzip [.gz]
-  - `f` specify file or archive
-  - `v` verbose
-  - `tar xvf [archive.tar]`
-  - `tar cvaf [outname.tar.gz] [target]`
+  - `tar xvf [targetarchive.tar]` extract archive
+  - `tar cvaf [outname.tar.gz] [targetdir]` create archive
+  - `tar --help`
+  - **Flags:**
+    - `x` extract
+    - `c` create
+    - `a` create archive auto compress from filename
+    - `z` create archive gzip [.gz]
+    - `f` specify file or archive
+    - `v` verbose
 
 ### etc
 TODO: classif

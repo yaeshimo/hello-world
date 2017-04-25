@@ -412,6 +412,15 @@ q(quit)
 - `sftp`
   -`sftp -oPort=[port] user@host:directory`
 
+### dns
+- `host`
+  - `host [host name]` show host info
+
+- `dig`
+  - `dig [domain]` show host info
+  - `dig NS [domain]` get NS record
+  - `dig @[nameserver] [domain]` specify nameserver
+  - `dig -x [ip addr]` reverse lookup
 
 ## 3.tool
 ### env

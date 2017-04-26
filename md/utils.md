@@ -154,6 +154,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `grep`
   - `grep -A 2 -n -e "pattern"` show pattern after 2 lines
   - `grep -C 2 -n -e "pattern"` show pattern 2 lines before and after
+  - `grep -v -e "pattern" "file"` invert match
 - `tee` 渡された内容を標準出力とファイルに書き込む
   - `<commmands> | tee /dst/file`
 - `touch` タイムスタンプ操作、fileが存在しなければ新たに作成される

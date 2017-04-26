@@ -549,7 +549,9 @@ TODO: classify
   - `-p [dst preset]`
 - `gm` GraphicsMagick forked from ImageMagick
   - `man gm` too many options, see manpage
+  - `gm help`
   - `gm convert $in -strip $out` remove profile, author, copyright, and license, be careful
+  - `gm mogrify -strip ./*` strip all files in pwd
 - `ffmpeg` encoder
   - `ffmpeg -h full` show full help
 - `ffprobe $in` show file info

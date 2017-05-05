@@ -343,6 +343,9 @@ w(write)
 q(quit)
 ```
 
+- `lsblk`
+  - `lsblk --fs`
+
 ### マウント
 - `mount`
   - `mount /dev/sdaN /mnt`

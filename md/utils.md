@@ -204,6 +204,7 @@ TODO: classif
 - `cp`
 - `dd`
   - `dd count=N bs=N if=/path of=/path`
+- `lspci`
 
 
 ## 2.system

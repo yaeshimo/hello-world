@@ -238,6 +238,8 @@ TODO: classif
 - `sysctl` for kernel parameter
   - `sysctl -a` list kernel parameter
 - `systemd-cgtop` top of cgroups
+- `systemd-analyze`
+  - `systemd-analyze --user set-log-level [loglevel]` loglevel: info,notice...
 
 ### journal
 - `journalctl`

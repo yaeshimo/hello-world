@@ -362,7 +362,7 @@ q(quit)
 ### link
 - `ln`
   - `ln -s /path/substance /path/linkname`
-- `unlink`
+- `unlink` be careful if specify regular file then is remove it
 - `readlink`
   - `readlink /path/link`
   - `readlink -f /path/file/or/link`

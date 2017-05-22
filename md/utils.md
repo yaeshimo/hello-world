@@ -511,6 +511,7 @@ TODO: classify
   - **if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`**
 - `git`
   - `git config --list`
+  - `git remote set-url origin git@github.com:USER/rep.git`
   - `git add -p /path`
     - **interactive**
       - `?` - show help

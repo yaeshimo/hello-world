@@ -312,6 +312,8 @@ TODO: classif
   - `useradd -M [specify home] -G [specify add group] -s /default/shell [user name]`
 - `usermod` modify user
   - `usermod -s /path/to/shell`
+  - `usermod -l [new name] [old name]` change login name
+  - `usermod -d /new/home/ -m [user name]` make new home directory from [user name]
 - `userdel`
   - `userdel -r [user name]`
 - `groups`
@@ -512,6 +514,9 @@ TODO: classify
 - `git`
   - `git config --list`
   - `git remote set-url origin git@github.com:USER/rep.git`
+  - `git remote set-head [remote] [branch]`
+  - `git remote add [remote name] [url]`
+  - `git branch -a`
   - `git add -p /path`
     - **interactive**
       - `?` - show help
@@ -529,11 +534,14 @@ TODO: classify
   - `git reflog` manage reflog information
   - `git grep "pattern"` search git repository use grep ignore .git
   - `git clone --no-local /path/to/repo`
+  - `git checkout -b [new branch] [remote]/[branch]`
   - `git checkout [branch] [file]` override file from branch to worktree
   - `git rebase -i HEAD~[n]` interactive rebase, [n]:number of target commits from HEAD
   - `git rebase --abort` abort current rebase
   - `git reset --soft HEAD~[n]`
   - `git reset --hard HEAD~[n]` be careful
+  - **bare**
+    - `git symbolic-ref HEAD refs/heads/[branch]`
 - `tig`
   - `tig status`
 - `feh`

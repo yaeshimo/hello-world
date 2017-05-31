@@ -517,6 +517,7 @@ TODO: classify
   - `git remote set-head [remote] [branch]`
   - `git remote add [remote name] [url]`
   - `git branch -a`
+  - `git add --interactive`
   - `git add -p /path`
     - **interactive**
       - `?` - show help

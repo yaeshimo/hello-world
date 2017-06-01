@@ -583,3 +583,7 @@ TODO: classify
   - `npm -g install [pkg] --save-dev` save dev info in package.json
   - `npm -g list` list installed packages
   - `npm config list`
+- `iconv` convert encoding
+  - `iconv -f [from enc] -t [taget enc] /path/to/file`
+  - `iconv --list` list encoding
+  - `iconv -f Shift-JIS -t UTF8 ./file.txt > out.txt`

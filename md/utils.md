@@ -135,6 +135,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 ### 検索や表示、作成
 - `ls`
 - `dir`
+- `dirs` show directories
 - `pwd` show current dir
 - `file`
 

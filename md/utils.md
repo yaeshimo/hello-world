@@ -513,10 +513,14 @@ TODO: classify
   - **and then remember of fix UTC on the windows after settings**
   - **if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`**
 - `git`
+  - `git ls-files`
   - `git config --list`
   - `git remote set-url origin git@github.com:USER/rep.git`
   - `git remote set-head [remote] [branch]`
   - `git remote add [remote name] [url]`
+  - `git tag -a [tag name] -m "massage"` create new tag
+  - `git tag [tag name]` create simple tag
+  - `git show [tag name]` show tag info
   - `git branch -a`
   - `git add --interactive`
   - `git add -p /path`

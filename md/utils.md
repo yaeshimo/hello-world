@@ -535,7 +535,7 @@ TODO: classify
   - `git diff --stat` simple view
   - `git diff --name-only`
   - `git commit -m "msg" -- /path`
-  - `git commit --amend`
+  - `git commit --amend` fix recent commit
   - `git log -p /path`
   - `git reflog` manage reflog information
   - `git grep "pattern"` search git repository use grep ignore .git

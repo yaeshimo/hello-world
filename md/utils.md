@@ -542,6 +542,7 @@ TODO: classify
   - `git clone --no-local /path/to/repo`
   - `git checkout -b [new branch] [remote]/[branch]`
   - `git checkout [branch] [file]` override file from branch to worktree
+  - `git checkout .` fallback all files, be careful
   - `git rebase -i HEAD~[n]` interactive rebase, [n]:number of target commits from HEAD
   - `git rebase --abort` abort current rebase
   - `git reset --soft HEAD~[n]`

@@ -149,7 +149,8 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `cat` binaryを読むと表示が崩れる
   - `reset`でterminalを再起動すると回復するかも
 - `more`
-- `less`
+- `less [file]`
+  - ` less -N [file]` add line number
 
 - `locate` インデックスの作成は`sudo updatedb`
 - `find`

@@ -211,6 +211,12 @@ TODO: classif
 - `lspci`
 - `wc` print line, word, byte count
   - `wc -l /path/file` cout lines
+- `xargs` generate command line
+  - **Example**
+    - `ls *.go | xargs head`
+    - `git ls-files | xargs wc -l`
+  - **Be careful**
+    - `rm, mv, dd, ...etc.`
 
 
 ## 2.system

@@ -209,6 +209,8 @@ TODO: classif
 - `dd`
   - `dd count=N bs=N if=/path of=/path`
 - `lspci`
+- `wc` print line, word, byte count
+  - `wc -l /path/file` cout lines
 
 
 ## 2.system

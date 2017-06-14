@@ -598,6 +598,8 @@ TODO: classify
   - `npm config edit` edit/create .npmrc
   - `npm -g install [pkg]` -g global use flag prefix=
   - `npm -g install [pkg] --save-dev` save dev info in package.json
+  - `npm -g update` update all packages
+  - `npm -g uninstall [pkg]` uninstall
   - `npm -g list` list installed packages
   - `npm config list`
 - `iconv` convert encoding

@@ -221,6 +221,7 @@ TODO: classif
 
 ## 2.system
 - `dmesg`
+  - `dmesg --follow` wait for new messages
 - `lsmod`
 - `modprobe`
   - `-r`

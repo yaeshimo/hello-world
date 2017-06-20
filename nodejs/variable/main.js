@@ -25,9 +25,9 @@ function func() {
   {
     var v2 = 20*2;
     console.log("scope2:", g2, v2, l2);
-    console.log("v2*2: ", v2);
+    console.log("v2*2: ", v2);// 40
   }
-  console.log("exit scope2 v2: ", v2);
+  console.log("exit scope2 v2: ", v2);// 40
   console.log();
 
 }

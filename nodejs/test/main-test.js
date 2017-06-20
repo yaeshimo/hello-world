@@ -1,8 +1,7 @@
 let main = require('./main.js');
 
 function assert(i, exp, out) {
-  console.log("error case: [" + i + "]");
-  console.assert(exp === out, "\nexp: " + exp, "\nout: " + out);
+  console.assert(exp === out, "\nerror case:[" + i + "]\nexp: " + exp, "\nout: " + out);
 }
 
 function Testadd() {

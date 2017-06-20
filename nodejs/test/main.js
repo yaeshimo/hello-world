@@ -3,7 +3,7 @@ let main = {
     if (typeof x === 'number' && typeof y === 'number') {
       return x+y;
     }
-    throw "add(): argument is not number";
+    throw "argument is not number";
   }
 };
 

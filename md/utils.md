@@ -386,6 +386,7 @@ q(quit)
 
 ### ネットワーク
 - `ss`
+  - `ss -tnlp` show tcp listen ports
 - `ip`
 - `ping`
 - `tcpdump`

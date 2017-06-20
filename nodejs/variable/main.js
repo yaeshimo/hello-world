@@ -1,5 +1,5 @@
-var v1 = 10; // function scope
 g1 = 1; // global
+var v1 = 10; // function scope
 let l1 = 100; // block scope
 
 console.log("definition: ", g1, v1, l1);

@@ -410,6 +410,7 @@ q(quit)
 
 ### ssh
 - `ssh`
+  - `ssh user@host`
   - `ssh -p [port] -i /path/to/key user@host`
   - `ssh [alias]` preset into .ssh/config
 

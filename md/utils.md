@@ -256,9 +256,10 @@ TODO: classif
 
 ### journal
 - `journalctl`
-  - `-f` follow
-  - `--user-unit=dst.[service:...]`
-  - `-p [priority:number or label]`
+  - `journalctl -u [unit]` specify unit
+  - `journalctl -f` follow
+  - `journalctl --user-unit=dst.[service:...]`
+  - `journalctl -p [priority:number or label]`
 
 - `logger` output to syslog
   - `logger 'hello'` pre `journalctl -f`

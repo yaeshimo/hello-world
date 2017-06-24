@@ -616,3 +616,6 @@ TODO: classify
   - `iconv -f [from enc] -t [taget enc] /path/to/file`
   - `iconv --list` list encoding
   - `iconv -f Shift-JIS -t UTF8 ./file.txt > out.txt`
+- `tmux` terminal multiplexer
+  - **in tmux**
+    - `<prefix>:list-keys` list bind keys

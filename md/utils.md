@@ -617,14 +617,19 @@ TODO: classify
   - `iconv --list` list encoding
   - `iconv -f Shift-JIS -t UTF8 ./file.txt > out.txt`
 - `tmux` terminal multiplexer
-  - **in tmux**
-    - `<C-b>` send prefix(default)
-      - `z` suspend client, `fg` then return
-      - `c` create new window
-      - `l` focus last window
-      - `[number]` switch window
-      - `"` split
-      - `%` vsplit
-      - `;` focus last pane
-      - `:` tmux command mode
-        - `list-keys` list bind keys
+  - `tmux ls` list sesstions
+  - `tmux attach` attach the session
+  - **in tmux**:`<C-b>` send prefix(default)
+    - `?` list keys
+    - `z` suspend client, `fg` then return
+    - `d` detach client
+    - `c` create new window
+    - `l` focus last window
+    - `n` next window
+    - `p` previous window
+    - `[number]` switch window
+    - `"` split
+    - `%` vsplit
+    - `;` focus last pane
+    - `:` tmux command mode
+      - `list-keys` list bind keys

@@ -621,15 +621,22 @@ TODO: classify
   - `tmux attach` attach the session
   - **in tmux**:`<C-b>` send prefix(default)
     - `?` list keys
-    - `<C-z>` suspend client, `fg` then return
     - `d` detach client
+    - `<C-z>` suspend client, `fg` then return
+    - `s` show session tree
+    - `(` switch previous session
+    - `)` switch next session
     - `c` create new window
     - `l` focus last window
     - `n` next window
     - `p` previous window
     - `[number]` switch window
-    - `"` split
-    - `%` vsplit
+    - `"` split pane
+    - `%` vsplit pane
     - `;` focus last pane
+    - `[` to copy mode
+    - `]` paste current buffer
+    - `#` list copy buffer
+    - `=` select buffer then paste
     - `:` tmux command mode
       - `list-keys` list bind keys

@@ -618,4 +618,13 @@ TODO: classify
   - `iconv -f Shift-JIS -t UTF8 ./file.txt > out.txt`
 - `tmux` terminal multiplexer
   - **in tmux**
-    - `<prefix>:list-keys` list bind keys
+    - `<C-b>` send prefix(default)
+      - `z` suspend client, `fg` then return
+      - `c` create new window
+      - `l` focus last window
+      - `[number]` switch window
+      - `"` split
+      - `%` vsplit
+      - `;` focus last pane
+      - `:` tmux command mode
+        - `list-keys` list bind keys

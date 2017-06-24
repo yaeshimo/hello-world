@@ -621,7 +621,7 @@ TODO: classify
   - `tmux attach` attach the session
   - **in tmux**:`<C-b>` send prefix(default)
     - `?` list keys
-    - `z` suspend client, `fg` then return
+    - `<C-z>` suspend client, `fg` then return
     - `d` detach client
     - `c` create new window
     - `l` focus last window

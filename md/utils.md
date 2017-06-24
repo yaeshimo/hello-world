@@ -564,8 +564,10 @@ TODO: classify
   - `git checkout .` fallback all files, be careful
   - `git rebase -i HEAD~[n]` interactive rebase, [n]:number of target commits from HEAD
   - `git rebase --abort` abort current rebase
-  - `git reset --soft HEAD~[n]`
-  - `git reset --hard HEAD~[n]` be careful
+  - `git reset` modify current HEAD
+    - `git reset HEAD~[n]` reset with index
+    - `git reset --soft HEAD~[n]` reset only position of HEAD
+    - `git reset --hard HEAD~[n]` be careful, reset with index and worktree
   - **bare**
     - `git symbolic-ref HEAD refs/heads/[branch]`
 - `tig`

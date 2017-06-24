@@ -113,6 +113,10 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `![number]`
 - `man [:digit:] [dst command]`
 - `reset` reboot terminal
+- `command` shell builtin
+  - `command [cmd]` avoid alias
+  - `command -v [cmd]` witch
+
 
 ## commands
 1. file

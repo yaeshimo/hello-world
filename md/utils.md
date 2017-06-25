@@ -412,7 +412,10 @@ q(quit)
 - `nft` nftables
   - `nft list ruleset`
 - `curl`
-  - `curl -o /out/file URL`
+  - `curl -o /out/file [URL]`
+  - `curl -v [URL]` verbose
+  - `curl -vv [URL]` more
+  - `curl -I [URL]` info only
 
 ### ssh
 - `ssh`

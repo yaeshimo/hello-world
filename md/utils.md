@@ -203,8 +203,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
     - `f` specify file or archive
     - `v` verbose
 
-### etc
-TODO: classif
+### TODO: classif
 - `mkdir`
 - `rmdir`
 - `rm`
@@ -506,8 +505,7 @@ q(quit)
   - `xset [+-]dpms` dpms is Display Power Management Signaling
   - `xset q` query current info
 
-### ADD
-TODO: classify
+### TODO: classify
 - `tracepath` trace network route
   - `tracepath [ip|domain]`
   - `tracepath -b [ip|domain]`

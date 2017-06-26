@@ -642,4 +642,6 @@ TODO: classify
     - `#` list copy buffer
     - `=` select buffer then paste
     - `:` tmux command mode
-      - `list-keys` list bind keys
+      - `list-keys` list bind keys-
+- `nm` list symbols from object files
+  - `nm [object]`

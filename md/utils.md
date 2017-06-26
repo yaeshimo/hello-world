@@ -645,3 +645,14 @@ TODO: classify
       - `list-keys` list bind keys-
 - `nm` list symbols from object files
   - `nm [object]`
+- `nmap` port scan, careful use it
+  - `nmap [Domain/Address]` be careful
+    - `nmap localhost` scan localhost
+    - `nmap 192.0.2.0/24` scan between 192.0.2.1-256
+    - `nmap 192.0.2.2-10` scan between 192.0.2.2-10
+    - `nmap 192.0.2.5,7,10-12` scan 5,7,10,11,12
+  - `nmap -p [%d-%d] [Domain/Address]` specify scan port
+    - `nmap -p 0-65535 [Domain/Address]` scan between 0-65535
+    - `nmap -p 22,80,81-100 [Domain/Address]`
+  - `nmap -sL [Domain/Address]` list scan addresses, is not send packets
+  - `nmap -sP [Domain/Address]` ping scan only

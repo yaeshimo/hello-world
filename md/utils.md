@@ -203,7 +203,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
     - `f` specify file or archive
     - `v` verbose
 
-### TODO: classif
+### TODO: classify
 - `mkdir`
 - `rmdir`
 - `rm`
@@ -382,8 +382,8 @@ q(quit)
 - `ln`
   - `ln /from /linkname` make hard link
   - `ln -s /from /path/linkname` make symbolic link
-  - `ln -s /from /path/` make sybolic link in /path
-  - `ln -sfn /from/ /link` if /link is sybolic link of to directory, then override it
+  - `ln -s /from /path/` make symbolic link in /path
+  - `ln -sfn /from/ /link` if /link is symbolic link of to directory, then override it
 - `unlink` be careful if specify regular file then is remove it
 - `readlink`
   - `readlink /path/link`

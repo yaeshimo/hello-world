@@ -380,8 +380,10 @@ q(quit)
 
 ### link
 - `ln`
-  - `ln -s /path/substance /path/linkname`
-  - `ln -sfn /from/ /to` if /to is syboliclink of to directory then, override it
+  - `ln /from /linkname` make hard link
+  - `ln -s /from /path/linkname` make symbolic link
+  - `ln -s /from /path/` make sybolic link in /path
+  - `ln -sfn /from/ /link` if /link is sybolic link of to directory, then override it
 - `unlink` be careful if specify regular file then is remove it
 - `readlink`
   - `readlink /path/link`

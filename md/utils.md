@@ -381,6 +381,7 @@ q(quit)
 ### link
 - `ln`
   - `ln -s /path/substance /path/linkname`
+  - `ln -sfn /from/ /to` if /to is syboliclink of to directory then, override it
 - `unlink` be careful if specify regular file then is remove it
 - `readlink`
   - `readlink /path/link`
@@ -428,6 +429,7 @@ q(quit)
   - `ssh-keygen -t ed25519 -f ~/.ssh/private-id_ed25519 -C "comment"`
   - `ssh-keygen -p -f ~/.ssh/private` modify passphrase
   - `ssh-keygen -c -f ~/.ssh/private` modify comment
+  - `ssh-keygen -R [host]` delete from known hosts
 
 - `ssh-agent`
   - `eval "$(ssh-agent)"`

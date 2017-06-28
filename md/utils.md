@@ -658,3 +658,5 @@ q(quit)
     - `nmap -p 22,80,81-100 [Domain/Address]`
   - `nmap -sL [Domain/Address]` list scan addresses, is not send packets
   - `nmap -sP [Domain/Address]` ping scan only
+- `strings` print printable characters
+  - `strings /path/file` print printable content of files

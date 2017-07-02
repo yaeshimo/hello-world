@@ -366,7 +366,8 @@ q(quit)
 ```
 
 - `lsblk`
-  - `lsblk --fs`
+  - `lsblk -f` with uuid
+  - `lsblk --fs` same -f
 
 ### マウント
 - `mount`
@@ -584,6 +585,8 @@ q(quit)
   - `shuf /path/to/file`
   - `shuf -n 1 /path/to/file` -n lines
 - `xclip`
+  - `xclip -o` output
+  - `xclip -o | xclip -selection clipboard -i` copy to clipboard
 - `sed`
   - `-e` specify script
     - `sed -e 's/word/dst/g'` separator s/ s: s; ...etc

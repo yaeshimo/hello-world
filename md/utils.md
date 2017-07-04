@@ -265,7 +265,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `journalctl -p [priority:number or label]`
 
 - `logger` output to syslog
-  - `logger 'hello'` pre `journalctl -f`
+  - `logger 'hello'` pre journalctl -f
 
 ### process
 - `ps`

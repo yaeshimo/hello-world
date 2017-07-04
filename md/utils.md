@@ -301,12 +301,20 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `stty` terminal line settings
 
 ### permission
-- `su -` to root
+- `su` switch user
+  - `su` carry the current user environment to root
+  - `su -` to root, use login shell
+  - `su [user name]` carry the current user environment
+  - `su - [user name]` use login shell
 - `sudo`
   - `sudo --list` list allowed commands
   - `sudo -K` remove timestamp
+  - `sudo -u [switch user] [command]`
 - `chmod`
-  - `chmod [ugo][+-][rwx]`
+  - `chmod [ugo][+-=][rwx] /path/to/target`
+  - `chmod u+s /path/to/execute` with SUID
+  - `chmod g+s /path/to/directory/` with SGID
+  - `chmod o+s /path/to/directory/` with stickybit
 - `chown`
   - `chown user:group /dif/or/file/`
 - `passwd`
@@ -321,12 +329,13 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `vigr` edit /etc/group
 
 ### user
-- `id`
+- `id` show user info
 - `users` show current user
   - `cat /etc/passwd` show all users
 - `useradd`
   - `useradd -m -G [specify add group] -s /default/shell [user name]`
-  - `useradd -M [specify home] -G [specify add group] -s /default/shell [user name]`
+  - `useradd -d [specify home] -G [specify add group] -s /default/shell [user name]`
+  - `useradd -M -s /usr/bin/nologin [user name]`
 - `usermod` modify user
   - `usermod -s /path/to/shell`
   - `usermod -l [new name] [old name]` change login name
@@ -543,6 +552,7 @@ q(quit)
   - `git remote set-url origin git@github.com:USER/rep.git`
   - `git remote set-head [remote] [branch]`
   - `git remote add [remote name] [url]`
+  - `git remote -v` show remote info
   - `git tag -a [tag name] -m "massage"` create new tag
   - `git tag [tag name]` create simple tag
   - `git show [tag name]` show tag info
@@ -565,6 +575,7 @@ q(quit)
   - `git reflog` manage reflog information
   - `git grep "pattern"` search git repository use grep ignore .git
   - `git clone --no-local /path/to/repo`
+  - `git clone --branch=[branch or tag] /path/from.git /path/to` specify clone branch
   - `git checkout -b [new branch] [remote]/[branch]`
   - `git checkout [branch] [file]` override file from branch to worktree
   - `git checkout .` fallback all files, be careful

@@ -242,15 +242,15 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 ### systemd
 - `systemctl`
-  - `--help`
-  - `--user`
-  - `status`
-  - `[start:stop:enable:disable]`
-  - `is-[active:enabled:...etc]`
-  - `[reboot:poweroff]`
-  - `daemon-reload`
-  - `list-unit-files`
-  - `list-timers`
+  - `systemctl --help`
+  - `systemctl --user [action]`
+  - `systemctl status`
+  - `systemctl [start:stop:enable:disable] *.[service:timer]`
+  - `systemctl is-[active:enabled:...etc] *.[service:timer]`
+  - `systemctl [reboot:poweroff]`
+  - `systemctl daemon-reload`
+  - `systemctl list-unit-files`
+  - `systemctl list-timers`
 - `sysctl` for kernel parameter
   - `sysctl -a` list kernel parameter
 - `systemd-cgtop` top of cgroups
@@ -684,3 +684,9 @@ q(quit)
   - `nmap -sP [Domain/Address]` ping scan only
 - `strings` print printable characters
   - `strings /path/file` print printable content of files
+- `pacman`
+ - `pacman -S [pkg/group]` install
+ - `pacman -Ss [search word]` search
+ - `pacman -Syu` systemd update
+- `pacstrap`
+  - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn

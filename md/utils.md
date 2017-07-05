@@ -450,9 +450,18 @@ q(quit)
   - `ssh-add -l`
   - `ssh-add /path/to/privatekey`
 
+- `keychain`
+  - `keychain [private-key,another-key]`
+  - `keychain --help`
+  - `eval $(keychain --eval --quit [key])`
+
 - `scp`
-  - `scp /path/to/dst user@host:`
+  - `scp /path/to/src user@host:`
   - `-P [port]`
+
+- `ssh-copy-id` copy to authorized
+  - `ssh-copy-id -i /path/to/key.pub [user]@[host]`
+  - `ssh-copy-id -i /path/to/key.pub -p [port number] [user]@[host]`
 
 - `sftp`
   -`sftp -oPort=[port] user@host:directory`

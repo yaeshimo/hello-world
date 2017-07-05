@@ -432,8 +432,9 @@ q(quit)
 ### ssh
 - `ssh`
   - `ssh user@host`
-  - `ssh -p [port] -i /path/to/key user@host`
-  - `ssh [alias]` preset into .ssh/config
+  - `ssh -A [user]@[host]` enable agent forwarding
+  - `ssh -p [port] -i /path/to/key [user]@[host]`
+  - `ssh [alias]` use preset into .ssh/config
 
 - `ssh-keygen`
   - `ssh-keygen -t rsa -b 4096 -C "comment"`

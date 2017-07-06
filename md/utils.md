@@ -407,7 +407,9 @@ q(quit)
 - `ip`
 - `ping`
 - `tcpdump`
-  - `tcpdump port [number]`
+  - `tcpdump port [number]` specify port
+  - `tcpdump port not ssh and port not llmnr` specify ignore port
+  - `tcpdump -i br0` specify interface
 - `iptables`
   - `iptables -nvL --line-numbers`
   - `iptables -N CHAINNAME` -n new

@@ -283,9 +283,11 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `systemd-nspawn` require root
   - **make container**
     - `sudo mkdir /path/to/container` remember need to root
-    - `pacstrap -c -d .../container base --ignore linux`
-  - `systemd-nspawn -b -D .../container` -b boot -D directory
-  - `systemd-nspawn -b -n -D .../container` -n create virtual Ethernet link
+    - `sudo pacstrap -i -c -d /path/to/container base --ignore linux`
+    - `sudo systemd-nspawn -b -D /path/to/container`
+  - `systemd-nspawn -b -D ./container` -b boot -D directory
+  - `systemd-nspawn -b -n -D ./container` -n create virtual Ethernet link
+  - `systemd-nspawn -b -D ./container --network-bridge=[interface name of bridge]`
 - `machinectl`
 
 ### localectl
@@ -692,3 +694,6 @@ q(quit)
  - `pacman -Syu` systemd update
 - `pacstrap`
   - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn
+- `hostnamectl`
+  - `hostnamectl status`
+  - `hostnamectl set-hostname`

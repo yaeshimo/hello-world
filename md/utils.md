@@ -692,10 +692,16 @@ q(quit)
   - `strings /path/file` print printable content of files
 - `pacman`
  - `pacman -S [pkg/group]` install
+ - `pacman -Si [pkg]` information
  - `pacman -Ss [search word]` search
- - `pacman -Syu` systemd update
+ - `pacman -Syu` system update
+ - `pacman -Sc` remove cache
+ - `pacman -R [pkg]` remove
+ - `pacman -Rs [pkg]` remove depend
 - `pacstrap`
   - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn
+- `paccache`
+  - `paccache -r` remove cache but still keep the recent 3 versions
 - `hostnamectl`
   - `hostnamectl status`
   - `hostnamectl set-hostname`

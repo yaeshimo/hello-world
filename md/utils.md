@@ -144,6 +144,8 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `dirs` show directories
 - `pwd` show current dir
 - `file`
+- `stat`
+  - `stat /path/file`
 
 - `df` show disk cap
   - `df -h`

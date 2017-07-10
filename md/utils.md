@@ -360,9 +360,9 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `groupmod -n [new name] [old name]`
 
 ### パーティション操作
-- `fdisk -l` show disk info
-
-- `fdisk /path/to/device` to interactive
+- `fdisk`
+  - `fdisk -l` show disk info
+  - `fdisk /path/to/device` to interactive
 ```sh:interactive
 m(menu? show help)
 n(new)
@@ -377,6 +377,10 @@ d(delete)
 w(write)
 q(quit)
 ```
+
+- `wipefs` be careful
+  - `wipefs --all /path/device`
+- `mkfs.ext4`
 
 - `lsblk`
   - `lsblk -f` with uuid
@@ -688,6 +692,7 @@ q(quit)
     - `nmap -p 22,80,81-100 [Domain/Address]`
   - `nmap -sL [Domain/Address]` list scan addresses, is not send packets
   - `nmap -sP [Domain/Address]` ping scan only
+  - `nmap -oN /path/out.txt [Domain/Address]` out to file
 - `strings` print printable characters
   - `strings /path/file` print printable content of files
 - `pacman`

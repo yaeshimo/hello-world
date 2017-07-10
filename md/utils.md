@@ -710,3 +710,9 @@ q(quit)
 - `hostnamectl`
   - `hostnamectl status`
   - `hostnamectl set-hostname`
+- `bundle` the gem of ruby
+  - `bundle init` create Gemfile
+  - `bundle install --path ./vendor/bundle` install in ./vendor/bundle from Gemfile
+  - `bundle exec rails new .` make rails on project directory
+- `rails` the gem of ruby
+  - `rails new .` make rails on project directory

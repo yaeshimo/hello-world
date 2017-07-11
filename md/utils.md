@@ -110,7 +110,8 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `jobs` show background jobs
 - `[(command)]` subshell
 - `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
-  - `![number]`
+  - `history 100` show one hundred histories
+  - `![number]` run
 - `man [:digit:] [dst command]`
 - `reset` reboot terminal
 - `command` shell builtin
@@ -433,6 +434,7 @@ q(quit)
 - `iptables-save`
 - `nft` nftables
   - `nft list ruleset`
+  - `nft add rule [filter name] filter [chain name] tcp dport [ssh/22] accept` accept ssh
 - `curl`
   - `curl -o /out/file [URL]`
   - `curl -v [URL]` verbose

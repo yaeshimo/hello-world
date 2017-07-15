@@ -612,6 +612,7 @@ q(quit)
 - `tig`
   - `tig status`
 - `feh`
+  - `feh --cycle-once --scale-down --slideshow-delay [num] [dir]`
 - `seq`
   - `[from] [dst]`
 - `shuf` shuffle

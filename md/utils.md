@@ -420,6 +420,7 @@ q(quit)
   - `tcpdump port not ssh and port not llmnr` specify ignore port
   - `tcpdump -i br0` specify interface
   - `tcpdump -n -vvv port not ssh and port not llmnr`
+  - `tcpdump -Z [user]` drop privilege of root after enable promiscuous mode
 - `iptables`
   - `iptables -nvL --line-numbers`
   - `iptables -N CHAINNAME` -n new

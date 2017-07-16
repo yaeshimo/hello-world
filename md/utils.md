@@ -542,6 +542,8 @@ q(quit)
   - `xset s [off:on}` screen saver
   - `xset [+-]dpms` dpms is Display Power Management Signaling
   - `xset q` query current info
+  - `xset r [delay] [rate]` modify keyrepeat
+    - `xset r 200 30`
 
 ### TODO: classify
 - `tracepath` trace network route

@@ -155,6 +155,8 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 - `cat` binaryを読むと表示が崩れる
   - `reset`でterminalを再起動すると回復するかも
+- `zcat` cat for compressed files
+  - `zcat /proc/config.gz`
 - `more`
 - `less [file]`
   - ` less -N [file]` add line number

@@ -103,6 +103,32 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `ctrl-r` 履歴検索 like it
 - `ctrl-alt-backspace` xorgの強制終了
 
+- **variable**
+  - **set**
+    - `var="string"`
+    - `var=1` integer
+  - **out**
+    - `$var`
+    - `${var="if var is not used then return and to into var this msg"}`
+    - `${var:="if var is null or empty then"}` if used and not null then only return msg
+    - `${var-"if var is not used then return this msg"}` only return, not to into variable
+    - `${var:-"if var is null or empty then"}` only return
+    - `${var+"if var is used then return"}` allow null
+    - `${var:+"if var is used and not null then"}` not allow null, but case of null is returned null
+  - **special**
+    - `$?` have exit code
+    - `$!` background pid
+    - `$-` set flags
+    - `$$` self pid
+    - `$#` argc
+    - `$*` argv
+    - `$@` argv
+    - `$LINENO` linumber of just used this variable
+    - `$0` self name of command
+    - `$1` argv[1]
+    - `$2` argv[2]
+    - `${10}` argv[10], is need brace
+
 - `[command] &` シェルコマンドの終了を待たずにバックグランドジョブになる
   - `echo "hi" & & echo "foo"` error
   - `unset var ; echo "hi" & $var & echo "foo"` non error
@@ -117,6 +143,20 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `command` shell builtin
   - `command [cmd]` avoid alias
   - `command -v [cmd]` witch
+- `test` return boolean
+  - **return true**
+    - `test -f /path/file` regular file
+    - `test -d /path/dir/` directory
+    - `test -r /path` readable
+    - `test -w /path` writable
+    - `test -x /path/exe` executable
+    - `test "$str" = "str"` have same string
+    - `test "$str" != "str"` have not same string
+    - `test -n "$str"` have string
+    - `test -z "$str"` don't have string
+- `[` same test
+  - `[ -f /path/file ]`
+- `[[` bash only
 
 
 ## commands

@@ -250,12 +250,13 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `systemctl --help`
   - `systemctl --user [action]`
   - `systemctl status`
-  - `systemctl [start:stop:enable:disable] *.[service:timer]`
-  - `systemctl is-[active:enabled:...etc] *.[service:timer]`
+  - `systemctl [start:stop:enable:disable] [service:timer]`
+  - `systemctl is-[active:enabled:...etc] [service:timer]`
   - `systemctl [reboot:poweroff]`
   - `systemctl daemon-reload`
   - `systemctl list-unit-files`
   - `systemctl list-timers`
+  - `systemctl --user reset-failed [service]`
 - `sysctl` for kernel parameter
   - `sysctl -a` list kernel parameter
 - `systemd-cgtop` top of cgroups

@@ -754,8 +754,11 @@ q(quit)
  - `pacman -Sc` remove cache
  - `pacman -R [pkg]` remove
  - `pacman -Rs [pkg]` remove depend
+- `checkupdates` package update checker for pacman
 - `pacstrap`
   - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn
+- `pactree` show dependency
+  - `pactree [pkg]`
 - `paccache`
   - `paccache -r` remove cache but still keep the recent 3 versions
 - `hostnamectl`

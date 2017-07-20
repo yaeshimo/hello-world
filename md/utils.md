@@ -429,6 +429,7 @@ q(quit)
 - `lsblk`
   - `lsblk -f` with uuid
   - `lsblk --fs` same -f
+  - `lsblk -no UUID /dev/sdXN` check uuid
 
 ### マウント
 - `mount`

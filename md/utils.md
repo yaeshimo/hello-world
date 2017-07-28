@@ -481,6 +481,7 @@ q(quit)
 - `nft` nftables
   - `nft list ruleset`
   - `nft add rule [filter name] filter [chain name] tcp dport [ssh/22] accept` accept ssh
+    - `nft add rule inet filter input tcp dport 3000 accept` accept inet on input chain port 3000
 - `curl`
   - `curl -o /out/file [URL]`
   - `curl -v [URL]` verbose

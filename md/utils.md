@@ -694,6 +694,7 @@ q(quit)
   - `free -m` show memory state
 - `mplayer`
   - `mplayer -ao null -vo null` audio video
+  - `mplayer example.mp4 -idle -fixed-vo` keep open the window
 - `npm` package manager for nodejs
   - `npm help`
   - `npm config edit` edit/create .npmrc

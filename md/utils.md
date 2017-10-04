@@ -381,7 +381,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `users` show current user
   - `cat /etc/passwd` show all users
 - `useradd`
-  - `useradd -m -G [specify add group] -s /default/shell [user name]`
+  - `useradd -m -G [specify add group] -s /default/shell [user name]` -m is make home
   - `useradd -d [specify home] -G [specify add group] -s /default/shell [user name]`
   - `useradd -M -s /usr/bin/nologin [user name]`
 - `usermod` modify user
@@ -772,3 +772,7 @@ q(quit)
   - `bundle exec rails new .` make rails on project directory
 - `rails` the gem of ruby
   - `rails new .` make rails on project directory
+- `python`
+  - `python -m venv [dirname]` make virtual environment directory for python
+    - `source /path/to/venv/bin/activate` activate virtuale environment for python
+      - `deactivate` exit from current python virtual environments

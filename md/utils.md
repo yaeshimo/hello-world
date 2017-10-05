@@ -440,6 +440,7 @@ q(quit)
 
 ### 設定されている環境変数を調べる
 - `printenv`
+  - `printenv [variable name]`
 - `env`
 
 
@@ -778,3 +779,6 @@ q(quit)
   - `python -m venv [dirname]` make virtual environment directory for python
     - `source /path/to/venv/bin/activate` activate virtuale environment for python
       - `deactivate` exit from current python virtual environments
+- `xhost`
+  - `xhost +local:` enable
+  - `xhost -` disable

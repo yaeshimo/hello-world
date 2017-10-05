@@ -334,7 +334,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `systemd-nspawn -b -D ./container` -b boot -D directory
   - `systemd-nspawn -b -n -D ./container` -n create virtual Ethernet link
   - `systemd-nspawn -b -D ./container --network-bridge=[interface name of bridge]`
-  - `systemd-nspawn -b -D ./container --bind=/tmp/.X11-unix` bind for X
+  - `systemd-nspawn -b -D ./container --bind=/tmp/.X11-unix/X0` bind for X, check :ls /tmp/.X11-unix
     - `export DISPLAY=[host display]` on container
 - `machinectl`
 

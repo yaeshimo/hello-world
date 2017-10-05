@@ -782,3 +782,6 @@ q(quit)
 - `xhost`
   - `xhost +local:` enable
   - `xhost -` disable
+- `dot` graphviz
+  - `dot /path/to/src.dot`
+  - `dot -Tpng /path/to/src.dot -o /path/to/out.png` make image from dot src

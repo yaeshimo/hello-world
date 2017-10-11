@@ -794,3 +794,8 @@ q(quit)
 - `dot` graphviz
   - `dot /path/to/src.dot`
   - `dot -Tpng /path/to/src.dot -o /path/to/out.png` make image from dot src
+- `diff`
+  - `diff file1 file2`
+- `cmp` diff for binary
+  - `cmp file1 file2`
+  - `cmp [--verbose/-l] file1 file2`

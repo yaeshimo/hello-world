@@ -767,7 +767,7 @@ q(quit)
  - `pacman -Syu` system update
  - `pacman -Sc` remove cache
  - `pacman -R [pkg]` remove
- - `pacman -Rs [pkg]` remove depend
+ - `pacman -Rs [pkg]` remove with depend
 - `checkupdates` package update checker for pacman
 - `pacstrap`
   - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn

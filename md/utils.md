@@ -620,6 +620,15 @@ q(quit)
     6. **if need delete store** `bcdedit /delete {store id}`
   - **and then remember of fix UTC on the windows after settings**
   - **if grub reinstall(run the grub-install ...), need update the boot.img, use `dd`**
+  - **update**
+    - `chattr -i /boot/grub/i386-pc/core.img`
+    - `grub-install --target=i386-pc --debug --force [install boot partition, example: /dev/sda6]`
+    - `chattr +i /boot/grub/i386-pc/core.img`
+    - `grub-mkconfig -o /boot/grub/grub.cfg`
+    - **for NT loader**
+      - `mount [device of win, example: /dev/sda3] /mnt`
+      - `dd count=1 bs=512 if=[grub boot partition, example: /dev/sda6] of=[for NT loader] && sync`
+      - `umount /mnt`
 - `git`
   - `git ls-files`
   - `git config --list`

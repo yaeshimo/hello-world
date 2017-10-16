@@ -138,7 +138,10 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
   - `history 100` show one hundred histories
   - `![number]` run
-- `man [:digit:] [dst command]`
+- `man` open manual
+  - `man [:digit:] [dst command]`
+- `whatis` description of one line
+  - `whatis [command]`
 - `reset` reboot terminal
 - `command` shell builtin
   - `command [cmd]` avoid alias
@@ -689,6 +692,8 @@ q(quit)
     - `sed -i -e 's:word:dst:g' /path/file /path/file2` -i only GNU sed: replace target files
     - `sed -e '1d'` delete first line
     - `sed -e '1p'` puts first line to next
+    - `sed -e 's/^#\(.*\)/\1/' /path/file` trim #
+    - `sed -e '/word/a hello' /path/file` add hello after find word
   - `-n` suppress display of origin
     - `sed -n '1,4p'` display first line to four
   - `-f` specify script-file
@@ -799,3 +804,7 @@ q(quit)
 - `cmp` diff for binary
   - `cmp file1 file2`
   - `cmp [--verbose/-l] file1 file2`
+- `dirname` get directory name
+  - `dirname $0` get name of parent directory
+- `basename` get base name
+  - `basename $0` get base name

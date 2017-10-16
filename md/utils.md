@@ -773,6 +773,7 @@ q(quit)
  - `pacman -Sc` remove cache
  - `pacman -R [pkg]` remove
  - `pacman -Rs [pkg]` remove with depend
+ - `pacman -Qo [/path/bin/file]` search package from file
 - `checkupdates` package update checker for pacman
 - `pacstrap`
   - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn

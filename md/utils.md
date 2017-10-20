@@ -188,7 +188,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `dirs` show directories
 - `pwd` show current dir
 - `file`
-- `stat`
+- `stat` return file information
   - `stat /path/file`
 
 - `df` show disk cap
@@ -208,6 +208,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `find`
   - `find . -name "pattern"`
 - `grep`
+  - `grep "match" /path/file`
   - `grep -A 2 -n -e "pattern"` show pattern after 2 lines
   - `grep -C 2 -n -e "pattern"` show pattern 2 lines before and after
   - `grep -v -e "pattern" "file"` invert match

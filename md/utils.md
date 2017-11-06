@@ -810,3 +810,5 @@ q(quit)
   - `dirname $0` get name of parent directory
 - `basename` get base name
   - `basename $0` get base name
+- `who` login history
+- `w` just like who

@@ -180,7 +180,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `1>` 標準出力 ファイルディスクリプタ1番のリダイレクト
 - `2>` 標準エラ-出力 ファイルディスクリプタ2番のリダイレクト
 
-- `: > file` truncate <file> --size 0
+- `: > file` file to empty
 
 ### 検索や表示、作成
 - `ls`
@@ -812,3 +812,5 @@ q(quit)
   - `basename $0` get base name
 - `who` login history
 - `w` just like who
+- `truncate`
+  - `truncate /path/file --size 0` file to empty

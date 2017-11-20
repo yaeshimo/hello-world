@@ -241,8 +241,11 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `gunzip`
 
 - `tar`
-  - `tar xvf [targetarchive.tar]` extract archive
-  - `tar cvaf [outname.tar.gz] [targetdir]` create archive
+  - `tar xf /path/archive.tar.xxx` extract
+  - `tar vxf /path/archive.tar.xxx` with verbose
+    - `tar --verbose --extract --file /path/archive.tar.xxx`
+  - `tar cvaf out.tar.gz /path/dir` create archive
+    - `tar --verbose --create --xz --file out.tar.xz /path/dir`
   - `tar --help`
   - **Flags:**
     - `x` extract

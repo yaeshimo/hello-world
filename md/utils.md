@@ -182,6 +182,18 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 - `: > file` file to empty
 
+### ヒアドキュメント: Here document
+```sh:heredoc
+cat <<'END'
+this is Here document ${HOME}
+END
+
+# variable expansion
+cat <<END
+this is Here document ${HOME}
+END
+```
+
 ### 検索や表示、作成
 - `ls`
 - `dir`

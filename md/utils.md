@@ -702,7 +702,8 @@ q(quit)
   - `xclip -o` output
   - `xclip -o | xclip -selection clipboard -i` copy to clipboard
 - `sed`
-  - `-e` specify script
+  - `sed --in-place=".back" --expression="s/word/dst/" /path/file` create backup with suffix ".back" and to overwrite
+  - `sed -e` specify script
     - `sed -e 's/word/dst/g'` separator s/ s: s; ...etc
     - `sed -e '1,20s/word/dst/g'` specify lines to replace
     - `sed -i -e 's:word:dst:g' /path/file /path/file2` -i only GNU sed: replace target files
@@ -710,9 +711,9 @@ q(quit)
     - `sed -e '1p'` puts first line to next
     - `sed -e 's/^#\(.*\)/\1/' /path/file` trim #
     - `sed -e '/word/a hello' /path/file` add hello after find word
-  - `-n` suppress display of origin
+  - `sed -n` suppress display of origin
     - `sed -n '1,4p'` display first line to four
-  - `-f` specify script-file
+  - `sed -f` specify script-file
 - `mkinitcpio`
   - `-p [dst preset]`
 - `gm` GraphicsMagick forked from ImageMagick

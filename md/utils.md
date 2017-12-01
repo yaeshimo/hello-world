@@ -423,6 +423,9 @@ END
   - `gpasswd --delete [user] [group]`
 - `groupmod`
   - `groupmod -n [new name] [old name]`
+- `getent`
+  - `getent group wheel` check wheel
+  - `getent hosts` check hosts
 
 ### パーティション操作
 - `fdisk`

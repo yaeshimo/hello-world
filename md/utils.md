@@ -175,6 +175,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `<<` 終了文が現れるまで標準入力へ送る(<<[終了文の指定]) ヒアドキュメント
 - `<(command)` プロセス置換 コマンドの出力結果をファイルとして扱う
 - `|` 左のコマンドの出力結果を右のコマンドに引き渡す パイプ
+- `|&` 標準エラーも含めてパイプに渡す
 - `&1` ファイルディスクリプタ1番 標準入力
 - `&2` ファイルディスクリプタ2番 標準エラ-出力
 - `1>` 標準出力 ファイルディスクリプタ1番のリダイレクト
@@ -833,3 +834,8 @@ q(quit)
 - `w` just like who
 - `truncate`
   - `truncate /path/file --size 0` file to empty
+- `go`
+  `go test -v -cover` show cover from current directory
+  `go test -v -coverprofile=cover.prof` make cover profile
+  `go tool cover -html=cover.prof` to html
+  `go test -v -race` check race condition

@@ -168,6 +168,19 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 3. tool
 
 ## 1.file
+### permission
+- `rwx`
+  - `r` read, bit 4
+  - `w` write, bit 2
+  - `x` execute, bit 1
+  - **bit**
+    - `r--` bit 4
+    - `100
+    - `rw-` bit 6
+    - `110`
+    - `rwx` bit 7
+    - `111`
+
 ### リダイレクト
 - `>` 出力のリダイレクト 上書き
 - `>>` 出力のリダイレクト 追記

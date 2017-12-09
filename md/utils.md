@@ -555,8 +555,9 @@ q(quit)
   - `eval $(keychain --eval --quit [key])`
 
 - `scp`
-  - `scp /path/to/src user@host:`
-  - `-P [port]`
+  - `scp /path/to/src user@host:` copy to user@host:
+  - `scp user@host:file.txt /path/to/dst` copy to /path/to/dst
+  - `scp -P [port] /path/to/src user@host:` specify port number
 
 - `ssh-copy-id` copy to authorized
   - `ssh-copy-id -i /path/to/key.pub [user]@[host]`
@@ -852,3 +853,21 @@ q(quit)
   `go test -v -coverprofile=cover.prof` make cover profile
   `go tool cover -html=cover.prof` to html
   `go test -v -race` check race condition
+
+### limitation of directory
+```sh:limitation
+### limitation of directory
+## create vurtual disc
+# dd bs=1M count=512 if=/dev/zero of=/path/to/limitation.fs
+## format
+# mke2fs -t ext4 /path/to/limitation.fs
+## mount
+# mount -o loop -t ext4 /path/to/limitation.fs /target/limitation/directory
+
+### optional, add to fstab
+cat <<END >> /etc/fstab
+
+## for limitation of directory
+/path/to/limitation.fs /target/limitation/directory ext4 defaults,loop 0 0 >> /etc/fstab
+END
+```

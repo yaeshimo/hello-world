@@ -885,7 +885,7 @@ Match User .*
 	X11Forwarding no
 # if need chroot
 Match User .*
-	ChrootDirectory /chroot/%u # require directory by root owned
+	ChrootDirectory %h # require directory by root owned
 	ForceCommand internal-sftp
 	AllowTcpForwarding no
 	X11Forwarding no

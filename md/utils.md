@@ -856,18 +856,37 @@ q(quit)
 
 ### limitation of directory
 ```sh:limitation
+# require root
 ### limitation of directory
-## create vurtual disc
-# dd bs=1M count=512 if=/dev/zero of=/path/to/limitation.fs
-## format
-# mke2fs -t ext4 /path/to/limitation.fs
-## mount
-# mount -o loop -t ext4 /path/to/limitation.fs /target/limitation/directory
+# create vurtual disc
+dd bs=1M count=512 if=/dev/zero of=/path/to/limitation.fs
+# format
+mke2fs -t ext4 /path/to/limitation.fs
+# mount
+mount -o loop -t ext4 /path/to/limitation.fs /target/limitation/directory
 
 ### optional, add to fstab
 cat <<END >> /etc/fstab
-
-## for limitation of directory
+# for limitation of directory
 /path/to/limitation.fs /target/limitation/directory ext4 defaults,loop 0 0 >> /etc/fstab
 END
+```
+
+**force command**
+```
+vim /etc/ssh/sshd_config
+```
+
+```conf:sshd_config
+# append sftp only
+Match User .*
+	ForceCommand sftp-server
+	AllowTcpForwarding no
+	X11Forwarding no
+# if need chroot
+Match User .*
+	ChrootDirectory /chroot/%u # require directory by root owned
+	ForceCommand internal-sftp
+	AllowTcpForwarding no
+	X11Forwarding no
 ```

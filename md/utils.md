@@ -859,6 +859,7 @@ q(quit)
   - `sshfs user@host: /path/mnt -o allow_other` see /etc/fuse.conf on remote, accept read and write
     - require comment out `user_allow_other` in /etc/fuse.conf on remote
   - `sshfs user@host: /path/mnt -C` use compress
+  - `fusermount -u /path/mnt` unmount on local
 
 ### limitation of directory
 ```sh:limitation

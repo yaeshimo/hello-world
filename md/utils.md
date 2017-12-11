@@ -853,6 +853,12 @@ q(quit)
   `go test -v -coverprofile=cover.prof` make cover profile
   `go tool cover -html=cover.prof` to html
   `go test -v -race` check race condition
+- `sshfs`
+  - `sshfs user@host: /path/mnt` mount user home to local mnt
+  - `sshfs user@host:/dir /path/mnt` specify remote directory
+  - `sshfs user@host: /path/mnt -o allow_other` see /etc/fuse.conf on remote, accept read and write
+    - require comment out `user_allow_other` in /etc/fuse.conf on remote
+  - `sshfs user@host: /path/mnt -C` use compress
 
 ### limitation of directory
 ```sh:limitation

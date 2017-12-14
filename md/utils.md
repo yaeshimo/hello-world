@@ -161,6 +161,61 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `[ -f /path/file ]`
 - `[[` bash only
 
+### limitation of directory
+```sh:limitation
+# require root
+### limitation of directory
+# create vurtual disc
+dd bs=1M count=512 if=/dev/zero of=/path/to/limitation.fs
+# format
+mke2fs -t ext4 /path/to/limitation.fs
+# mount
+mount -o loop -t ext4 /path/to/limitation.fs /target/limitation/directory
+
+### optional, add to fstab
+cat <<END >> /etc/fstab
+# for limitation of directory
+/path/to/limitation.fs /target/limitation/directory ext4 defaults,loop 0 0 >> /etc/fstab
+END
+```
+
+**force command**
+```
+vim /etc/ssh/sshd_config
+```
+
+```conf:sshd_config
+# append sftp only
+Match User .*
+	ForceCommand sftp-server
+	AllowTcpForwarding no
+	X11Forwarding no
+# if need chroot
+Match User .*
+	ChrootDirectory %h # require directory by root owned
+	ForceCommand internal-sftp
+	AllowTcpForwarding no
+	X11Forwarding no
+```
+
+### config sample
+```conf:ssh_config
+Host hostname
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/private_key
+  Port 22
+
+Host alias_of_locale_host
+  HostName 192.168.1.1
+  Port 8080
+
+Host another
+  Port 8080
+
+Match *-lily
+  IdentityFile ~/.ssh/private_key
+# ...etc
+```
 
 ## commands
 1. file
@@ -395,9 +450,9 @@ END
   - `sudo -u [switch user] [command]`
 - `chmod`
   - `chmod [ugo][+-=][rwx] /path/to/target`
-  - `chmod u+s /path/to/execute` with SUID
-  - `chmod g+s /path/to/directory/` with SGID
-  - `chmod o+s /path/to/directory/` with stickybit
+  - `chmod u+s /path/to/execute` set SUID
+  - `chmod g+s /path/to/directory/` set SGID
+  - `chmod o+t /path/to/directory/` set stickybit
 - `chown`
   - `chown user:group /dif/or/file/`
 - `passwd`
@@ -863,39 +918,10 @@ q(quit)
   - `sshfs user@host: /path/mnt -C` use compress
   - `fusermount -u /path/mnt` unmount on local
 
-### limitation of directory
-```sh:limitation
-# require root
-### limitation of directory
-# create vurtual disc
-dd bs=1M count=512 if=/dev/zero of=/path/to/limitation.fs
-# format
-mke2fs -t ext4 /path/to/limitation.fs
-# mount
-mount -o loop -t ext4 /path/to/limitation.fs /target/limitation/directory
-
-### optional, add to fstab
-cat <<END >> /etc/fstab
-# for limitation of directory
-/path/to/limitation.fs /target/limitation/directory ext4 defaults,loop 0 0 >> /etc/fstab
-END
-```
-
-**force command**
-```
-vim /etc/ssh/sshd_config
-```
-
-```conf:sshd_config
-# append sftp only
-Match User .*
-	ForceCommand sftp-server
-	AllowTcpForwarding no
-	X11Forwarding no
-# if need chroot
-Match User .*
-	ChrootDirectory %h # require directory by root owned
-	ForceCommand internal-sftp
-	AllowTcpForwarding no
-	X11Forwarding no
-```
+- `rsync`
+  - `rsync /path/src /path/dst` copy to dst
+  - `rsync -P /src /dst` same --partial --progress
+  - `rsync -r /src/dir /dst` same --recursive
+  - `rsync -e ssh user@host:src /dst` copy from host use ssh
+  - `rsync -P -r -e ssh user@host:src/dir /dst` copy to local
+  - `rsync -P -r -e ssh /src user@host:dst/dir` copy to host

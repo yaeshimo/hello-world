@@ -927,6 +927,6 @@ q(quit)
   - `rsync -P -r -e ssh /src user@host:dst/dir` copy to host
 - `ethtool` bind network device
   - `ethtool en*` show information
-- `wol` wake-on-lan
+- `wol` send magic packet for wake on lan
   - `wol "${target_mac_address}"` use broadcast
   - `wol -i "${target_ip_address}" "${target_mac_address}"` specify taget ip addr

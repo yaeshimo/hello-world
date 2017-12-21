@@ -930,3 +930,7 @@ q(quit)
 - `wol` send magic packet for wake on lan
   - `wol "${target_mac_address}"` use broadcast
   - `wol -i "${target_ip_address}" "${target_mac_address}"` specify taget ip addr
+- `ip`
+  - `ip link`
+  - `ip addr`
+  - `ip route`

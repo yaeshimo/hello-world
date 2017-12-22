@@ -684,6 +684,31 @@ q(quit)
   - `xset q` query current info
   - `xset r [delay] [rate]` modify keyrepeat
     - `xset r 200 30`
+- `xhost`
+  - `xhost +local:` enable
+  - `xhost -` disable
+- `xinput`
+  - `xinput list` show device tree
+  - `xinput list-props ${devNumber}`
+  - `xinput set-prop ${devNumber} ${optionNumber} ${setting}`
+
+### package manager
+- `pacman`
+ - `pacman -S [pkg/group]` install
+ - `pacman -Si [pkg]` information
+ - `pacman -Ss [search word]` search
+ - `pacman -Syu` system update
+ - `pacman -Sc` remove cache
+ - `pacman -R [pkg]` remove
+ - `pacman -Rs [pkg]` remove with depend
+ - `pacman -Qo [/path/bin/file]` search package from file
+- `checkupdates` package update checker for pacman
+- `pacstrap`
+  - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn
+- `pactree` show dependency
+  - `pactree [pkg]`
+- `paccache`
+  - `paccache -r` remove cache but still keep the recent 3 versions
 
 ### TODO: classify
 - `tracepath` trace network route
@@ -855,22 +880,6 @@ q(quit)
   - `nmap -oN /path/out.txt [Domain/Address]` out to file
 - `strings` print printable characters
   - `strings /path/file` print printable content of files
-- `pacman`
- - `pacman -S [pkg/group]` install
- - `pacman -Si [pkg]` information
- - `pacman -Ss [search word]` search
- - `pacman -Syu` system update
- - `pacman -Sc` remove cache
- - `pacman -R [pkg]` remove
- - `pacman -Rs [pkg]` remove with depend
- - `pacman -Qo [/path/bin/file]` search package from file
-- `checkupdates` package update checker for pacman
-- `pacstrap`
-  - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn
-- `pactree` show dependency
-  - `pactree [pkg]`
-- `paccache`
-  - `paccache -r` remove cache but still keep the recent 3 versions
 - `hostnamectl`
   - `hostnamectl status`
   - `hostnamectl set-hostname`
@@ -884,9 +893,6 @@ q(quit)
   - `python -m venv [dirname]` make virtual environment directory for python
     - `source /path/to/venv/bin/activate` activate virtuale environment for python
       - `deactivate` exit from current python virtual environments
-- `xhost`
-  - `xhost +local:` enable
-  - `xhost -` disable
 - `dot` graphviz
   - `dot /path/to/src.dot`
   - `dot -Tpng /path/to/src.dot -o /path/to/out.png` make image from dot src
@@ -909,12 +915,12 @@ q(quit)
   `go tool cover -html=cover.prof` to html
   `go test -v -race` check race condition
 
-- TODO fix content `allow_other`
+- TODO fix content `allowOther`
 - `sshfs`
   - `sshfs user@host: /path/mnt` mount user home to local mnt
   - `sshfs user@host:/dir /path/mnt` specify remote directory
-  - `sshfs user@host: /path/mnt -o allow_other` see /etc/fuse.conf on local, accept read and write
-    - if need non root, require comment out `user_allow_other` in /etc/fuse.conf on local
+  - `sshfs user@host: /path/mnt -o allowOther` see /etc/fuse.conf on local, accept read and write
+    - if need non root, require comment out `userAllowOther` in /etc/fuse.conf on local
   - `sshfs user@host: /path/mnt -C` use compress
   - `fusermount -u /path/mnt` unmount on local
 

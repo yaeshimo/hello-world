@@ -103,11 +103,11 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `ctrl-r` 履歴検索 like it
 - `ctrl-alt-backspace` xorgの強制終了
 
-- **variable**
-  - **set**
+- variable
+  - set
     - `var="string"`
     - `var=1` integer
-  - **out**
+  - out
     - `$var`
     - `${var="if var is not used then return and to into var this msg"}`
     - `${var:="if var is null or empty then"}` if used and not null then only return msg
@@ -115,7 +115,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
     - `${var:-"if var is null or empty then"}` only return
     - `${var+"if var is used then return"}` allow null
     - `${var:+"if var is used and not null then"}` not allow null, but case of null is returned null
-  - **special**
+  - special
     - `$?` have exit code
     - `$!` background pid
     - `$-` set flags
@@ -146,20 +146,25 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `command` shell builtin
   - `command [cmd]` avoid alias
   - `command -v [cmd]` witch
-- `test` return boolean
-  - **return true**
-    - `test -f /path/file` regular file
-    - `test -d /path/dir/` directory
-    - `test -r /path` readable
-    - `test -w /path` writable
-    - `test -x /path/exe` executable
-    - `test "$str" = "str"` have same string
-    - `test "$str" != "str"` have not same string
-    - `test -n "$str"` have string
-    - `test -z "$str"` don't have string
+- `test` if true then return exit code is 0
+  - `test -f /path/file` regular file
+  - `test -d /path/dir/` directory
+  - `test -r /path` readable
+  - `test -w /path` writable
+  - `test -x /path/exe` executable
+  - `test "$str" = "str"` have same string
+  - `test "$str" != "str"` have not same string
+  - `test -n "$str"` have string
+  - `test -z "$str"` don't have string
+  - `test 0 -eq 0` equal
+  - `test 1 -ne 0` not equal
+  - `test 0 -lt 1` less than, <
+  - `test 0 -le 1` less equal, <=
+  - `test 1 -gt 0` greater than, >
+  - `test 1 -ge 0` greater equal, >=
 - `[` same test
   - `[ -f /path/file ]`
-- `[[` bash only
+- `[[` bash only, like test
 
 ### limitation of directory
 ```sh:limitation
@@ -807,7 +812,7 @@ q(quit)
     - `sed -i -e 's:word:dst:g' /path/file /path/file2` -i only GNU sed: replace target files
     - `sed -e '1d'` delete first line
     - `sed -e '1p'` puts first line to next
-    - `sed -e 's/^#\(.*\)/\1/' /path/file` trim #
+    - `sed -e 's/^#\(.*\)/\1/' /path/file` trim comment prefix
     - `sed -e '/word/a hello' /path/file` add hello after find word
   - `sed -n` suppress display of origin
     - `sed -n '1,4p'` display first line to four
@@ -827,6 +832,7 @@ q(quit)
 - `mplayer`
   - `mplayer -ao null -vo null` audio video
   - `mplayer example.mp4 -idle -fixed-vo` keep open the window
+  - `mplayer -ao pulse -dvd-device /path/iso dvdnav://` open dvd /path/iso or /dev/sr0
 - `npm` package manager for nodejs
   - `npm help`
   - `npm config edit` edit/create .npmrc

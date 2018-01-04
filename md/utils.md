@@ -832,7 +832,7 @@ q(quit)
 - `mplayer`
   - `mplayer -ao null -vo null` audio video
   - `mplayer example.mp4 -idle -fixed-vo` keep open the window
-  - `mplayer -ao pulse -dvd-device /path/iso dvdnav://` open dvd /path/iso or /dev/sr0
+  - `mplayer -ao pulse -dvd-device /path/iso -mouse-movements dvdnav://` open dvd /path/iso or /dev/sr0
 - `npm` package manager for nodejs
   - `npm help`
   - `npm config edit` edit/create .npmrc

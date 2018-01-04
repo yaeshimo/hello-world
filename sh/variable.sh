@@ -146,4 +146,13 @@ exchange=""
 echo ${exchange:+lily-nyan} # don't catch NULL, return NULL
 set -u
 
+# command in variable
+function cmd_in_var () {
+  local echo="echo"
+  $echo "cmd_in_var"
+  ${echo} "hello"
+  "${echo}" "world"
+}
+cmd_in_var
+
 # EOF

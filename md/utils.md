@@ -812,7 +812,7 @@ q(quit)
     - `sed -i -e 's:word:dst:g' /path/file /path/file2` -i only GNU sed: replace target files
     - `sed -e '1d'` delete first line
     - `sed -e '1p'` puts first line to next
-    - `sed -e 's/^#\(.*\)/\1/' /path/file` trim comment prefix
+    - ``sed -e 's/^#\(.*\)/\1/' /path/file`` trim comment prefix
     - `sed -e '/word/a hello' /path/file` add hello after find word
   - `sed -n` suppress display of origin
     - `sed -n '1,4p'` display first line to four
@@ -823,7 +823,7 @@ q(quit)
   - `man gm` too many options, see manpage
   - `gm help`
   - `gm convert $in -strip $out` remove profile, author, copyright, and license, be careful
-  - `gm mogrify -strip ./*` strip all files in pwd
+  - ``gm mogrify -strip ./*`` strip all files in pwd
 - `ffmpeg` encoder
   - `ffmpeg -h full` show full help
 - `ffprobe $in` show file info
@@ -938,10 +938,10 @@ q(quit)
   - `rsync -P -r -e ssh user@host:src/dir /dst` copy to local
   - `rsync -P -r -e ssh /src user@host:dst/dir` copy to host
 - `ethtool` bind network device
-  - `ethtool en*` show information
+  - ``ethtool en*`` show information
 - `wol` send magic packet for wake on lan
-  - `wol "${target_mac_address}"` use broadcast
-  - `wol -i "${target_ip_address}" "${target_mac_address}"` specify taget ip addr
+  - `wol "${targetMacAddress}"` use broadcast
+  - `wol -i "${targetIpAddress}" "${targetMacAddress}"` specify taget ip addr
 - `ip`
   - `ip link`
   - `ip addr`

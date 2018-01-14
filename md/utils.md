@@ -249,8 +249,8 @@ Match *-lily
 - `<(command)` プロセス置換 コマンドの出力結果をファイルとして扱う
 - `|` 左のコマンドの出力結果を右のコマンドに引き渡す パイプ
 - `|&` 標準エラーも含めてパイプに渡す
-- `&1` ファイルディスクリプタ1番 標準入力
-- `&2` ファイルディスクリプタ2番 標準エラ-出力
+- `>&1` ファイルディスクリプタ1番 標準入力
+- `>&2` ファイルディスクリプタ2番 標準エラ-出力
 - `1>` 標準出力 ファイルディスクリプタ1番のリダイレクト
 - `2>` 標準エラ-出力 ファイルディスクリプタ2番のリダイレクト
 
@@ -349,6 +349,7 @@ END
 - `cp`
 - `dd`
   - `dd count=N bs=N if=/path of=/path`
+  - `dd if=/input of=/output status=progress` with progress
 - `lspci`
 - `wc` print line, word, byte count
   - `wc -l /path/file` cout lines

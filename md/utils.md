@@ -281,6 +281,7 @@ END
   - `df -h`
 - `du` show dir size
   - `du -h`
+  - `du -h -s` only total
 
 - `cat` binaryを読むと表示が崩れる
   - `reset`でterminalを再起動すると回復するかも
@@ -411,7 +412,9 @@ END
 - `ps`
   - `ps auxf`
 - `pstree`
+  - `pstree -p` with pid
 - `top`
+- `htop`
 - `pgrep`
 - `pkill`
 - `kill`
@@ -484,6 +487,7 @@ END
   - `usermod -s /path/to/shell`
   - `usermod -l [new name] [old name]` change login name
   - `usermod -d /new/home/ -m [user name]` make new home directory from [user name]
+  - `usermod -aG ${additional_groups} ${user_name}` add group
 - `userdel`
   - `userdel -r [user name]`
 - `groups`
@@ -827,6 +831,14 @@ q(quit)
   - ``gm mogrify -strip ./*`` strip all files in pwd
 - `ffmpeg` encoder
   - `ffmpeg -h full` show full help
+  - `ffmpeg -i /path/src.ext /path/out.ext` convert
+  - `ffmpeg -i /path/src.mp4 /path/out.flac` convert to flac
+  - screencast
+    - `ffmpeg -f x11grab -follow_mouse centered -framerate 25 -video_size cif -i ${DISPLAY} out.mpg`
+    - `ffmpeg -f x11grab -follow_mouse 100 -framerate 25 -video_size cif -i ${DISPLAY} out.mpg`
+    - `ffmpeg -f x11grab -show_region 1 -framerate 60 -video_size cif -i ${DISPLAY}+10,20 out.webm`
+    - `ffmpeg -f x11grab -follow_mouse centered -show_region 1 -framerate 25 -video_size cif -i ${DISPLAY} out.webm`
+    - `ffmpeg -f x11grab -follow_mouse centered -framerate 25 -video_size 600x600 -i ${DISPLAY} out.webm`
 - `ffprobe $in` show file info
 - `free`
   - `free -m` show memory state
@@ -947,3 +959,6 @@ q(quit)
   - `ip link`
   - `ip addr`
   - `ip route`
+- `pdfimages`
+  - `pdfimages path.pdf path/dir` generate images into path/dir
+- `sxiv` image viwer

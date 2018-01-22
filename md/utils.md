@@ -533,6 +533,8 @@ q(quit)
   - `lsblk -f` with uuid
   - `lsblk --fs` same -f
   - `lsblk -no UUID /dev/sdXN` check uuid
+- `blkid`
+  - `blkid -s PARTUUID` check part uuid
 
 ### マウント
 - `mount`
@@ -583,9 +585,13 @@ q(quit)
   - `iptables -t nat -A PREROUTING -p tcp -m tcp --dport [catch] -j REDIRECT --to-ports [throw]`
 - `iptables-save`
 - `nft` nftables
-  - `nft list ruleset`
-  - `nft add rule [filter name] filter [chain name] tcp dport [ssh/22] accept` accept ssh
-    - `nft add rule inet filter input tcp dport 3000 accept` accept inet on input chain port 3000
+  - `nft list ruleset` list ruleset
+  - `nft list ruleset -a` with handler number
+  - control rules
+    - `nft add rule ${family} ${table} ${chain} tcp dport ${ssh/22} accept` accept ssh
+      - `nft add rule inet filter input tcp dport 3000 accept` accept inet on input chain port 3000
+    - `nft add rule ${family} ${table} ${chain} position  ${handler_number} tcp dport ${port_number} accept` use handler
+    - `nft delete rule ${family} ${table} ${chain} handle ${handler_number}` delete rule
 - `curl`
   - `curl -o /out/file [URL]`
   - `curl -v [URL]` verbose
@@ -707,20 +713,23 @@ q(quit)
  - `pacman -S [pkg/group]` install
  - `pacman -Si [pkg]` information
  - `pacman -Ss [search word]` search
- - `pacman -Syu` system update
+ - `pacman -Syu` system upgrade
  - `pacman -Sc` remove cache
- - `pacman -R [pkg]` remove
- - `pacman -Rs [pkg]` remove with depend
- - `pacman -Qo [/path/bin/file]` search package from file
+ - `pacman -R "${pkg}"` remove package
+ - `pacman -Rs "${pkg}"` remove with depend
+ - `pacman -Qo /path/bin/file` check owned
+- `pacman-optimize` optimize database for pacman
 - `checkupdates` package update checker for pacman
 - `pacstrap`
   - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn
 - `pactree` show dependency
-  - `pactree [pkg]`
+  - `pactree "${pkg}"`
 - `paccache`
   - `paccache -r` remove cache but still keep the recent 3 versions
 
 ### TODO: classify
+- `traceroute` trace network route
+  - `traceroute ${ip/hostname}`
 - `tracepath` trace network route
   - `tracepath [ip|domain]`
   - `tracepath -b [ip|domain]`
@@ -782,6 +791,7 @@ q(quit)
   - `git commit -m "msg" -- /path`
   - `git commit --amend` fix recent commit
   - `git log -p /path`
+	- `git log --stat` with commit status
   - `git reflog` manage reflog information
   - `git grep "pattern"` search git repository use grep ignore .git
   - `git clone --no-local /path/to/repo`
@@ -806,6 +816,7 @@ q(quit)
 - `shuf` shuffle
   - `shuf /path/to/file`
   - `shuf -n 1 /path/to/file` -n lines
+  - `shuf -i 1-100 -n 1` get random number 1-100
 - `xclip`
   - `xclip -o` output
   - `xclip -o | xclip -selection clipboard -i` copy to clipboard
@@ -833,6 +844,7 @@ q(quit)
   - `ffmpeg -h full` show full help
   - `ffmpeg -i /path/src.ext /path/out.ext` convert
   - `ffmpeg -i /path/src.mp4 /path/out.flac` convert to flac
+  - `cat media.mp4 | ffmpeg -i pipe:0 out.flac` use pipe
   - screencast
     - `ffmpeg -f x11grab -follow_mouse centered -framerate 25 -video_size cif -i ${DISPLAY} out.mpg`
     - `ffmpeg -f x11grab -follow_mouse 100 -framerate 25 -video_size cif -i ${DISPLAY} out.mpg`
@@ -846,6 +858,11 @@ q(quit)
   - `mplayer -ao null -vo null` audio video
   - `mplayer example.mp4 -idle -fixed-vo` keep open the window
   - `mplayer -ao pulse -dvd-device /path/iso -mouse-movements dvdnav://` open dvd /path/iso or /dev/sr0
+  - `mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video${number} -fps 15 -vf secreenshot` capture from camera
+- `mpv`
+  - `mpv /path/media`
+  - `mpv --shuffle --loop-playlist=${number} /path/dir`
+  - `mpv av://v4l2:/dev/video${number}` capture from camera
 - `npm` package manager for nodejs
   - `npm help`
   - `npm config edit` edit/create .npmrc
@@ -962,3 +979,6 @@ q(quit)
 - `pdfimages`
   - `pdfimages path.pdf path/dir` generate images into path/dir
 - `sxiv` image viwer
+- `wpa_supplicant`
+  - `wpa_supplicant -B -i ${interface} -c /etc/wpa_supplicant/wpa_supplicant-${interface}.conf`
+- `wpa_passphrase "${SSID}" "${passphrase}"` out to stdout

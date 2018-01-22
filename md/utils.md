@@ -793,7 +793,7 @@ q(quit)
   - `git log -p /path`
 	- `git log --stat` with commit status
   - `git reflog` manage reflog information
-  - `git grep "pattern"` search git repository use grep ignore .git
+  - `git grep -e "pattern"` search git repository use grep ignore .git
   - `git clone --no-local /path/to/repo`
   - `git clone --branch=[branch or tag] /path/from.git /path/to` specify clone branch
   - `git checkout -b [new branch] [remote]/[branch]`

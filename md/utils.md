@@ -1,4 +1,5 @@
 # utils
+vim: expandtab :  
 toolメモ  
 基本的に調べて使ったコマンドのNOTE  
 REF: man archwiki google duckduckgo  
@@ -166,6 +167,9 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `[ -f /path/file ]`
 - `[[` bash only, like test
 
+### on bash
+- `shopt` check bash options
+
 ### limitation of directory
 ```sh:limitation
 # require root
@@ -293,12 +297,13 @@ END
 
 - `locate` インデックスの作成は`sudo updatedb`
 - `find`
-  - `find . -name "pattern"`
+  - `find . -name "${match}"`
 - `grep`
-  - `grep "match" /path/file`
-  - `grep -A 2 -n -e "pattern"` show pattern after 2 lines
-  - `grep -C 2 -n -e "pattern"` show pattern 2 lines before and after
-  - `grep -v -e "pattern" "file"` invert match
+  - `grep "${match}" /path/file`
+  - `grep -A 2 -n -e "${match}"` show pattern after 2 lines
+  - `grep -C 2 -n -e "${match}"` show pattern 2 lines before and after
+  - `grep -v -e "${match}" -- "file"` invert match
+  - `grep --line-number --with-filename --regexp "${match}" -- "${/path/file}"`
 - `tee` 渡された内容を標準出力とファイルに書き込む
   - `<commmands> | tee /dst/file`
 - `touch` タイムスタンプ操作、fileが存在しなければ新たに作成される
@@ -879,9 +884,11 @@ q(quit)
 - `tmux` terminal multiplexer
   - `tmux ls` list sesstions
   - `tmux attach` attach the session
+  - `tmux a -t ${number}` specify attach session
   - **in tmux**:`<C-b>` send prefix(default)
     - `?` list keys
     - `d` detach client
+    - `x` kill pane
     - `<C-z>` suspend client, `fg` then return
     - `s` show session tree
     - `(` switch previous session
@@ -982,3 +989,10 @@ q(quit)
 - `wpa_supplicant`
   - `wpa_supplicant -B -i ${interface} -c /etc/wpa_supplicant/wpa_supplicant-${interface}.conf`
 - `wpa_passphrase "${SSID}" "${passphrase}"` out to stdout
+- `expr` evaluate expression
+  - `expr 1 + 1` 2 `1+1` is invalid
+  - `expr 2 - 1` 1 `1-1` return code is !0
+  - `expr 4 / 2` 2
+  - `expr 4 % 3` 1
+  - `expr 3 \* 2` 6 need escape
+- `gpg` gnupg

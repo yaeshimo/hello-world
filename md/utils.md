@@ -467,6 +467,16 @@ END
   - `chmod u+s /path/to/execute` set SUID
   - `chmod g+s /path/to/directory/` set SGID
   - `chmod o+t /path/to/directory/` set stickybit
+  - `chmod --recursive a=rX,u+w ${path/dir}` recursively change the mode to dmask=022 fmask=133
+  - mode `[ugoa][+-=][rwx],...`
+    - target
+      - `a` all
+      - `u` user
+      - `o` other
+    - allows
+      - `r` read
+      - `w` write
+      - `x` execute
 - `chown`
   - `chown user:group /dif/or/file/`
 - `passwd`

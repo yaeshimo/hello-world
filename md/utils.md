@@ -208,7 +208,8 @@ Match User .*
 ```
 
 ### config sample
-```conf:ssh_config
+`ssh_config`
+```conf
 Host hostname
   IdentitiesOnly yes
   IdentityFile ~/.ssh/private_key
@@ -232,12 +233,13 @@ Match *-lily
 3. tool
 
 ## 1.file
+
 ### permission
 - `rwx`
   - `r` read, bit 4
   - `w` write, bit 2
   - `x` execute, bit 1
-  - **bit**
+  - bit
     - `r--` bit 4
     - `100
     - `rw-` bit 6
@@ -261,7 +263,7 @@ Match *-lily
 - `: > file` file to empty
 
 ### ヒアドキュメント: Here document
-```sh:heredoc
+```sh
 cat <<'END'
 this is Here document ${HOME}
 END
@@ -273,7 +275,20 @@ END
 ```
 
 ### 検索や表示、作成
-- `ls`
+- `ls` list directory and files
+- `lscpu` list cpu information
+- `lsmem` list memory information
+- `lspci` list PCI
+- `lsblk` list block device
+  - `lsblk -f` with uuid
+  - `lsblk --fs` same -f
+  - `lsblk -no UUID /dev/sdXN` check uuid
+- `lsattr` list attributes
+- `lslogins` list login state
+- `lsns` list name space
+- `lsipc` list IPC information
+- `lsmod` list module information
+- `lsusb` list USB information
 - `dir`
 - `dirs` show directories
 - `pwd` show current dir
@@ -286,9 +301,14 @@ END
 - `du` show dir size
   - `du -h`
   - `du -h -s` only total
+  - `du -h --max-depth=0` check only current directory
 
 - `cat` binaryを読むと表示が崩れる
   - `reset`でterminalを再起動すると回復するかも
+  - proc
+    - `cat /proc/cpuinfo` get cpuinfo
+    - `cat /proc/meminfo` get memory information
+    - `cat /proc/sys/kernel/random/entropy_avail` check entropy
 - `zcat` cat for compressed files
   - `zcat /proc/config.gz`
 - `more`
@@ -356,7 +376,6 @@ END
 - `dd`
   - `dd count=N bs=N if=/path of=/path`
   - `dd if=/input of=/output status=progress` with progress
-- `lspci`
 - `wc` print line, word, byte count
   - `wc -l /path/file` cout lines
 - `xargs` generate command line
@@ -370,7 +389,6 @@ END
 ## 2.system
 - `dmesg`
   - `dmesg --follow` wait for new messages
-- `lsmod`
 - `modprobe`
   - `-r`
 - `insmod`
@@ -418,14 +436,16 @@ END
   - `ps auxf`
 - `pstree`
   - `pstree -p` with pid
-- `top`
-- `htop`
-- `pgrep`
+- `top` show system information
+- `htop` show system information
+- `pgrep` check process id
+  - `pgrep ${pattern}`
 - `pkill`
+  - `pkill ${pattern}` kill from name
 - `kill`
-  - `kill [pid]`
+  - `kill ${pid}`
 - `killall`
-  - `killall [proc name]`
+  - `killall ${process_name}`
 
 ### systemd-nspawn
 - `systemd-nspawn` require root
@@ -544,10 +564,6 @@ q(quit)
   - `wipefs --all /path/device`
 - `mkfs.ext4`
 
-- `lsblk`
-  - `lsblk -f` with uuid
-  - `lsblk --fs` same -f
-  - `lsblk -no UUID /dev/sdXN` check uuid
 - `blkid`
   - `blkid -s PARTUUID` check part uuid
 
@@ -578,6 +594,7 @@ q(quit)
 ### ネットワーク
 - `ss`
   - `ss -tnlp` show tcp listen ports
+  - `ss -atn` show tcp state
 - `ip`
 - `ping`
 - `tcpdump`
@@ -602,6 +619,8 @@ q(quit)
 - `nft` nftables
   - `nft list ruleset` list ruleset
   - `nft list ruleset -a` with handler number
+  - `nft flush ruleset` delete current ruleset
+  - `nft -f ${path/rule}` append rule from file
   - control rules
     - `nft add rule ${family} ${table} ${chain} tcp dport ${ssh/22} accept` accept ssh
       - `nft add rule inet filter input tcp dport 3000 accept` accept inet on input chain port 3000
@@ -866,9 +885,12 @@ q(quit)
     - `ffmpeg -f x11grab -show_region 1 -framerate 60 -video_size cif -i ${DISPLAY}+10,20 out.webm`
     - `ffmpeg -f x11grab -follow_mouse centered -show_region 1 -framerate 25 -video_size cif -i ${DISPLAY} out.webm`
     - `ffmpeg -f x11grab -follow_mouse centered -framerate 25 -video_size 600x600 -i ${DISPLAY} out.webm`
+- `mediainfo` show media information
+  - `mediainfo ${path_media}` show media information
 - `ffprobe $in` show file info
 - `free`
   - `free -m` show memory state
+- `vmstat` check virtual memory state
 - `mplayer`
   - `mplayer -ao null -vo null` audio video
   - `mplayer example.mp4 -idle -fixed-vo` keep open the window
@@ -918,19 +940,19 @@ q(quit)
     - `:` tmux command mode
       - `list-keys` list bind keys
 - `nm` list symbols from object files
-  - `nm [object]`
+  - `nm ${/path/object}`
 - `nmap` port scan, careful use it
-  - `nmap [Domain/Address]` be careful
+  - `nmap ${Domain/Address}` be careful
     - `nmap localhost` scan localhost
     - `nmap 192.0.2.0/24` scan between 192.0.2.1-256
     - `nmap 192.0.2.2-10` scan between 192.0.2.2-10
     - `nmap 192.0.2.5,7,10-12` scan 5,7,10,11,12
-  - `nmap -p [%d-%d] [Domain/Address]` specify scan port
-    - `nmap -p 0-65535 [Domain/Address]` scan between 0-65535
-    - `nmap -p 22,80,81-100 [Domain/Address]`
-  - `nmap -sL [Domain/Address]` list scan addresses, is not send packets
-  - `nmap -sP [Domain/Address]` ping scan only
-  - `nmap -oN /path/out.txt [Domain/Address]` out to file
+  - `nmap -p ${%d}-${%d} ${Domain/Address}` specify scan port, %d is integer
+    - `nmap -p 0-65535 ${Domain/Address}` scan between 0-65535
+    - `nmap -p 22,80,81-100 ${Domain/Address}`
+  - `nmap -sL ${Domain/Address}` list scan addresses, is not send packets
+  - `nmap -sP ${Domain/Address}` ping scan only
+  - `nmap -oN /path/out.txt ${Domain/Address}` out to file
 - `strings` print printable characters
   - `strings /path/file` print printable content of files
 - `hostnamectl`
@@ -954,6 +976,8 @@ q(quit)
 - `cmp` diff for binary
   - `cmp file1 file2`
   - `cmp [--verbose/-l] file1 file2`
+- `zdiff` diff for compressed files
+- `zcmp` diff for compressed files
 - `dirname` get directory name
   - `dirname $0` get name of parent directory
 - `basename` get base name
@@ -1006,3 +1030,8 @@ q(quit)
   - `expr 4 % 3` 1
   - `expr 3 \* 2` 6 need escape
 - `gpg` gnupg
+  - `gpg --list-keys` check existing keys
+  - `gpg --full-gen-key --expert` generate key pair
+  - `gpg --encrypt ${path/file}` encrypt files
+  - `gpg --decrypt ${path/file.gpg}` decrypt files
+    - `gpg --output ${path/file} --decrypt ${path/file.gpg}` decrypt files then output

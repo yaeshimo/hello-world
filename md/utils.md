@@ -802,43 +802,56 @@ q(quit)
 - `git`
   - `git ls-files`
   - `git config --list`
-  - `git remote set-url origin git@github.com:USER/rep.git`
-  - `git remote set-head [remote] [branch]`
-  - `git remote add [remote name] [url]`
-  - `git remote -v` show remote info
-  - `git tag -a [tag name] -m "massage"` create new tag
-  - `git tag [tag name]` create simple tag
+  - `git remote`
+    - `git remote set-url origin git@github.com:USER/rep.git`
+    - `git remote set-head [remote] [branch]`
+    - `git remote add [remote name] [url]`
+    - `git remote -v` show remote info
+  - `git tag`
+    - `git tag -a [tag name] -m "massage"` create new tag
+    - `git tag [tag name]` create simple tag
   - `git show [tag name]` show tag info
   - `git branch -a`
-  - `git add --interactive`
-  - `git add -p /path`
-    - **interactive**
-      - `?` - show help
-      - `y` - stage hunk
-      - `s` - split hunk
-      - `n` - do not stage
-      - `q` - quite
-  - `git add -n` --dry-run
-  - `git diff HEAD[n] -- /path`
-  - `git diff --stat` simple view
-  - `git diff --name-only`
-  - `git commit -m "msg" -- /path`
-  - `git commit --amend` fix recent commit
-  - `git log -p /path`
-	- `git log --stat` with commit status
+  - `git add`
+    - `git add --interactive`
+    - `git add -p /path`
+      - **interactive**
+        - `?` - show help
+        - `y` - stage hunk
+        - `s` - split hunk
+        - `n` - do not stage
+        - `q` - quite
+    - `git add -n` --dry-run
+  - `git diff`
+    - `git diff HEAD[n] -- /path`
+    - `git diff --stat` simple view
+    - `git diff --name-only`
+  - `git commit`
+    - `git commit -m "msg" -- /path`
+    - `git commit --amend` fix recent commit
+  - `git log`
+    - `git log -p /path`
+    - `git log --stat` with commit status
   - `git reflog` manage reflog information
   - `git grep -e "pattern"` search git repository use grep ignore .git
-  - `git clone --no-local /path/to/repo`
-  - `git clone --branch=[branch or tag] /path/from.git /path/to` specify clone branch
-  - `git checkout -b [new branch] [remote]/[branch]`
-  - `git checkout [branch] [file]` override file from branch to worktree
-  - `git checkout .` fallback all files, be careful
-  - `git rebase -i HEAD~[n]` interactive rebase, [n]:number of target commits from HEAD
-  - `git rebase --abort` abort current rebase
+  - `git clone`
+    - `git clone --no-local /path/to/repo`
+    - `git clone --branch=[branch or tag] /path/from.git /path/to` specify clone branch
+  - `git checkout`
+    - `git checkout -b [new branch] [remote]/[branch]`
+    - `git checkout [branch] [file]` override file from branch to worktree
+    - `git checkout .` fallback all files, be careful
+  - `git rebase`
+    - `git rebase -i HEAD~[n]` interactive rebase, [n]:number of target commits from HEAD
+    - `git rebase --abort` abort current rebase
   - `git reset` modify current HEAD
     - `git reset HEAD~[n]` reset with index
     - `git reset --soft HEAD~[n]` reset only position of HEAD
     - `git reset --hard HEAD~[n]` be careful, reset with index and worktree
+  - `git worktree`
+    - `git worktree list` list worktree
+    - `git worktree add ${path/dir} ${branch}` create worktree
+    - `git worktree prune` prune refference of empty worktree
   - **bare**
     - `git symbolic-ref HEAD refs/heads/[branch]`
 - `tig`

@@ -500,10 +500,10 @@ END
 - `chown`
   - `chown user:group /dif/or/file/`
 - `passwd`
-  - `passwd [username]`
-  - `passwd -l [user name]` lock password
-  - `passwd -u [user name]` unlock password
-  - `passwd -d [user name]` delete password
+  - `passwd ${username}`
+  - `passwd -l ${user name}` lock password
+  - `passwd -u ${user name}` unlock password
+  - `passwd -d ${user name}` delete password
 - `pwck`
   - `pwck -s` sort /etc/passwd
 - `visudo` edit /etc/sudoers
@@ -515,28 +515,28 @@ END
 - `users` show current user
   - `cat /etc/passwd` show all users
 - `useradd`
-  - `useradd -m -G [specify add group] -s /default/shell [user name]` -m is make home
-  - `useradd -d [specify home] -G [specify add group] -s /default/shell [user name]`
+  - `useradd -m -G ${append_group} -s /default/shell ${user_name}` -m is make home
+  - `useradd -d ${path/homedir} -G ${append_group} -s /default/shell ${user_name}`
   - `useradd -M -s /usr/bin/nologin [user name]`
 - `usermod` modify user
   - `usermod -s /path/to/shell`
-  - `usermod -l [new name] [old name]` change login name
-  - `usermod -d /new/home/ -m [user name]` make new home directory from [user name]
+  - `usermod -l ${new_name} ${old name}` change login name
+  - `usermod -d /new/home/ -m ${user_name}` make new home directory from [user name]
   - `usermod -aG ${additional_groups} ${user_name}` add group
 - `userdel`
-  - `userdel -r [user name]`
+  - `userdel -r ${user_name}`
 - `groups`
-  - `groups [user]` show user groups
+  - `groups ${user_name}` show user groups
   - `cat /etc/group` show system groups
-- `groupadd [name]`
-- `groupdel [name]`
+- `groupadd ${group_name}` add group
+- `groupdel ${group_name}` delete group
 - `chgrp`
-  - `chgrp [group] /dir/or/file`
+  - `chgrp ${group_name} /dir/or/file`
 - `gpasswd`
-  - `gpasswd --add [user] [group]`
-  - `gpasswd --delete [user] [group]`
+  - `gpasswd --add ${user} ${group}`
+  - `gpasswd --delete ${user} ${group}`
 - `groupmod`
-  - `groupmod -n [new name] [old name]`
+  - `groupmod -n ${new_name} ${old name}`
 - `getent`
   - `getent group wheel` check wheel
   - `getent hosts` check hosts
@@ -744,14 +744,15 @@ q(quit)
 
 ### package manager
 - `pacman`
- - `pacman -S [pkg/group]` install
- - `pacman -Si [pkg]` information
- - `pacman -Ss [search word]` search
+ - `pacman -S ${pkg/group}` install
+ - `pacman -Si ${pkg}` information
+ - `pacman -Ss ${search_word}` search
  - `pacman -Syu` system upgrade
  - `pacman -Sc` remove cache
- - `pacman -R "${pkg}"` remove package
- - `pacman -Rs "${pkg}"` remove with depend
- - `pacman -Qo /path/bin/file` check owned
+ - `pacman -R ${pkg}` remove package
+ - `pacman -Rs ${pkg}` remove with depend
+ - `pacman -Qo ${/path/file}` check owned
+ - `pacman -Ql ${pkg}` list of the files installed by a package
 - `pacman-optimize` optimize database for pacman
 - `checkupdates` package update checker for pacman
 - `pacstrap`

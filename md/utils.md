@@ -571,10 +571,11 @@ q(quit)
 - `mount`
   - `mount /dev/sdaN /mnt`
 - `umount`
+  - `umount /path/dir`
 
 ### 設定されている環境変数を調べる
 - `printenv`
-  - `printenv [variable name]`
+  - `printenv ${variable}`
 - `env`
 
 

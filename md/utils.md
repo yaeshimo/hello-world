@@ -420,6 +420,19 @@ END
 - `systemd-cgtop` top of cgroups
 - `systemd-analyze`
   - `systemd-analyze --user set-log-level [loglevel]` loglevel: info, notice, ...
+- `bootctl` systemd-boot for EFI boot
+- `systemd-nspawn` virtual machine
+  - **make container**
+    - `sudo mkdir /path/to/container` remember need to root
+    - `sudo pacstrap -i -c -d /path/to/container base --ignore linux`
+    - `sudo systemd-nspawn -b -D /path/to/container`
+  - `systemd-nspawn -b -D ./container` -b boot -D directory
+  - `systemd-nspawn -b -n -D ./container` -n create virtual Ethernet link
+  - `systemd-nspawn -b -D ./container --network-bridge=[interface name of bridge]`
+  - `systemd-nspawn -b -D ./container --bind=/tmp/.X11-unix/X0` bind for X, check :ls /tmp/.X11-unix
+    - `export DISPLAY=[host display]` on container
+- `machinectl`
+
 
 ### journal
 - `journalctl`
@@ -446,19 +459,6 @@ END
   - `kill ${pid}`
 - `killall`
   - `killall ${process_name}`
-
-### systemd-nspawn
-- `systemd-nspawn` require root
-  - **make container**
-    - `sudo mkdir /path/to/container` remember need to root
-    - `sudo pacstrap -i -c -d /path/to/container base --ignore linux`
-    - `sudo systemd-nspawn -b -D /path/to/container`
-  - `systemd-nspawn -b -D ./container` -b boot -D directory
-  - `systemd-nspawn -b -n -D ./container` -n create virtual Ethernet link
-  - `systemd-nspawn -b -D ./container --network-bridge=[interface name of bridge]`
-  - `systemd-nspawn -b -D ./container --bind=/tmp/.X11-unix/X0` bind for X, check :ls /tmp/.X11-unix
-    - `export DISPLAY=[host display]` on container
-- `machinectl`
 
 ### localectl
 - `localectl`

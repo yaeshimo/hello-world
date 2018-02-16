@@ -626,6 +626,7 @@ q(quit)
     - `nft add rule ${family} ${table} ${chain} tcp dport ${ssh/22} accept` accept ssh
       - `nft add rule inet filter input tcp dport 3000 accept` accept inet on input chain port 3000
     - `nft add rule ${family} ${table} ${chain} position  ${handler_number} tcp dport ${port_number} accept` use handler
+      - `nft add rule inet filter input position  8 tcp dport http-alt accept` accept http-alt with specific handler
     - `nft delete rule ${family} ${table} ${chain} handle ${handler_number}` delete rule
 - `curl`
   - `curl -o /out/file [URL]`
@@ -745,15 +746,19 @@ q(quit)
 
 ### package manager
 - `pacman`
- - `pacman -S ${pkg/group}` install
- - `pacman -Si ${pkg}` information
- - `pacman -Ss ${search_word}` search
- - `pacman -Syu` system upgrade
- - `pacman -Sc` remove cache
- - `pacman -R ${pkg}` remove package
- - `pacman -Rs ${pkg}` remove with depend
- - `pacman -Qo ${/path/file}` check owned
- - `pacman -Ql ${pkg}` list of the files installed by a package
+  - `pacman --help` show help message
+  - `pacman -S --help` help for -S
+    - `pacman -S ${pkg_or_group}` install
+    - `pacman -Si ${pkg}` information
+    - `pacman -Ss ${search_word}` search package
+    - `pacman -Syu` system upgrade
+    - `pacman -Sc` remove cache
+  - `pacman -R --help` help for -R
+    - `pacman -R ${pkg}` remove package
+    - `pacman -Rs ${pkg}` remove package with depend
+  - `pacman -Q --help` help for -Q
+    - `pacman -Qo ${path_file}` check owned
+    - `pacman -Ql ${pkg}` list of the files installed by a package
 - `pacman-optimize` optimize database for pacman
 - `checkupdates` package update checker for pacman
 - `pacstrap`
@@ -955,7 +960,7 @@ q(quit)
     - `:` tmux command mode
       - `list-keys` list bind keys
 - `nm` list symbols from object files
-  - `nm ${/path/object}`
+  - `nm ${path_object}`
 - `nmap` port scan, careful use it
   - `nmap ${Domain/Address}` be careful
     - `nmap localhost` scan localhost
@@ -1050,3 +1055,9 @@ q(quit)
   - `gpg --encrypt ${path/file}` encrypt files
   - `gpg --decrypt ${path/file.gpg}` decrypt files
     - `gpg --output ${path/file} --decrypt ${path/file.gpg}` decrypt files then output
+- `od` binary dump
+- `hexdump` binary dump
+- `xxd` binary dump
+- `objdump` binary dump
+- `readelf` for read information of ELF
+- `ldd` check dynamic links from binary

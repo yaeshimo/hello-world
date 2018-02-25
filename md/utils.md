@@ -826,8 +826,8 @@ q(quit)
   - `git remote`
     - `git remote -v` show remote info
     - `git remote add ${remote_name} ${url}`
-    - `git remote set-url origin git@github.com:USER/rep.git`
-    - `git remote set-head ${remote} ${branch}`
+    - `git remote set-url ${remote_name} git@github.com:USER/rep.git` set github repository
+    - `git remote set-head ${remote_name} ${branch}`
   - `git tag`
     - `git tag -a ${tag_name} -m "massage"` create new tag
     - `git tag ${tag name}` create simple tag

@@ -167,8 +167,14 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `[ -f /path/file ]`
 - `[[` bash only, like test
 
+- `declare` list of declaration
+  - `declare -f` list functions
+    - `declare -f ${fnc_name}` show content of function
+  - `declare -F` function name only
+
 ### on bash
 - `shopt` check bash options
+- `compgen` complete generate
 
 ### limitation of directory
 ```sh:limitation
@@ -325,7 +331,8 @@ END
   - `grep -v -e "${match}" -- "file"` invert match
   - `grep --line-number --with-filename --regexp "${match}" -- "${/path/file}"`
 - `tee` 渡された内容を標準出力とファイルに書き込む
-  - `<commmands> | tee /dst/file`
+  - `${cmd} | tee /path/file`
+  - `${cmd} 2>&1 | tee /path/file` tee with stderr
 - `touch` タイムスタンプ操作、fileが存在しなければ新たに作成される
 
 - `head`
@@ -604,6 +611,8 @@ q(quit)
   - `tcpdump -i br0` specify interface
   - `tcpdump -n -vvv port not ssh and port not llmnr`
   - `tcpdump -Z [user]` drop privilege of root after enable promiscuous mode
+  - `tcpdump -p` not use promiscuous mode
+  - `tcpdump -A` show content with ASCII
 - `iptables`
   - `iptables -nvL --line-numbers`
   - `iptables -N CHAINNAME` -n new
@@ -691,6 +700,9 @@ q(quit)
 - `nano`
 - `vi`
 - `vim`
+  - `vim -- /path/file` edit
+  - `vim -c "help"` run Ex command after startup
+  - `vim -u NONE -- /path/file` disable vimrc
 - `emacs`
 
 ### vm
@@ -749,6 +761,7 @@ q(quit)
   - `pacman --help` show help message
   - `pacman -S --help` help for -S
     - `pacman -S ${pkg_or_group}` install
+    - `pacman -S --force ${pkg_or_group}` update with force, be carful
     - `pacman -Si ${pkg}` information
     - `pacman -Ss ${search_word}` search package
     - `pacman -Syu` system upgrade
@@ -759,6 +772,7 @@ q(quit)
   - `pacman -Q --help` help for -Q
     - `pacman -Qo ${path_file}` check owned
     - `pacman -Ql ${pkg}` list of the files installed by a package
+    - `pacman -Qdt` find standalone package
 - `pacman-optimize` optimize database for pacman
 - `checkupdates` package update checker for pacman
 - `pacstrap`
@@ -810,14 +824,14 @@ q(quit)
   - `git ls-files`
   - `git config --list`
   - `git remote`
-    - `git remote set-url origin git@github.com:USER/rep.git`
-    - `git remote set-head [remote] [branch]`
-    - `git remote add [remote name] [url]`
     - `git remote -v` show remote info
+    - `git remote add ${remote_name} ${url}`
+    - `git remote set-url origin git@github.com:USER/rep.git`
+    - `git remote set-head ${remote} ${branch}`
   - `git tag`
-    - `git tag -a [tag name] -m "massage"` create new tag
-    - `git tag [tag name]` create simple tag
-  - `git show [tag name]` show tag info
+    - `git tag -a ${tag_name} -m "massage"` create new tag
+    - `git tag ${tag name}` create simple tag
+  - `git show ${tag name}` show tag info
   - `git branch -a`
   - `git add`
     - `git add --interactive`
@@ -830,7 +844,7 @@ q(quit)
         - `q` - quite
     - `git add -n` --dry-run
   - `git diff`
-    - `git diff HEAD[n] -- /path`
+    - `git diff HEAD~[n] -- /path` [n] is number
     - `git diff --stat` simple view
     - `git diff --name-only`
   - `git commit`
@@ -840,16 +854,21 @@ q(quit)
     - `git log -p /path`
     - `git log --stat` with commit status
   - `git reflog` manage reflog information
-  - `git grep -e "pattern"` search git repository use grep ignore .git
+  - `git grep` grep on git repository
+    - `git grep -e "pattern"` search git repository use grep ignore .git
+    - `git grep "${match_word}" -- ${pattern_files}`
   - `git clone`
     - `git clone --no-local /path/to/repo`
-    - `git clone --branch=[branch or tag] /path/from.git /path/to` specify clone branch
+    - `git clone --branch=${branch_or_tag} /path/from.git /path/to` specify clone branch
   - `git checkout`
-    - `git checkout -b [new branch] [remote]/[branch]`
-    - `git checkout [branch] [file]` override file from branch to worktree
+    - `git checkout -b ${new_branch} ${remote}/${branch}`
+    - `git checkout ${branch} ${file}` override file from branch to worktree
     - `git checkout .` fallback all files, be careful
+  - `git merge`
+    - `git merge ${from}` merge branch
+    - `git merge --no-ff ${from}` make merge commit
   - `git rebase`
-    - `git rebase -i HEAD~[n]` interactive rebase, [n]:number of target commits from HEAD
+    - `git rebase -i HEAD~[n]` interactive rebase, [n] is number of target commits from HEAD
     - `git rebase --abort` abort current rebase
   - `git reset` modify current HEAD
     - `git reset HEAD~[n]` reset with index
@@ -1061,3 +1080,27 @@ q(quit)
 - `objdump` binary dump
 - `readelf` for read information of ELF
 - `ldd` check dynamic links from binary
+
+### golang
+- `go` command prefix for golang
+  - `go build /path/file` build binary
+
+### rust
+- `rustup` boot strap tool for rust
+  - `rustup help`
+    - `rustup help ${subcommand}`
+  - channels=[stable|beta|nightly]
+  - `rustup doc` open documents on web browser
+  - `rustup update` update current channel
+  - `rustup install ${channel}` install new channel
+  - `rustup default ${channel}` set default channel
+  - `rustup target list` list target platforms
+  - `rustup component`
+    - `rustup component list` list component
+    - `rustup component add rust-src` append rust-src for omni completion
+    - `rustup component add rustfmt-preview` for rust fmt
+- `rustc` rust compiler
+- `cargo` package manager for rust
+  - `cargo check`
+  - `cargo run`
+  - `cargo build`

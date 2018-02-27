@@ -176,6 +176,14 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `shopt` check bash options
 - `compgen` complete generate
 
+### fstab
+```fstab
+# for ext4
+# UUID=uuid	/point	ext4	nofail,rw,user,relatime,data=ordered	0 2
+# for ntfs
+# UUID=uuid	/point	ntfs	nofail,rw,user,relatime,uid=user,gid=user,dmask=022,fmask=133	0 0
+```
+
 ### limitation of directory
 ```sh:limitation
 # require root
@@ -878,6 +886,8 @@ q(quit)
     - `git worktree list` list worktree
     - `git worktree add ${path/dir} ${branch}` create worktree
     - `git worktree prune` prune refference of empty worktree
+  - `git rev-parse`
+    - `git rev-parse --show-toplevel` print git root directory
   - **bare**
     - `git symbolic-ref HEAD refs/heads/[branch]`
 - `tig`

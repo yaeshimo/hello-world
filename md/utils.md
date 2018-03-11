@@ -584,8 +584,18 @@ q(quit)
 
 ### マウント
 - `mount`
-  - `mount /dev/sdaN /mnt`
-- `umount`
+  - `mount /dev/sdaN /mnt` mount device
+  - `mount --bind /path/from /path/to` mount directory
+  - `mount --rbind /path/fromroot /path/to` recursive bind mount
+    - bind mount
+    ``` sh
+    mount --bind /path/from0 /path/root/dir0
+    mount --bind /path/from1 /path/root/dir1
+
+    mount --rbind /path/root /path/to
+    ls /path/to # dir0 dir1
+    ```
+- `umount` unmount
   - `umount /path/dir`
 
 ### 設定されている環境変数を調べる
@@ -644,6 +654,7 @@ q(quit)
       - `nft add rule inet filter input tcp dport 3000 accept` accept inet on input chain port 3000
     - `nft add rule ${family} ${table} ${chain} position  ${handler_number} tcp dport ${port_number} accept` use handler
       - `nft add rule inet filter input position  8 tcp dport http-alt accept` accept http-alt with specific handler
+      - `nft add rule inet fileter input position 8 ip saddr 192.168.1.10 tcp dport http-alt accept` accept only from 192.168.1.10
     - `nft delete rule ${family} ${table} ${chain} handle ${handler_number}` delete rule
 - `curl`
   - `curl -o /out/file [URL]`
@@ -1045,10 +1056,11 @@ q(quit)
 - `sshfs`
   - `sshfs user@host: /path/mnt` mount user home to local mnt
   - `sshfs user@host:/dir /path/mnt` specify remote directory
-  - `sshfs user@host: /path/mnt -o allowOther` see /etc/fuse.conf on local, accept read and write
-    - if need non root, require comment out `userAllowOther` in /etc/fuse.conf on local
+  - `sshfs user@host: /path/mnt -o allow_other` see /etc/fuse.conf on local, accept read and write
+    - if need non root, require comment out `user_allow_other` in /etc/fuse.conf on local
   - `sshfs user@host: /path/mnt -C` use compress
-  - `fusermount -u /path/mnt` unmount on local
+  - `sshfs -o idmap=user user@host: /path/mnt` translate uid for local user
+  - `fusermount3 -u /path/mnt` unmount on local
 
 - `rsync`
   - `rsync /path/src /path/dst` copy to dst

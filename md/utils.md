@@ -851,7 +851,12 @@ q(quit)
     - `git tag -a ${tag_name} -m "massage"` create new tag
     - `git tag ${tag name}` create simple tag
   - `git show ${tag name}` show tag info
-  - `git branch -a`
+  - `git branch` manage branch
+    - `git branch` list local branches
+    - `git branch --help` show help
+    - `git branch --all` list remote and local branches
+    - `git branch ${new_branch}` create new branch from current HEAD
+    - `git branch --delete ${branch}` delete branch
   - `git add`
     - `git add --interactive`
     - `git add -p /path`

@@ -857,6 +857,7 @@ q(quit)
     - `git branch --all` list remote and local branches
     - `git branch ${new_branch}` create new branch from current HEAD
     - `git branch --delete ${branch}` delete branch
+    - `git branch --move ${new_branch_name}` rename current branch name
   - `git add`
     - `git add --interactive`
     - `git add -p /path`

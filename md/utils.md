@@ -420,16 +420,18 @@ END
 
 ### systemd
 - `systemctl`
-  - `systemctl --help`
-  - `systemctl --user [action]`
+  - `systemctl --help` show help
   - `systemctl status`
-  - `systemctl [start:stop:enable:disable] [service:timer]`
-  - `systemctl is-[active:enabled:...etc] [service:timer]`
-  - `systemctl [reboot:poweroff]`
+  - `systemctl reboot`
+  - `systemctl poweroff`
   - `systemctl daemon-reload`
   - `systemctl list-unit-files`
   - `systemctl list-timers`
-  - `systemctl --user reset-failed [service]`
+  - `systemctl is-${active|enabled} ${service|timer}`
+  - `systemctl ${start|stop|enable|disable} ${service|timer}`
+  - `systemctl --user ${command}` systemctl with user flag
+    - `systemctl --user reset-failed ${service}`
+    - `systemctl --user show-environment` list environments
 - `sysctl` for kernel parameter
   - `sysctl -a` list kernel parameter
 - `systemd-cgtop` top of cgroups
@@ -868,13 +870,17 @@ q(quit)
         - `n` - do not stage
         - `q` - quite
     - `git add -n` --dry-run
+  - `git commit`
+    - `git commit -m "msg" -- /path`
+    - `git commit --amend` fix recent commit
+  - `git push` push to remote
+    - `git push ${remote} ${branch}` push branch to remote
+    - `git push --set-upstream ${remote} ${branch}` push with set upstream
+    - `git push --all ${remote}` push all branches to remote
   - `git diff`
     - `git diff HEAD~[n] -- /path` [n] is number
     - `git diff --stat` simple view
     - `git diff --name-only`
-  - `git commit`
-    - `git commit -m "msg" -- /path`
-    - `git commit --amend` fix recent commit
   - `git log`
     - `git log -p /path`
     - `git log --stat` with commit status

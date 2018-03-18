@@ -89,6 +89,13 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 |[:escape:]|ESP|
 |[:backspace:]|BS|
 
+## bash
+- `for`
+  ```sh
+  for x in {0..10}; do
+    echo "${x}"
+  done
+  ```
 
 ## terminal
 - `ctrl-a` 行の頭へ
@@ -659,10 +666,11 @@ q(quit)
       - `nft add rule inet fileter input position 8 ip saddr 192.168.1.10 tcp dport http-alt accept` accept only from 192.168.1.10
     - `nft delete rule ${family} ${table} ${chain} handle ${handler_number}` delete rule
 - `curl`
-  - `curl -o /out/file [URL]`
-  - `curl -v [URL]` verbose
-  - `curl -vv [URL]` more
-  - `curl -I [URL]` info only
+  - `curl -o /out/file ${url}` output file
+  - `curl -O ${url}` output file with remote name
+  - `curl -v ${url}` verbose
+  - `curl -vv ${url}` more verbose
+  - `curl -I ${url}` info only
 
 ### ssh
 - `ssh`
@@ -869,7 +877,8 @@ q(quit)
         - `s` - split hunk
         - `n` - do not stage
         - `q` - quite
-    - `git add -n` --dry-run
+    - `git add --dry-run .` dry run
+    - `git add -n .` same --dry-run
   - `git commit`
     - `git commit -m "msg" -- /path`
     - `git commit --amend` fix recent commit
@@ -1036,10 +1045,6 @@ q(quit)
   - `bundle exec rails new .` make rails on project directory
 - `rails` the gem of ruby
   - `rails new .` make rails on project directory
-- `python`
-  - `python -m venv [dirname]` make virtual environment directory for python
-    - `source /path/to/venv/bin/activate` activate virtuale environment for python
-      - `deactivate` exit from current python virtual environments
 - `dot` graphviz
   - `dot /path/to/src.dot`
   - `dot -Tpng /path/to/src.dot -o /path/to/out.png` make image from dot src
@@ -1114,6 +1119,15 @@ q(quit)
 - `objdump` binary dump
 - `readelf` for read information of ELF
 - `ldd` check dynamic links from binary
+
+### python
+- `python` run python interpreter
+  - `python --help` show help
+  - `python -m venv` python module venv
+    - `python -m venv -h` show help for venv
+    - `python -m venv /path/venv/dir` make python virtual environment directory
+      - `source /path/venv/dir/bin/activate` activate python virtual environment on bash
+        - `deactivate` deactivate current python virtual environment
 
 ### golang
 - `go` command prefix for golang

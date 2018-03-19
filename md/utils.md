@@ -89,14 +89,6 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 |[:escape:]|ESP|
 |[:backspace:]|BS|
 
-## bash
-- `for`
-  ```sh
-  for x in {0..10}; do
-    echo "${x}"
-  done
-  ```
-
 ## terminal
 - `ctrl-a` 行の頭へ
 - `ctrl-e` 行の末へ
@@ -110,32 +102,6 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `ctrl-n` command履歴 下へ
 - `ctrl-r` 履歴検索 like it
 - `ctrl-alt-backspace` xorgの強制終了
-
-- variable
-  - set
-    - `var="string"`
-    - `var=1` integer
-  - out
-    - `$var`
-    - `${var="if var is not used then return and to into var this msg"}`
-    - `${var:="if var is null or empty then"}` if used and not null then only return msg
-    - `${var-"if var is not used then return this msg"}` only return, not to into variable
-    - `${var:-"if var is null or empty then"}` only return
-    - `${var+"if var is used then return"}` allow null
-    - `${var:+"if var is used and not null then"}` not allow null, but case of null is returned null
-  - special
-    - `$?` have exit code
-    - `$!` background pid
-    - `$-` set flags
-    - `$$` self pid
-    - `$#` argc
-    - `$*` argv
-    - `$@` argv
-    - `$LINENO` linumber of just used this variable
-    - `$0` self name of command
-    - `$1` argv[1]
-    - `$2` argv[2]
-    - `${10}` argv[10], is need brace
 
 - `[command] &` シェルコマンドの終了を待たずにバックグランドジョブになる
   - `echo "hi" & & echo "foo"` error
@@ -154,6 +120,55 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `command` shell builtin
   - `command [cmd]` avoid alias
   - `command -v [cmd]` witch
+
+## builtin
+- loop
+  ```sh
+  for x in {0..10}; do
+    echo "${x}"
+  done
+  ```
+- variable
+  - example
+    ```sh
+    # define
+    str="string"
+    # use
+    echo $str
+    # unset variable
+    unset -v str
+    ```
+  - define
+    - `var="string"`
+    - `var=1` integer
+  - use
+    - `$var` use variable name var
+    - `${var="hello"}` if var is not used then return "hello" and set var="hello"
+    - `${var:="hello"}` if var is not used or null then return "hello" and set var="hello"
+    - `${var-"hello"}` if var is not used then return "hello"
+    - `${var:-"hello"}` if var is not used or null then return "hello"
+    - `${var+"hello"}` if var is used or null then return "hello"
+    - `${var:+"hello"}` if var is used and not null then return "hello"
+    - null is `var=""` or `var=`
+  - special
+    - `$?` have exit code
+    - `$!` background pid
+    - `$-` contain set flags
+    - `$$` self pid
+    - `$#` argc
+    - argv
+      - `$@` is bit different `$*`
+      - `$*` is bit different `$@`
+      ```sh
+      # $@ and $* is arg1 arg2 arg3
+      for x in "$@"; do echo $x; done # "arg1" "arg2" "arg3"
+      for x in "$*"; do echo $x; done # "arg1 arg2 arg3"
+      ```
+    - `$LINENO` line number of just used this variable
+    - `$0` self name of command
+    - `$1` argv[1]
+    - `$2` argv[2]
+    - `${10}` argv[10], is need brace
 - `test` if true then return exit code is 0
   - `test -f /path/file` regular file
   - `test -d /path/dir/` directory
@@ -173,17 +188,16 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `[` same test
   - `[ -f /path/file ]`
 - `[[` bash only, like test
-
 - `declare` list of declaration
   - `declare -f` list functions
     - `declare -f ${fnc_name}` show content of function
   - `declare -F` function name only
 
-### on bash
+## bash
 - `shopt` check bash options
 - `compgen` complete generate
 
-### fstab
+## fstab
 ```fstab
 # for ext4
 # UUID=uuid	/point	ext4	nofail,rw,user,relatime,data=ordered	0 2
@@ -191,7 +205,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 # UUID=uuid	/point	ntfs	nofail,rw,user,relatime,uid=user,gid=user,dmask=022,fmask=133	0 0
 ```
 
-### limitation of directory
+## limitation of directory
 ```sh:limitation
 # require root
 ### limitation of directory
@@ -228,7 +242,7 @@ Match User .*
 	X11Forwarding no
 ```
 
-### config sample
+## config sample
 `ssh_config`
 ```conf
 Host hostname
@@ -249,12 +263,6 @@ Match *-lily
 ```
 
 ## commands
-1. file
-2. system
-3. tool
-
-## 1.file
-
 ### permission
 - `rwx`
   - `r` read, bit 4
@@ -283,7 +291,7 @@ Match *-lily
 
 - `: > file` file to empty
 
-### ヒアドキュメント: Here document
+### ヒアドキュメント Here document
 ```sh
 cat <<'END'
 this is Here document ${HOME}
@@ -408,7 +416,7 @@ END
     - `rm, mv, dd, ...etc.`
 
 
-## 2.system
+### system
 - `dmesg`
   - `dmesg --follow` wait for new messages
 - `modprobe`
@@ -612,7 +620,6 @@ q(quit)
   - `printenv ${variable}`
 - `env`
 
-
 ### link
 - `ln`
   - `ln /from /linkname` make hard link
@@ -721,9 +728,6 @@ q(quit)
   - `dig @[nameserver] [domain]` specify nameserver
   - `dig -x [ip addr]` reverse lookup
 
-## 3.tool
-### env
-- `awk`
 
 ### editor
 - `nano`
@@ -793,7 +797,7 @@ q(quit)
     - `pacman -S --force ${pkg_or_group}` update with force, be carful
     - `pacman -Si ${pkg}` information
     - `pacman -Ss ${search_word}` search package
-    - `pacman -Syu` system upgrade
+    - `pacman -Syu` system upgrade, sync database "/var/pacman/sync/\*.db"
     - `pacman -Sc` remove cache
   - `pacman -R --help` help for -R
     - `pacman -R ${pkg}` remove package
@@ -802,6 +806,12 @@ q(quit)
     - `pacman -Qo ${path_file}` check owned
     - `pacman -Ql ${pkg}` list of the files installed by a package
     - `pacman -Qdt` find standalone package
+  - `pacman -F --help` show help for -F
+    - `pacman -Fy` sync database "/var/pacman/sync/\*.files"
+    - `pacman -Fs ${file}` search package from file
+    - `pacman -Fl ${pkg}` list files from package
+  - do not run only `pacman -Sy`
+  - check database location `ls /var/lib/pacman/sync`
 - `pacman-optimize` optimize database for pacman
 - `checkupdates` package update checker for pacman
 - `pacstrap`
@@ -879,6 +889,11 @@ q(quit)
         - `q` - quite
     - `git add --dry-run .` dry run
     - `git add -n .` same --dry-run
+  - `git clean` remove untracked files
+    - `git clean --help` show help
+    - `git clean` run from current directory
+    - `git clean --dry-run` dry run
+    - `git clean -d` remove with directory
   - `git commit`
     - `git commit -m "msg" -- /path`
     - `git commit --amend` fix recent commit
@@ -1119,6 +1134,9 @@ q(quit)
 - `objdump` binary dump
 - `readelf` for read information of ELF
 - `ldd` check dynamic links from binary
+
+### awk
+- `awk`
 
 ### python
 - `python` run python interpreter

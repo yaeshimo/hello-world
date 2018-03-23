@@ -103,25 +103,8 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `ctrl-r` 履歴検索 like it
 - `ctrl-alt-backspace` xorgの強制終了
 
-- `[command] &` シェルコマンドの終了を待たずにバックグランドジョブになる
-  - `echo "hi" & & echo "foo"` error
-  - `unset var ; echo "hi" & $var & echo "foo"` non error
-- `fg [job_id]` to foreground
-- `jobs` show background jobs
-- `[(command)]` subshell
-- `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
-  - `history 100` show one hundred histories
-  - `![number]` run
-- `man` open manual
-  - `man [:digit:] [dst command]`
-- `whatis` description of one line
-  - `whatis [command]`
-- `reset` reboot terminal
-- `command` shell builtin
-  - `command [cmd]` avoid alias
-  - `command -v [cmd]` witch
-
 ## builtin
+### sh bash zsh
 - loop
   ```sh
   for x in {0..10}; do
@@ -175,10 +158,10 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `test -r /path` readable
   - `test -w /path` writable
   - `test -x /path/exe` executable
-  - `test "$str" = "str"` have same string
-  - `test "$str" != "str"` have not same string
-  - `test -n "$str"` have string
-  - `test -z "$str"` don't have string
+  - `test "${str}" = "str"` if have same string
+  - `test "${str}" != "str"` if have not same string
+  - `test -n "${str}"` have string
+  - `test -z "${str}"` don't have string
   - `test 0 -eq 0` equal
   - `test 1 -ne 0` not equal
   - `test 0 -lt 1` less than, <
@@ -187,23 +170,39 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `test 1 -ge 0` greater equal, >=
 - `[` same test
   - `[ -f /path/file ]`
-- `[[` bash only, like test
 - `declare` list of declaration
   - `declare -f` list functions
     - `declare -f ${fnc_name}` show content of function
   - `declare -F` function name only
+- `&` シェルコマンドの終了を待たずにバックグランドジョブになる
+  - `echo "hi" & echo "foo"`
+  - `(sleep 1; echo "hello") & echo "world"`
+- `fg ${job_id}` to foreground
+- `jobs` show background jobs
+- `()` use sub shell
+- `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
+  - `history 100` show one hundred histories
+  - `!${number}` run command
+- `!` run command from history
+  - `!${hist_number}`
+- `reset` reboot terminal
+- `command` use default path
+  - `command ${cmd}` avoid alias
+  - `command -v ${cmd}` witch
 
-## bash
+### bash
 - `shopt` check bash options
 - `compgen` complete generate
+- `[[`  like test
 
 ## fstab
-```fstab
-# for ext4
-# UUID=uuid	/point	ext4	nofail,rw,user,relatime,data=ordered	0 2
-# for ntfs
-# UUID=uuid	/point	ntfs	nofail,rw,user,relatime,uid=user,gid=user,dmask=022,fmask=133	0 0
-```
+- fstab
+  ```fstab
+  # for ext4
+  # UUID=uuid	/point	ext4	nofail,rw,user,relatime,data=ordered	0 2
+  # for ntfs
+  # UUID=uuid	/point	ntfs	nofail,rw,user,relatime,uid=user,gid=user,dmask=022,fmask=133	0 0
+  ```
 
 ## limitation of directory
 ```sh:limitation
@@ -297,7 +296,7 @@ cat <<'END'
 this is Here document ${HOME}
 END
 
-# variable expansion
+### variable expansion
 cat <<END
 this is Here document ${HOME}
 END
@@ -1099,7 +1098,6 @@ q(quit)
   - `sshfs user@host: /path/mnt -C` use compress
   - `sshfs -o idmap=user user@host: /path/mnt` translate uid for local user
   - `fusermount3 -u /path/mnt` unmount on local
-
 - `rsync`
   - `rsync /path/src /path/dst` copy to dst
   - `rsync -P /src /dst` same --partial --progress
@@ -1140,6 +1138,10 @@ q(quit)
 - `objdump` binary dump
 - `readelf` for read information of ELF
 - `ldd` check dynamic links from binary
+- `man` open manual
+  - `man [:digit:] [dst command]`
+- `whatis` description of one line
+  - `whatis [command]`
 
 ### awk
 - `awk`

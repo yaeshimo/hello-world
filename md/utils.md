@@ -863,6 +863,11 @@ q(quit)
 - `git`
   - `git ls-files`
   - `git config --list`
+  - `git -c` for override the current configuration from CLI
+    - `git -c color.status=always status | less -R` always output with color
+  - `git status` show status
+    - `git status` show current branches status
+    - `git -c color.status=always` with color always
   - `git remote`
     - `git remote -v` show remote info
     - `git remote add ${remote_name} ${url}`

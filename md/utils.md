@@ -356,6 +356,7 @@ END
 - `tee` 渡された内容を標準出力とファイルに書き込む
   - `${cmd} | tee /path/file`
   - `${cmd} 2>&1 | tee /path/file` tee with stderr
+  - `${cmd} | tee --append -- /path/file` append
 - `touch` タイムスタンプ操作、fileが存在しなければ新たに作成される
 
 - `head`

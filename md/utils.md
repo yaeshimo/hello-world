@@ -820,6 +820,8 @@ q(quit)
   - `pactree "${pkg}"`
 - `paccache`
   - `paccache -r` remove cache but still keep the recent 3 versions
+- `makepkg` make package from AUR
+  - `makepkg -si` on current directory, syncdeps and install package use pacman -U
 
 ### TODO: classify
 - `traceroute` trace network route

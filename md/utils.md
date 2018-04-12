@@ -406,6 +406,7 @@ END
 - `dd`
   - `dd count=N bs=N if=/path of=/path`
   - `dd if=/input of=/output status=progress` with progress
+  - `blocks=$(isosize -d 2048 /dev/sr0) && dd if=/dev/sr0 of=/path/output.iso bs=2048 count=$blocks status=progress` copy iso from CD
 - `wc` print line, word, byte count
   - `wc -l /path/file` cout lines
 - `xargs` generate command line
@@ -788,6 +789,60 @@ q(quit)
   - `xinput list` show device tree
   - `xinput list-props ${devNumber}`
   - `xinput set-prop ${devNumber} ${optionNumber} ${setting}`
+- `xdotool` control GUI from CLI
+  - `xdotool help` show help
+  - `xdotool help ${subcmd}` help with subcmd
+  - `xdotool getmouselocation` get X Y ID
+  - `xdotool selectwindow` get window ID after selected
+  - `xdotool mousemove ${X} ${Y}` mouse move
+  - `xdotool mousemove_relative -- ${X|-X} ${Y|-Y}` mouse move relative
+  - `xdotool click 1`
+  - `xdotool getactivewindow` get active windows ID
+  - `xdotool windowactivate ${windowID}`
+  - use case
+    ```sh
+    w=$(xdotool getactivewindow) &&
+      xdotool mousemove ${X} ${Y} &&
+      xdotool click 1 &&
+      xdotool windowactivate ${w}
+    ```
+
+### Languages
+#### awk
+- `awk`
+
+#### python
+- `python` run python interpreter
+  - `python --help` show help
+  - `python -m venv` python module venv
+    - `python -m venv -h` show help for venv
+    - `python -m venv /path/venv/dir` make python virtual environment directory
+      - `source /path/venv/dir/bin/activate` activate python virtual environment on bash
+        - `deactivate` deactivate current python virtual environment
+
+#### golang
+- `go` command prefix for golang
+  - `go build /path/file` build binary
+
+#### rust
+- `rustup` boot strap tool for rust
+  - `rustup help`
+    - `rustup help ${subcommand}`
+  - channels=[stable|beta|nightly]
+  - `rustup doc` open documents on web browser
+  - `rustup update` update current channel
+  - `rustup install ${channel}` install new channel
+  - `rustup default ${channel}` set default channel
+  - `rustup target list` list target platforms
+  - `rustup component`
+    - `rustup component list` list component
+    - `rustup component add rust-src` append rust-src for omni completion
+    - `rustup component add rustfmt-preview` for rust fmt
+- `rustc` rust compiler
+- `cargo` package manager for rust
+  - `cargo check`
+  - `cargo run`
+  - `cargo build`
 
 ### package manager
 - `pacman`
@@ -999,6 +1054,7 @@ q(quit)
   - `mplayer example.mp4 -idle -fixed-vo` keep open the window
   - `mplayer -ao pulse -dvd-device /path/iso -mouse-movements dvdnav://` open dvd /path/iso or /dev/sr0
   - `mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video${number} -fps 15 -vf secreenshot` capture from camera
+  - `mplayer cdda://:1 -cache 1024` play CD
 - `mpv`
   - `mpv /path/media`
   - `mpv --shuffle --loop-playlist=${number} /path/dir`
@@ -1144,39 +1200,10 @@ q(quit)
   - `man [:digit:] [dst command]`
 - `whatis` description of one line
   - `whatis [command]`
-
-### awk
-- `awk`
-
-### python
-- `python` run python interpreter
-  - `python --help` show help
-  - `python -m venv` python module venv
-    - `python -m venv -h` show help for venv
-    - `python -m venv /path/venv/dir` make python virtual environment directory
-      - `source /path/venv/dir/bin/activate` activate python virtual environment on bash
-        - `deactivate` deactivate current python virtual environment
-
-### golang
-- `go` command prefix for golang
-  - `go build /path/file` build binary
-
-### rust
-- `rustup` boot strap tool for rust
-  - `rustup help`
-    - `rustup help ${subcommand}`
-  - channels=[stable|beta|nightly]
-  - `rustup doc` open documents on web browser
-  - `rustup update` update current channel
-  - `rustup install ${channel}` install new channel
-  - `rustup default ${channel}` set default channel
-  - `rustup target list` list target platforms
-  - `rustup component`
-    - `rustup component list` list component
-    - `rustup component add rust-src` append rust-src for omni completion
-    - `rustup component add rustfmt-preview` for rust fmt
-- `rustc` rust compiler
-- `cargo` package manager for rust
-  - `cargo check`
-  - `cargo run`
-  - `cargo build`
+- `jq` filtering of JSON
+  - `jq --help` show help
+  - `cat file.json | jq` output
+  - `cat file.json | jq "."` same
+  - `cat file.json | jq ".${object_name}"` output specified object
+  - `cat file.json | jq ".${object_name}[]"` iterate
+  - `cat file.json | jq -r ".${var}[]"` output raw strings

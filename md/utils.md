@@ -875,8 +875,12 @@ q(quit)
   - `pactree "${pkg}"`
 - `paccache`
   - `paccache -r` remove cache but still keep the recent 3 versions
-- `makepkg` make package from AUR
-  - `makepkg -si` on current directory, syncdeps and install package use pacman -U
+- `makepkg` make package from AUR, do not run in the root
+  - `makepkg` make ${pkgname-pkgver}.pkg.tar.xz on current directory
+  - `makepkg -c` with clean
+  - `makepkg -s` auto install dependencies
+  - `makepkg -sc && sudo pacman -U ${pkgname-pkgver}.pkg.tar.xz` with install
+  - `makepkg -sci` makepkg on current directory and install it(use pacman -U)
 
 ### TODO: classify
 - `traceroute` trace network route

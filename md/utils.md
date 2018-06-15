@@ -820,6 +820,11 @@ q(quit)
       - `source /path/venv/dir/bin/activate` activate python virtual environment on bash
         - `deactivate` deactivate current python virtual environment
 
+#### c
+- `clang`
+  - `clang -l ${libs} ${src}` build with library
+    - `clang -l X11 ${src}` build with X11
+
 #### golang
 - `go` command prefix for golang
   - `go build /path/file` build binary
@@ -838,6 +843,7 @@ q(quit)
     - `rustup component list` list component
     - `rustup component add rust-src` append rust-src for omni completion
     - `rustup component add rustfmt-preview` for rust fmt
+  - `rustup self uninstall` uninstall
 - `rustc` rust compiler
 - `cargo` package manager for rust
   - `cargo check`
@@ -1196,6 +1202,7 @@ q(quit)
     - `gpg --output ${path/file} --decrypt ${path/file.gpg}` decrypt files then output
 - `od` binary dump
 - `hexdump` binary dump
+  - `hexdump /dev/input/event0` check the input events
 - `xxd` binary dump
 - `objdump` binary dump
 - `readelf` for read information of ELF

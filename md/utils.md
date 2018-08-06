@@ -324,7 +324,7 @@ END
 - `stat` return file information
   - `stat /path/file`
 
-- `df` show disk cap
+- `df` show disk capacity
   - `df -h`
 - `du` show dir size
   - `du -h`
@@ -570,6 +570,7 @@ END
   - `gpasswd --delete ${user} ${group}`
 - `groupmod`
   - `groupmod -n ${new_name} ${old name}`
+  - `groupmod --gid ${number} ${name}` change gid
 - `getent`
   - `getent group wheel` check wheel
   - `getent hosts` check hosts
@@ -1218,3 +1219,5 @@ q(quit)
   - `cat file.json | jq ".${object_name}"` output specified object
   - `cat file.json | jq ".${object_name}[]"` iterate
   - `cat file.json | jq -r ".${var}[]"` output raw strings
+- `notify-send` for send notification
+  - `notify-send 'hello world'` send the "hello world" to daemon of notification apps

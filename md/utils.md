@@ -970,6 +970,7 @@ q(quit)
   - `git commit`
     - `git commit -m "msg" -- /path`
     - `git commit --amend` fix recent commit
+    - `git commit -m "msg" --allow-empty` git commit with allow empty
   - `git push` push to remote
     - `git push ${remote} ${branch}` push branch to remote
     - `git push --set-upstream ${remote} ${branch}` push with set upstream
@@ -1066,6 +1067,7 @@ q(quit)
   - `mplayer -ao pulse -dvd-device /path/iso -mouse-movements dvdnav://` open dvd /path/iso or /dev/sr0
   - `mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video${number} -fps 15 -vf secreenshot` capture from camera
   - `mplayer cdda://:1 -cache 1024` play CD
+  - `mplayer -fixed-vo -playlist <(find "$PWD" -type f)` play files recursively in a directory
 - `mpv`
   - `mpv /path/media`
   - `mpv --shuffle --loop-playlist=${number} /path/dir`
@@ -1221,3 +1223,5 @@ q(quit)
   - `cat file.json | jq -r ".${var}[]"` output raw strings
 - `notify-send` for send notification
   - `notify-send 'hello world'` send the "hello world" to daemon of notification apps
+- `functions` show functions. (zsh)
+  - `functions ${fname}` show content of the function

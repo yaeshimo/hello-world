@@ -979,6 +979,7 @@ q(quit)
     - `git diff HEAD~[n] -- /path` [n] is number
     - `git diff --stat` simple view
     - `git diff --name-only`
+    - `git diff --no-index ${path_to_repo} ${path_to_other_repo}` diff on other repository
   - `git log`
     - `git log -p /path`
     - `git log --stat` with commit status

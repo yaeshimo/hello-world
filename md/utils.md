@@ -868,6 +868,8 @@ q(quit)
     - `pacman -Qo ${path_file}` check owned
     - `pacman -Ql ${pkg}` list of the files installed by a package
     - `pacman -Qdt` find standalone package
+    - `pacman -Qi ${pkg}` show package information
+    - `pacman -Qi` show all package information
   - `pacman -F --help` show help for -F
     - `pacman -Fy` sync database "/var/pacman/sync/\*.files"
     - `pacman -Fs ${file}` search package from file

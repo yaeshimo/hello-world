@@ -140,28 +140,56 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
     - `$$` self pid
     - `$#` argc
     - argv
-      - `$@` is bit different `$*`
       - `$*` is bit different `$@`
-      ```sh
-      # $@ and $* is arg1 arg2 arg3
-      for x in "$@"; do echo $x; done # "arg1" "arg2" "arg3"
-      for x in "$*"; do echo $x; done # "arg1 arg2 arg3"
-      ```
+      - `$@` is bit different `$*`
+        ```sh
+        # "$*"
+        f1() {
+          for x in "$*"; do
+            echo "$x"
+          done
+        }
+        f1 arg1 "arg2 arg3" arg4 # 1 loops
+
+        # $*
+        f2() {
+          for x in $*; do
+            echo "$x"
+          done
+        }
+        f2 arg1 "arg2 arg3" arg4 # 4 loops
+
+        # "$@"
+        f3() {
+          for x in "$@"; do
+            echo "$x"
+          done
+        }
+        f3 arg1 "arg2 arg3" arg4 # 3 loops
+
+        # $@
+        f4() {
+          for x in $@; do
+            echo "$@"
+          done
+        }
+        f4 arg1 "arg2 arg3" arg4 # 4 loops
+        ```
     - `$LINENO` line number of just used this variable
     - `$0` self name of command
     - `$1` argv[1]
     - `$2` argv[2]
     - `${10}` argv[10], is need brace
 - `test` if true then return exit code is 0
-  - `test -f /path/file` regular file
-  - `test -d /path/dir/` directory
-  - `test -r /path` readable
-  - `test -w /path` writable
-  - `test -x /path/exe` executable
-  - `test "${str}" = "str"` if have same string
-  - `test "${str}" != "str"` if have not same string
-  - `test -n "${str}"` have string
-  - `test -z "${str}"` don't have string
+  - `test -f /path/file` is regular file
+  - `test -d /path/dir/` is directory
+  - `test -r /path` is readable
+  - `test -w /path` is writable
+  - `test -x /path/exe` is executable
+  - `test "${str}" = "str"` is have same string
+  - `test "${str}" != "str"` is have not same string
+  - `test -n "${str}"` is have string
+  - `test -z "${str}"` not have string
   - `test 0 -eq 0` equal
   - `test 1 -ne 0` not equal
   - `test 0 -lt 1` less than, <
@@ -169,7 +197,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `test 1 -gt 0` greater than, >
   - `test 1 -ge 0` greater equal, >=
 - `[` same test
-  - `[ -f /path/file ]`
+  - `[ -f /path/file ]` is regular file
 - `declare` list of declaration
   - `declare -f` list functions
     - `declare -f ${fnc_name}` show content of function
@@ -368,19 +396,22 @@ END
   - `command | tail`
 
 - `mkfifo` make named pipe (fifo: First In First Out)
-  - `mkfifo [pipe name]`
-    - `cat [pipe name]`
-    - `echo "hi" > [pipe name]`
+  - `mkfifo ${pipe_name}`
+    - `cat ${pipe_name}`
+    - `echo "hi" > ${pipe_name}`
 
 - `gzip`
-  - `gzip [file]`
-  - `gzip -r [/path/to/dir/]`
-  - `gzip -l [file.gz]` file info
-  - `gzip -d [file.gz]` decompress: same gunzip
-  - `gzip -dc [file.gz]` c: write on stdout
-  - `gzip -[number of ratio] [file]` ratio=1..9 or best or fast
+  - `gzip ${file}` compress
+  - `gzip -r ${dir}` recursive compress
+  - `gzip -l ${file_gz}` show file info
+  - `gzip -d ${file_gz}` decompress: same gunzip
+  - `gzip -dc ${file_gz}` c: write on stdout
+  - `gzip -${ratio} ${file}` ratio=1..9 or "best" or "fast"
 
-- `gunzip`
+- `gunzip` decompress tool
+
+- `unzip`
+  - `unzip ${zipfile}` extract on current directory
 
 - `tar`
   - `tar xf /path/archive.tar.xxx` extract
@@ -396,6 +427,9 @@ END
     - `z` create archive gzip [.gz]
     - `f` specify file or archive
     - `v` verbose
+
+- `7z` archiver
+  - `7z l ${archive}` list contents of archive
 
 ### TODO: classify
 - `mkdir`
@@ -445,6 +479,7 @@ END
   - `systemctl list-timers`
   - `systemctl is-${active|enabled} ${service|timer}`
   - `systemctl ${start|stop|enable|disable} ${service|timer}`
+  - `systemctl list-unit-files | grep enabled` list all enabled services
   - `systemctl --user ${command}` systemctl with user flag
     - `systemctl --user reset-failed ${service}`
     - `systemctl --user show-environment` list environments
@@ -637,10 +672,21 @@ q(quit)
 
 ### ネットワーク
 - `ss`
+  - `ss -a` display all sockets
+  - `ss -n` do not resolv service names
+  - `ss -t` show tcp only
+  - `ss -u` show udp only
+  - `ss -l` show listen ports
+  - `ss -p` with information of process
   - `ss -tnlp` show tcp listen ports
   - `ss -atn` show tcp state
 - `ip`
 - `ping`
+- `lsof` list open files
+  - `lsof -i` selects the listing of files
+  - `lsof -i udp` check all udp ports
+  - `lsof -i tcp` check all tcp ports
+  - `lsof -i tcp:80` check tcp port 80
 - `tcpdump`
   - `tcpdump port [number]` specify port
   - `tcpdump port not ssh and port not llmnr` specify ignore port
@@ -649,6 +695,8 @@ q(quit)
   - `tcpdump -Z [user]` drop privilege of root after enable promiscuous mode
   - `tcpdump -p` not use promiscuous mode
   - `tcpdump -A` show content with ASCII
+  - `tcpdump -i lo udp port ${number}` check udp packets
+  - `tcpdump -i lo udp port ${number} -vv -X` check udp packets with ASCII verbose
 - `iptables`
   - `iptables -nvL --line-numbers`
   - `iptables -N CHAINNAME` -n new
@@ -856,7 +904,7 @@ q(quit)
   - `pacman --help` show help message
   - `pacman -S --help` help for -S
     - `pacman -S ${pkg_or_group}` install
-    - `pacman -S --force ${pkg_or_group}` update with force, be carful
+    - `pacman -S --force ${pkg_or_group}` update with force, be careful
     - `pacman -Si ${pkg}` information
     - `pacman -Ss ${search_word}` search package
     - `pacman -Syu` system upgrade, sync database "/var/pacman/sync/\*.db"
@@ -874,6 +922,7 @@ q(quit)
     - `pacman -Fy` sync database "/var/pacman/sync/\*.files"
     - `pacman -Fs ${file}` search package from file
     - `pacman -Fl ${pkg}` list files from package
+    - `pacman -Fo ${fullpath}` search who owned
   - do not run only `pacman -Sy`
   - check database location `ls /var/lib/pacman/sync`
 - `pacman-optimize` optimize database for pacman
@@ -1068,7 +1117,7 @@ q(quit)
   - `mplayer -ao null -vo null` audio video
   - `mplayer example.mp4 -idle -fixed-vo` keep open the window
   - `mplayer -ao pulse -dvd-device /path/iso -mouse-movements dvdnav://` open dvd /path/iso or /dev/sr0
-  - `mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video${number} -fps 15 -vf secreenshot` capture from camera
+  - `mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video${number} -fps 15 -vf screenshot` capture from camera
   - `mplayer cdda://:1 -cache 1024` play CD
   - `mplayer -fixed-vo -playlist <(find "$PWD" -type f)` play files recursively in a directory
 - `mpv`
@@ -1117,17 +1166,20 @@ q(quit)
 - `nm` list symbols from object files
   - `nm ${path_object}`
 - `nmap` port scan, careful use it
-  - `nmap ${Domain/Address}` be careful
+  - `nmap ${Host}` be careful
     - `nmap localhost` scan localhost
+    - `nmap 127.0.0.1` scan localhost
     - `nmap 192.0.2.0/24` scan between 192.0.2.1-256
     - `nmap 192.0.2.2-10` scan between 192.0.2.2-10
     - `nmap 192.0.2.5,7,10-12` scan 5,7,10,11,12
-  - `nmap -p ${%d}-${%d} ${Domain/Address}` specify scan port, %d is integer
-    - `nmap -p 0-65535 ${Domain/Address}` scan between 0-65535
-    - `nmap -p 22,80,81-100 ${Domain/Address}`
-  - `nmap -sL ${Domain/Address}` list scan addresses, is not send packets
-  - `nmap -sP ${Domain/Address}` ping scan only
-  - `nmap -oN /path/out.txt ${Domain/Address}` out to file
+  - `nmap -p ${%d}-${%d} ${Host}` specify scan port, %d is integer
+    - `nmap -p 0-1000 ${Host}` scan between 0-1000
+    - `nmap -p 0-65535 ${Host}` scan all ports
+    - `nmap -p 22,80,81-100 ${Host}`
+  - `nmap -sL ${Host}` list scan addresses, is not send packets
+  - `nmap -sP ${Host}` ping scan only
+  - `nmap -oN /path/out.txt ${Host}` out to file
+  - `nmap -sU ${Host}` scan udp
 - `strings` print printable characters
   - `strings /path/file` print printable content of files
 - `hostnamectl`

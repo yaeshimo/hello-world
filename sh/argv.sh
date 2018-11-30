@@ -47,6 +47,8 @@ main() {
   cout
 }
 
+echo 'check: for x in [$*|"$*"|$@|"$@"]; do echo $x; done'
 [ "$#" -eq 0 ] &&
+  echo "args: arg1 arg2 \"arg3 arg4 arg5\" arg6" &&
   main arg1 arg2 "arg3 arg4 arg5" arg6 ||
   main "$@"

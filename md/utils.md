@@ -180,6 +180,14 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
     - `$1` argv[1]
     - `$2` argv[2]
     - `${10}` argv[10], is need brace
+  - brace expansion
+    - require
+      - `set -o braceexpand` same `set -B`
+      - `set -B`
+    - `for x in {1..10};do echo $x; done` echo 1 to 10
+    - `for x in {1..10..2}; do echo $x; done` echo 1 3 5 7 9
+    - `echo ${var%suf}` cut suffix "suf" from variable
+    - `echo ${var#pre}` cut prefix "pre" from variable
 - `test` if true then return exit code is 0
   - `test -f /path/file` is regular file
   - `test -d /path/dir/` is directory
@@ -199,6 +207,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `[` same test
   - `[ -f /path/file ]` is regular file
 - `declare` list of declaration
+  - `declare --help` display the help on bash
   - `declare -f` list functions
     - `declare -f ${fnc_name}` show content of function
   - `declare -F` function name only
@@ -358,6 +367,14 @@ END
   - `du -h`
   - `du -h -s` only total
   - `du -h --max-depth=0` check only current directory
+
+- `echo` display string
+  - `echo "string"` display strings
+  - `echo -n "string"` trim newline
+  - `echo -e "string\nNewLine\tTab"` enable interpretation of backslash escape
+
+- `printf` display string with format
+  - `printf "hello world\n"`
 
 - `cat` binaryを読むと表示が崩れる
   - `reset`でterminalを再起動すると回復するかも
@@ -664,9 +681,10 @@ q(quit)
   - `ln -s /from /path/` make symbolic link in /path
   - `ln -sfn /from/ /link` if /link is symbolic link of to directory, then override it
 - `unlink` be careful if specify regular file then is remove it
-- `readlink`
-  - `readlink /path/link`
-  - `readlink -f /path/file/or/link`
+- `readlink` for read symbolic links
+  - `readlink /path/link` display path to canonical file
+  - `readlink -f /path/link` display absolute path to canonical file
+  - `readlink -e /path/link` display absolute path to canonical file, if not exist then fail
 - `which`
   - `which "command name"`
 
@@ -868,6 +886,9 @@ q(quit)
     - `python -m venv /path/venv/dir` make python virtual environment directory
       - `source /path/venv/dir/bin/activate` activate python virtual environment on bash
         - `deactivate` deactivate current python virtual environment
+
+- `python3` version 3
+  - `cd /path/dir && python -m http.server` serve the directory
 
 #### c
 - `clang`

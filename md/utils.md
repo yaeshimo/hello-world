@@ -175,6 +175,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
         }
         f4 arg1 "arg2 arg3" arg4 # 4 loops
         ```
+
     - `$LINENO` line number of just used this variable
     - `$0` self name of command
     - `$1` argv[1]
@@ -219,13 +220,20 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `()` use sub shell
 - `history` コマンドの履歴を表示　![ヒストリー番号]　で実行
   - `history 100` show one hundred histories
-  - `!${number}` run command
+  - `!${number}` run command from history number
+    - `!21` run command from history number of 21
 - `!` run command from history
-  - `!${hist_number}`
-- `reset` reboot terminal
+  - `!${number}` run command from history number
+- `reset` reset terminal
 - `command` use default path
   - `command ${cmd}` avoid alias
   - `command -v ${cmd}` witch
+- `builtin` for use builtin commands
+  - `builtin ${cmd}` use builtin commands, ignore alias, function, etc..
+- `type` check the command types
+  - `type ${cmd}` display command type
+  - `type -a ${cmd}` display all
+    - `type -a pwd` check what have kind types of pwd
 
 ### bash
 - `shopt` check bash options
@@ -341,6 +349,11 @@ END
 
 ### 検索や表示、作成
 - `ls` list directory and files
+  - `ls -i` with inode
+  - ``ls -d .*`` hidden only
+  - `ls -v` sort of version numbers
+  - `ls -l | sort -V` sort version numbers
+  - `ls -t` sort by timestamp
 - `lscpu` list cpu information
 - `lsmem` list memory information
 - `lspci` list PCI
@@ -360,9 +373,11 @@ END
 - `file`
 - `stat` return file information
   - `stat /path/file`
+- `logname` print login user name
 
 - `df` show disk capacity
-  - `df -h`
+  - `df -h` human readable
+  - `df -i` check with inode
 - `du` show dir size
   - `du -h`
   - `du -h -s` only total
@@ -387,6 +402,9 @@ END
 - `more`
 - `less [file]`
   - ` less -N [file]` add line number
+- `sort` sort lines of text files
+ - `sort /file` sort files content
+ - `sort --version-sort /file` sort version numbers
 
 - `locate` インデックスの作成は`sudo updatedb`
 - `find`
@@ -684,7 +702,7 @@ q(quit)
 - `readlink` for read symbolic links
   - `readlink /path/link` display path to canonical file
   - `readlink -f /path/link` display absolute path to canonical file
-  - `readlink -e /path/link` display absolute path to canonical file, if not exist then fail
+  - `readlink -e /path/link` display absolute path to canonical file, if not exist then return error
 - `which`
   - `which "command name"`
 
@@ -930,6 +948,7 @@ q(quit)
     - `pacman -Ss ${search_word}` search package
     - `pacman -Syu` system upgrade, sync database "/var/pacman/sync/\*.db"
     - `pacman -Sc` remove cache
+    - `pacman -Sw ${pkg}` not install, download only
   - `pacman -R --help` help for -R
     - `pacman -R ${pkg}` remove package
     - `pacman -Rs ${pkg}` remove package with depend
@@ -1049,13 +1068,15 @@ q(quit)
     - `git push --all ${remote}` push all branches to remote
   - `git diff`
     - `git diff HEAD~[n] -- /path` [n] is number
-    - `git diff --stat` simple view
+    - `git diff --stat` with diffstat
     - `git diff --name-only`
     - `git diff --no-index ${path_to_repo} ${path_to_other_repo}` diff on other repository
   - `git log`
     - `git log -p /path`
-    - `git log --stat` with commit status
+    - `git log --stat` with diffstat
   - `git reflog` manage reflog information
+  - `git blame` show what revision and author last modified each line of a file
+    - `git blame ${file}`
   - `git grep` grep on git repository
     - `git grep -e "pattern"` search git repository use grep ignore .git
     - `git grep "${match_word}" -- ${pattern_files}`
@@ -1121,6 +1142,7 @@ q(quit)
   - `ffmpeg -h full` show full help
   - `ffmpeg -i /path/src.ext /path/out.ext` convert
   - `ffmpeg -i /path/src.mp4 /path/out.flac` convert to flac
+  - `ffmpeg -i /path/src.webm -vn -acodec copy /path/out.aac` extract audio stream without re-encoding, `-vn` is no video, `-acodec copy` is use same audio stream
   - `cat media.mp4 | ffmpeg -i pipe:0 out.flac` use pipe
   - screencast
     - `ffmpeg -f x11grab -follow_mouse centered -framerate 25 -video_size cif -i ${DISPLAY} out.mpg`
@@ -1201,8 +1223,9 @@ q(quit)
   - `nmap -sP ${Host}` ping scan only
   - `nmap -oN /path/out.txt ${Host}` out to file
   - `nmap -sU ${Host}` scan udp
-- `strings` print printable characters
+- `strings` print printable characters for binary files
   - `strings /path/file` print printable content of files
+  - `strings /proc/$pid/environ` check running commands environments
 - `hostnamectl`
   - `hostnamectl status`
   - `hostnamectl set-hostname`
@@ -1217,6 +1240,8 @@ q(quit)
   - `dot -Tpng /path/to/src.dot -o /path/to/out.png` make image from dot src
 - `diff`
   - `diff file1 file2`
+- `od` dump binary
+  - `od /path/binary` dump binary
 - `cmp` diff for binary
   - `cmp file1 file2`
   - `cmp [--verbose/-l] file1 file2`
@@ -1230,6 +1255,9 @@ q(quit)
 - `w` just like who
 - `truncate`
   - `truncate /path/file --size 0` file to empty
+- `tr` translate or delete characters
+  - `tr "$char1" "$char2"` translate `$char1` to `$char2`
+  - `cat /proc/$pid/environ | tr "\000" "\n"` translate null to line feed
 - `go`
   `go test -v -cover` show cover from current directory
   `go test -v -coverprofile=cover.prof` make cover profile
@@ -1245,13 +1273,15 @@ q(quit)
   - `sshfs user@host: /path/mnt -C` use compress
   - `sshfs -o idmap=user user@host: /path/mnt` translate uid for local user
   - `fusermount3 -u /path/mnt` unmount on local
-- `rsync`
-  - `rsync /path/src /path/dst` copy to dst
-  - `rsync -P /src /dst` same --partial --progress
-  - `rsync -r /src/dir /dst` same --recursive
-  - `rsync -e ssh user@host:src /dst` copy from host use ssh
-  - `rsync -P -r -e ssh user@host:src/dir /dst` copy to local
-  - `rsync -P -r -e ssh /src user@host:dst/dir` copy to host
+- `rsync` file-copying tool for remote and local
+  - `rsync /path/src /path/dst` copy local to local
+  - `rsync -P /path/src /path/dst` same --partial --progress
+  - `rsync -r /path/dir /path/dst` copy directory, same --recursive
+  - `rsync -e ssh` copy over network, specify use ssh
+    - `rsync -e ssh user@host:src /dst` copy to local from remote
+    - `rsync -e ssh /path/src user@host:src` copy to local from remote
+    - `rsync -e ssh -P -r /path/dir user@host:` copy to remote from local
+    - `rsync -e ssh -P -r user@host:dir /path/dst` copy to local from remote
 - `ethtool` bind network device
   - ``ethtool en*`` show information
 - `wol` send magic packet for wake on lan

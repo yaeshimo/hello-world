@@ -973,6 +973,9 @@ q(quit)
   - `pactree "${pkg}"`
 - `paccache`
   - `paccache -r` remove cache but still keep the recent 3 versions
+- `paclist` list installed packages from given repo
+  - `paclist community` list installed package from community
+- `pacman-key` manage GnuPG keys for pacman
 - `makepkg` make package from AUR, do not run in the root
   - `makepkg` make ${pkgname-pkgver}.pkg.tar.xz on current directory
   - `makepkg -c` with clean

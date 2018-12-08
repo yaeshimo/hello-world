@@ -988,9 +988,12 @@ q(quit)
   - `tracepath -b [ip|domain]`
 - `script` save log
   - `script /path/to/log` start saving
-- `date`
-  - `date "+%Y-%m-%d"`
-- `grub`
+- `date` display the date
+  - `date "+%Y-%m-%d"` e.g. 2000-12-25
+  - `date "+%Y%m%d"` e.g. 20001225
+  - `date --help | grep %` pick up the syntax
+- `cal` show calendar
+- `grub` bootloader
   - **to MBR**
     1. `grub-install --target=i386-pc <target device /dev/sd?>`
     2. `grub-mkconfig -o /boot/grub/grub.cfg`
@@ -1019,6 +1022,8 @@ q(quit)
       - `dd count=1 bs=512 if=[grub boot partition, example: /dev/sda6] of=[for NT loader] && sync`
       - `umount /mnt`
 - `git`
+  - `git help everyday` show examples
+  - `git help -g` show help index
   - `git ls-files`
   - `git config --list`
   - `git -c` for override the current configuration from CLI
@@ -1083,9 +1088,10 @@ q(quit)
   - `git clone`
     - `git clone --no-local /path/to/repo`
     - `git clone --branch=${branch_or_tag} /path/from.git /path/to` specify clone branch
-  - `git checkout`
-    - `git checkout -b ${new_branch} ${remote}/${branch}`
-    - `git checkout ${branch} ${file}` override file from branch to worktree
+  - `git checkout` checkout branch and file
+    - `git checkout -b ${new_branch} ${remote}/${branch}` create new branch and to checkout
+    - `git checkout ${branch} ${file}` checkout the file from specified branch
+    - `git checkout ${branch} -- ${file}` checkout the file from specified branch
     - `git checkout .` fallback all files, be careful
   - `git merge`
     - `git merge ${from}` merge branch
@@ -1278,8 +1284,8 @@ q(quit)
   - `rsync -P /path/src /path/dst` same --partial --progress
   - `rsync -r /path/dir /path/dst` copy directory, same --recursive
   - `rsync -e ssh` copy over network, specify use ssh
-    - `rsync -e ssh user@host:src /dst` copy to local from remote
-    - `rsync -e ssh /path/src user@host:src` copy to local from remote
+    - `rsync -e ssh user@host:src /dst/dir/` copy to local from remote
+    - `rsync -e ssh /path/src user@host:src` copy to remote from local
     - `rsync -e ssh -P -r /path/dir user@host:` copy to remote from local
     - `rsync -e ssh -P -r user@host:dir /path/dst` copy to local from remote
 - `ethtool` bind network device

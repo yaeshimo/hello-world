@@ -909,9 +909,13 @@ q(quit)
   - `cd /path/dir && python -m http.server` serve the directory
 
 #### c
-- `clang`
+- `clang` compiler
   - `clang -l ${libs} ${src}` build with library
     - `clang -l X11 ${src}` build with X11
+
+- `gcc` compiler
+  - `gcc -o execute file.c` compile
+  - `gcc -c file.c` compile and assemble, but do not link
 
 #### golang
 - `go` command prefix for golang
@@ -970,7 +974,8 @@ q(quit)
 - `pacstrap`
   - `pacstrap -i -c -d /path/dir --ignore linux` for nspawn
 - `pactree` show dependency
-  - `pactree "${pkg}"`
+  - `pactree ${pkg}` show package dependency tree
+  - `pactree -r ${pkg}` show packages that depend on the named package
 - `paccache`
   - `paccache -r` remove cache but still keep the recent 3 versions
 - `paclist` list installed packages from given repo
@@ -984,6 +989,21 @@ q(quit)
   - `makepkg -sci` makepkg on current directory and install it(use pacman -U)
 
 ### TODO: classify
+- `make` GNU Make, build system
+  - `make` run the make process by `Makefile`
+  - `make ${target}` run target
+  - syntax of Makefile
+    ```Makefile
+    targetfile ... :prerequiestfile ...
+    	recipe
+    	...
+    ```
+    ```Makefile
+    .PHONY:help
+    help:
+    	printf "help message\n"
+    ```
+
 - `traceroute` trace network route
   - `traceroute ${ip/hostname}`
 - `tracepath` trace network route

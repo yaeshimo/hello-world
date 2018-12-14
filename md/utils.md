@@ -103,8 +103,55 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 - `ctrl-r` 履歴検索 like it
 - `ctrl-alt-backspace` xorgの強制終了
 
-## builtin
-### sh bash zsh
+- `clear` clear terminal alternatively `tput clear`
+- `reset` reset terminal
+- `infocmp` display available escape sequence on current terminal
+  - `man 5 terminfo` more information
+- `tput` send sequence to terminal by capability names
+  - `tput flash` flash terminal
+
+## shell
+- `sh` shell
+  - `sh -c 'echo "hello"'` execute string
+  - `man 1 sh` more information
+- `bash` shell
+  - `bash -c 'echo "hello"'` execute string
+  - `shopt` check bash options
+  - `compgen` complete generate
+  - `[[`  like `test`, not POSIX
+  - `man 1 bash` more information
+- `zsh` shell
+  - `zsh -c 'echo "hello"'` execute string
+  - `man 1 zsh` more information
+- `tmux` terminal multiplexer
+  - `tmux ls` list sesstions
+  - `tmux attach` attach the session
+  - `tmux a -t ${number}` specify attach session
+  - **in tmux**:`<C-b>` send prefix(default)
+    - `?` list keys
+    - `d` detach client
+    - `x` kill pane
+    - `<C-z>` suspend client, `fg` then return
+    - `s` show session tree
+    - `(` switch previous session
+    - `)` switch next session
+    - `c` create new window
+    - `l` focus last window
+    - `n` next window
+    - `p` previous window
+    - `[number]` switch window
+    - `"` split pane
+    - `%` vsplit pane
+    - `;` focus last pane
+    - `[` to copy mode
+    - `]` paste current buffer
+    - `#` list copy buffer
+    - `=` select buffer then paste
+    - `:` tmux command mode
+      - `list-keys` list bind keys
+
+
+## builtin TODO: classify for POSIX
 - loop
   ```sh
   for x in {0..10}; do
@@ -224,7 +271,6 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
     - `!21` run command from history number of 21
 - `!` run command from history
   - `!${number}` run command from history number
-- `reset` reset terminal
 - `command` use default path
   - `command ${cmd}` avoid alias
   - `command -v ${cmd}` witch
@@ -234,11 +280,6 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `type ${cmd}` display command type
   - `type -a ${cmd}` display all
     - `type -a pwd` check what have kind types of pwd
-
-### bash
-- `shopt` check bash options
-- `compgen` complete generate
-- `[[`  like test
 
 ## fstab
 - fstab
@@ -363,6 +404,7 @@ END
   - `lsblk -no UUID /dev/sdXN` check uuid
 - `lsattr` list attributes
 - `lslogins` list login state
+- `last` show login history
 - `lsns` list name space
 - `lsipc` list IPC information
 - `lsmod` list module information
@@ -1209,32 +1251,6 @@ q(quit)
   - `iconv -f [from enc] -t [taget enc] /path/to/file`
   - `iconv --list` list encoding
   - `iconv -f Shift-JIS -t UTF8 ./file.txt > out.txt`
-- `tmux` terminal multiplexer
-  - `tmux ls` list sesstions
-  - `tmux attach` attach the session
-  - `tmux a -t ${number}` specify attach session
-  - **in tmux**:`<C-b>` send prefix(default)
-    - `?` list keys
-    - `d` detach client
-    - `x` kill pane
-    - `<C-z>` suspend client, `fg` then return
-    - `s` show session tree
-    - `(` switch previous session
-    - `)` switch next session
-    - `c` create new window
-    - `l` focus last window
-    - `n` next window
-    - `p` previous window
-    - `[number]` switch window
-    - `"` split pane
-    - `%` vsplit pane
-    - `;` focus last pane
-    - `[` to copy mode
-    - `]` paste current buffer
-    - `#` list copy buffer
-    - `=` select buffer then paste
-    - `:` tmux command mode
-      - `list-keys` list bind keys
 - `nm` list symbols from object files
   - `nm ${path_object}`
 - `nmap` port scan, careful use it

@@ -116,6 +116,8 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `man 1 sh` more information
 - `bash` shell
   - `bash -c 'echo "hello"'` execute string
+  - `set -o` display set options
+  - `set +o` display set options with other style
   - `shopt` check bash options
   - `compgen` complete generate
   - `[[`  like `test`, not POSIX
@@ -420,6 +422,7 @@ END
 - `df` show disk capacity
   - `df -h` human readable
   - `df -i` check with inode
+  - `df -T` check with file system
 - `du` show dir size
   - `du -h`
   - `du -h -s` only total
@@ -1150,6 +1153,7 @@ q(quit)
   - `git grep` grep on git repository
     - `git grep -e "pattern"` search git repository use grep ignore .git
     - `git grep "${match_word}" -- ${pattern_files}`
+    - `vim -- <(git grep "pattern")` open grep logs by vim
   - `git clone`
     - `git clone --no-local /path/to/repo`
     - `git clone --branch=${branch_or_tag} /path/from.git /path/to` specify clone branch

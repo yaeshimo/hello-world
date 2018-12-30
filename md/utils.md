@@ -122,6 +122,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
   - `compgen` complete generate
   - `[[`  like `test`, not POSIX
   - `man 1 bash` more information
+  - `help` shell builtin help
 - `zsh` shell
   - `zsh -c 'echo "hello"'` execute string
   - `man 1 zsh` more information
@@ -551,10 +552,11 @@ END
 ### systemd
 - `systemctl`
   - `systemctl --help` show help
-  - `systemctl status`
-  - `systemctl reboot`
-  - `systemctl poweroff`
-  - `systemctl daemon-reload`
+  - `systemctl status` show status
+  - `systemctl status $PID` show status for PID
+  - `systemctl reboot` reboot
+  - `systemctl poweroff` poweroff
+  - `systemctl daemon-reload` reload configuration for after edit
   - `systemctl list-unit-files`
   - `systemctl list-timers`
   - `systemctl is-${active|enabled} ${service|timer}`
@@ -593,6 +595,7 @@ END
   - `logger 'hello'` pre journalctl -f
 
 ### process
+- `man 7 signal` overview of signals
 - `ps`
   - `ps auxf`
 - `pstree`
@@ -600,13 +603,13 @@ END
 - `top` show system information
 - `htop` show system information
 - `pgrep` check process id
-  - `pgrep ${pattern}`
-- `pkill`
-  - `pkill ${pattern}` kill from name
-- `kill`
-  - `kill ${pid}`
-- `killall`
-  - `killall ${process_name}`
+  - `pgrep $pattern`
+- `pkill` kill process for matches of `pgrep`
+  - `pkill $pattern` kill matches process
+- `kill` kill process more
+  - `kill $pid` kill process by pid
+- `killall` kill processes by name
+  - `killall $pattern`
 
 ### localectl
 - `localectl`
@@ -1001,6 +1004,7 @@ q(quit)
   - `pacman -R --help` help for -R
     - `pacman -R ${pkg}` remove package
     - `pacman -Rs ${pkg}` remove package with depend
+    - `pacman -Rns $(pacman -Qtdq)` remove stand alone packages
   - `pacman -Q --help` help for -Q
     - `pacman -Qo ${path_file}` check owned
     - `pacman -Ql ${pkg}` list of the files installed by a package
@@ -1184,8 +1188,11 @@ q(quit)
   - `tig status`
 - `feh`
   - `feh --cycle-once --scale-down --slideshow-delay [num] [dir]`
-- `seq`
-  - `[from] [dst]`
+- `seq` print numbers
+  - `seq $from $step $last`
+  - `seq 10` count 1 to 10
+  - `seq -1 30` count -1 to 10
+  - `seq 0 2 10` counts {0,2,4,8,10}
 - `shuf` shuffle
   - `shuf /path/to/file`
   - `shuf -n 1 /path/to/file` -n lines

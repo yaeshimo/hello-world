@@ -240,6 +240,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
     - `echo ${var%suf}` cut suffix "suf" from variable
     - `echo ${var#pre}` cut prefix "pre" from variable
 - `test` if true then return exit code is 0
+  - `test -e /path/file` is exists
   - `test -f /path/file` is regular file
   - `test -d /path/dir/` is directory
   - `test -r /path` is readable
@@ -394,7 +395,7 @@ END
 ### 検索や表示、作成
 - `ls` list directory and files
   - `ls -i` with inode
-  - ``ls -d .*`` hidden only
+  - `ls -d .*` hidden only
   - `ls -v` sort of version numbers
   - `ls -l | sort -V` sort version numbers
   - `ls -t` sort by timestamp
@@ -443,6 +444,7 @@ END
     - `cat /proc/cpuinfo` get cpuinfo
     - `cat /proc/meminfo` get memory information
     - `cat /proc/sys/kernel/random/entropy_avail` check entropy
+    - `cat /proc/cmdline` boot parameters
 - `zcat` cat for compressed files
   - `zcat /proc/config.gz`
 - `more`
@@ -762,6 +764,7 @@ q(quit)
   - `ss -u` show udp only
   - `ss -l` show listen ports
   - `ss -p` with information of process
+    - `sudo ss -lp` show listen ports with information
   - `ss -tnlp` show tcp listen ports
   - `ss -atn` show tcp state
 - `ip`
@@ -1265,20 +1268,21 @@ q(quit)
 - `nm` list symbols from object files
   - `nm ${path_object}`
 - `nmap` port scan, careful use it
-  - `nmap ${Host}` be careful
+  - `nmap $host` scan host
     - `nmap localhost` scan localhost
     - `nmap 127.0.0.1` scan localhost
     - `nmap 192.0.2.0/24` scan between 192.0.2.1-256
     - `nmap 192.0.2.2-10` scan between 192.0.2.2-10
     - `nmap 192.0.2.5,7,10-12` scan 5,7,10,11,12
-  - `nmap -p ${%d}-${%d} ${Host}` specify scan port, %d is integer
-    - `nmap -p 0-1000 ${Host}` scan between 0-1000
-    - `nmap -p 0-65535 ${Host}` scan all ports
-    - `nmap -p 22,80,81-100 ${Host}`
-  - `nmap -sL ${Host}` list scan addresses, is not send packets
-  - `nmap -sP ${Host}` ping scan only
-  - `nmap -oN /path/out.txt ${Host}` out to file
-  - `nmap -sU ${Host}` scan udp
+  - `nmap -p NUMBER-NUMBER $host` specify scan port, %d is integer
+    - `nmap -p 0-1000 $host` scan between 0-1000
+    - `nmap -p 0-65535 $host` scan all ports
+    - `nmap -p 22,80,81-100 $host`
+  - `nmap -sL $host` list scan addresses, is not send packets
+  - `nmap -sP $host` ping scan only
+  - `nmap -oN /path/out.txt $host` out to file
+  - `nmap -sU $host` scan udp
+  - `nmap -p 8080 192.0.2.0/24` scan http-proxy between 192.0.2.1-256
 - `strings` print printable characters for binary files
   - `strings /path/file` print printable content of files
   - `strings /proc/$pid/environ` check running commands environments

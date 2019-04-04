@@ -105,7 +105,7 @@ vimの正規表現はメタ文字をエスケープして指定するっぽい
 
 - `clear` clear terminal alternatively `tput clear`
 - `reset` reset terminal
-- `infocmp` display available escape sequence on current terminal
+- `infocmp` display available escape sequence on current terminal, terminfo
   - `man 5 terminfo` more information
 - `tput` send sequence to terminal by capability names
   - `tput flash` flash terminal
@@ -463,6 +463,8 @@ END
   - `grep -C 2 -n -e "${match}"` show pattern 2 lines before and after
   - `grep -v -e "${match}" -- "file"` invert match
   - `grep --line-number --with-filename --regexp "${match}" -- "${/path/file}"`
+- `rg` recursive grep
+  - `rg "pat" /path`
 - `tee` 渡された内容を標準出力とファイルに書き込む
   - `${cmd} | tee /path/file`
   - `${cmd} 2>&1 | tee /path/file` tee with stderr
@@ -1122,6 +1124,7 @@ q(quit)
     - `git branch ${new_branch}` create new branch from current HEAD
     - `git branch --delete ${branch}` delete branch
     - `git branch --move ${new_branch_name}` rename current branch name
+    - `git branch -m ${new_branch_name}` rename current branch name
   - `git add`
     - `git add --interactive`
     - `git add -p /path`
@@ -1146,6 +1149,7 @@ q(quit)
     - `git push ${remote} ${branch}` push branch to remote
     - `git push --set-upstream ${remote} ${branch}` push with set upstream
     - `git push --all ${remote}` push all branches to remote
+    - `git push --tags` push tags
   - `git diff`
     - `git diff HEAD~[n] -- /path` [n] is number
     - `git diff --stat` with diffstat
@@ -1337,6 +1341,7 @@ q(quit)
   - `rsync /path/src /path/dst` copy local to local
   - `rsync -P /path/src /path/dst` same --partial --progress
   - `rsync -r /path/dir /path/dst` copy directory, same --recursive
+  - `rsync -r /path/dir/ /path/dst` copy directory contents, same --recursive
   - `rsync -e ssh` copy over network, specify use ssh
     - `rsync -e ssh user@host:src /dst/dir/` copy to local from remote
     - `rsync -e ssh /path/src user@host:src` copy to remote from local
